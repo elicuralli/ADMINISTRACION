@@ -15,10 +15,10 @@ def get_students():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@main.route('/<id>')
-def get_student(id):
+@main.route('/<cedula>')
+def get_student(cedula):
     try:
-        student = StudentModel.get_student(id)
+        student = StudentModel.get_student(cedula)
         if student != None:
             return jsonify(student)
         else:
@@ -30,7 +30,7 @@ def get_student(id):
 @main.route('/add', methods = ["POST"])
 def add_student():
     try:
-        id = request.json['id']
+
         cedula = request.json['cedula']
         fullname = request.json['fullname']
         correo = request.json['correo']
@@ -38,12 +38,12 @@ def add_student():
         semestre = request.json['semestre']
         password = generate_password_hash(request.json["password"], method="sha256")
  
-        student = Student(str(id),cedula,fullname,correo,telefono,semestre,password)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password)
 
         affected_rows = StudentModel.add_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.id)
+            return jsonify(student.cedula)
         else:
             return jsonify({'message': "Error on insert"}), 500
     
@@ -51,10 +51,10 @@ def add_student():
         return jsonify({"message": str(ex)}),500
     
 
-@main.route('/update/<id>', methods = ["PUT"])
-def update_student(id):
+@main.route('/update/<cedula>', methods = ["PUT"])
+def update_student(cedula):
     try:
-        id = request.json['id']
+    
         cedula = request.json['cedula']
         fullname = request.json['fullname']
         correo = request.json['correo']
@@ -62,35 +62,28 @@ def update_student(id):
         semestre = request.json['semestre']
         password = generate_password_hash(request.json["password"], method="sha256")
  
-        student = Student(str(id),cedula,fullname,correo,telefono,semestre,password)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password)
 
         affected_rows = StudentModel.update_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.id)
+            return jsonify(student.cedula)
         else:
             return jsonify({'message': "Error on update"}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@main.route('/delete/<id>', methods = ["DELETE"])
-def delete_student(id):
+@main.route('/delete/<cedula>', methods = ["DELETE"])
+def delete_student(cedula):
     try:
-        id = request.json['id']
-        cedula = request.json['cedula']
-        fullname = request.json['fullname']
-        correo = request.json['correo']
-        telefono = request.json['telefono']
-        semestre = request.json['semestre']
-        password = generate_password_hash(request.json["password"], method="sha256")
- 
-        student = Student(str(id),cedula,fullname,correo,telefono,semestre,password)
+        
+        student = Student(str(cedula))
 
         affected_rows = StudentModel.delete_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.id)
+            return jsonify(student.cedula)
         else:
             return jsonify({'message': "Does not exists!"}), 500
     
