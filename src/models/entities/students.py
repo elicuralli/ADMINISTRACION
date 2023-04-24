@@ -1,7 +1,7 @@
 
 class Student():
 
-    def __init__(self,cedula,fullname= None,correo= None,telefono= None,semestre= None,password= None) -> None:
+    def __init__(self,cedula,fullname= None,correo= None,telefono= None,semestre= None,password= None, estado = None) -> None:
     
         self.cedula =cedula
         self.fullname = fullname
@@ -9,6 +9,7 @@ class Student():
         self.telefono = telefono
         self.semestre = semestre
         self.password = password
+        self.estado = estado
     
     def to_JSON(self): #permite retornar los datos en json y asi no aparece error "json no serializable"
         return {
@@ -18,7 +19,8 @@ class Student():
             "correo": self.correo, 
             "telefono": self.telefono,
             "semestre": self.semestre,
-            "password": self. password
+            "password": self. password,
+            "estado ": self.estado
 
         }
 
