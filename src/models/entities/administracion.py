@@ -1,4 +1,4 @@
-class administracion():
+class Administracion():
 
     def __init__(self, id,pre_inscripcion = None, inscripcion = None, cuota1= None,cuota2= None,cuota3= None,cuota4= None,cuota5= None) -> None:
         self.id = id
