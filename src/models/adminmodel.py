@@ -60,4 +60,34 @@ class AdminModel():
         except  Exception as ex:
             raise Exception(ex)
 
-    
+    @classmethod
+    def update_admin(self,administracion):
+        try:
+            conection = get_connection()
+            
+            with conection.cursor() as cursor:
+                cursor.execute("""UPDATE administracion SET pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id=%s""", (administracion.pre_inscripcion,administracion.inscripcion,administracion.cuota1,administracion.cuota2,administracion.cuota3,administracion.cuota4,administracion.cuota5,administracion.id))
+                affected_rows = cursor.rowcount
+                conection.commit()
+
+            conection.close()
+            return affected_rows
+
+        except  Exception as ex:
+            raise Exception(ex)
+        
+    @classmethod
+    def delete_admin(self,admin):
+        try:
+            conection = get_connection()
+            
+            with conection.cursor() as cursor:
+                cursor.execute("DELETE FROM administracion WHERE id = %s", (admin.id,))
+                affected_rows = cursor.rowcount
+                conection.commit()
+
+            conection.close()
+            return affected_rows
+
+        except  Exception as ex:
+            raise Exception(ex)

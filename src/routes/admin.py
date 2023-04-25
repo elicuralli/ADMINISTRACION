@@ -51,3 +51,45 @@ def add_student():
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
+
+@admin.route('/update', methods = ["PUT"])
+def update_admin():
+    try:
+
+        id = request.json['id']
+        pre_inscripcion = request.json['pre_inscripcion']
+        inscripcion = request.json['inscripcion']
+        cuota1 =request.json['cuota1']
+        cuota2=request.json['cuota2']
+        cuota3 =request.json['cuota3']
+        cuota4 =request.json['cuota4']
+        cuota5 =request.json['cuota5']
+
+        
+        admin = Administracion(str(id),pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)
+
+        affected_rows = AdminModel.update_admin(admin)
+
+        if affected_rows == 1:
+            return jsonify(admin.id)
+        else:
+            return jsonify({'message': "Error on insert"}), 500
+    
+    except Exception as ex:
+        return jsonify({"message": str(ex)}),500
+
+@admin.route('/delete/<id>', methods = ["DELETE"])
+def delete_admin(id):
+    try:
+        
+        admin = Administracion(str(id))
+
+        affected_rows = AdminModel.delete_admin(admin)
+
+        if affected_rows == 1:
+            return jsonify(admin.id)
+        else:
+            return jsonify({'message': "Does not exists!"}), 500
+    
+    except Exception as ex:
+        return jsonify({"message": str(ex)}),500
