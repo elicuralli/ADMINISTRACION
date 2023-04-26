@@ -9,6 +9,8 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
+    
+    # acceso fuera desde otras url
 
     # blueprints
     app.register_blueprint(students.main, url_prefix = '/api/students')

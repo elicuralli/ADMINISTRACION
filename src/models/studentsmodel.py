@@ -94,7 +94,7 @@ class StudentModel():
             raise Exception(ex)
     
     @classmethod
-    def count_students():
+    def count_students(self):
         try:
             connection = get_connection()
 

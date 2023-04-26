@@ -1,8 +1,10 @@
 from flask import Blueprint,jsonify,request
+from flask_cors import CORS
 from models.entities.administracion import Administracion
 from models.adminmodel import AdminModel
 
 admin = Blueprint('administracion_blueprint',__name__)
+CORS(admin)
 
 @admin.route('/')
 def get_administracion():
@@ -95,3 +97,19 @@ def delete_admin(id):
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
+
+@admin.route("/count/month/<number>", methods = ["GET"])
+def count_month(number):
+    try:
+        count = AdminModel.count_month(number)
+        return jsonify({"total": count})
+    except Exception as ex:
+        return jsonify({"message": str(ex)})
+
+@admin.route("/count/day/<number>", methods = ["GET"])
+def count_day(number):
+    try:
+        count = AdminModel.count_day(number)
+        return jsonify({"total": count})
+    except Exception as ex:
+        return jsonify({"message": str(ex)})
