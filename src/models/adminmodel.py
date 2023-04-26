@@ -10,11 +10,11 @@ class AdminModel():
             administracion = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT id,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from administracion ORDER BY id ASC")
+                cursor.execute("SELECT id,cedula_student,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from administracion ORDER BY id ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7])
+                    admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
                     administracion.append(admin.to_JSON())
             
             conection.close()
@@ -29,12 +29,12 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT id,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from administracion WHERE id = %s",(id,))
+                cursor.execute("SELECT id,cedula_student,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from administracion WHERE id = %s",(id,))
                 row = cursor.fetchone()
 
                 admin = None
                 if row != None:
-                    admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7])
+                    admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
                     administracion = admin.to_JSON()
 
                 
@@ -50,7 +50,7 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO administracion (id,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",(administracion.id,administracion.pre_inscripcion,administracion.inscripcion,administracion.cuota1,administracion.cuota2,administracion.cuota3,administracion.cuota4,administracion.cuota5))
+                cursor.execute("""INSERT INTO administracion (id,cedula_student,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(administracion.id,administracion.cedula_student,administracion.pre_inscripcion,administracion.inscripcion,administracion.cuota1,administracion.cuota2,administracion.cuota3,administracion.cuota4,administracion.cuota5))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -58,6 +58,7 @@ class AdminModel():
             return affected_rows
 
         except  Exception as ex:
+            print(ex)
             raise Exception(ex)
 
     @classmethod
@@ -66,7 +67,7 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE administracion SET pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id=%s""", (administracion.pre_inscripcion,administracion.inscripcion,administracion.cuota1,administracion.cuota2,administracion.cuota3,administracion.cuota4,administracion.cuota5,administracion.id))
+                cursor.execute("""UPDATE administracion SET cedula_student=%s,pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id=%s""", (administracion.cedula_student,administracion.pre_inscripcion,administracion.inscripcion,administracion.cuota1,administracion.cuota2,administracion.cuota3,administracion.cuota4,administracion.cuota5,administracion.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 

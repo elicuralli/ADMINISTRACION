@@ -27,12 +27,13 @@ def get_admin(id):
         return jsonify({"message": str(ex)}),500
 
 @admin.route('/add', methods = ["POST"])
-def add_student():
+def add_admin():
     try:
 
         id = request.json['id']
         pre_inscripcion = request.json['pre_inscripcion']
         inscripcion = request.json['inscripcion']
+        cedula_student = request.json['cedula_student']
         cuota1 =request.json['cuota1']
         cuota2=request.json['cuota2']
         cuota3 =request.json['cuota3']
@@ -40,7 +41,7 @@ def add_student():
         cuota5 =request.json['cuota5']
 
         
-        admin = Administracion(str(id),pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)
+        admin = Administracion(str(id),str(cedula_student),pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)
 
         affected_rows = AdminModel.add_admin(admin)
 
@@ -52,13 +53,14 @@ def add_student():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@admin.route('/update', methods = ["PUT"])
-def update_admin():
+@admin.route('/update/<id>', methods = ["PUT"])
+def update_admin(id):
     try:
 
         id = request.json['id']
         pre_inscripcion = request.json['pre_inscripcion']
         inscripcion = request.json['inscripcion']
+        cedula_student = request.json['cedula_student']
         cuota1 =request.json['cuota1']
         cuota2=request.json['cuota2']
         cuota3 =request.json['cuota3']
@@ -66,7 +68,7 @@ def update_admin():
         cuota5 =request.json['cuota5']
 
         
-        admin = Administracion(str(id),pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)
+        admin = Administracion(str(id),str(cedula_student),pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5)
 
         affected_rows = AdminModel.update_admin(admin)
 
