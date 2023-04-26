@@ -1,8 +1,8 @@
-class Administracion():
+class Monto():
 
-    def __init__(self, id,cedula_estudiante= None,pre_inscripcion = None, inscripcion = None, cuota1= None,cuota2= None,cuota3= None,cuota4= None,cuota5= None) -> None:
-        self.id = id
-        self.cedula_estudiante = cedula_estudiante
+    def __init__(self, id,id_pago= None,pre_inscripcion = None, inscripcion = None, cuota1= None,cuota2= None,cuota3= None,cuota4= None,cuota5= None) -> None:
+        self.id = id_pago
+        self.id_pago = id_pago
         self.pre_inscripcion = pre_inscripcion
         self.inscripcion = inscripcion
         self.cuota1 = cuota1
@@ -14,7 +14,7 @@ class Administracion():
     def to_JSON(self):
         return {
             "id": self.id,
-            "cedula_estudiante": self.cedula_estudiante,
+            "id_pago": self.id_pago,
             "pre_inscripcion":self.pre_inscripcion,
             "inscripcion": self.inscripcion,
             "cuota 1": self.cuota1,

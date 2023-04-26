@@ -91,3 +91,14 @@ def delete_student(cedula):
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
+
+@main.route("/count", methods = ["GET"])
+def count_student():
+    try:
+        count = StudentModel.count_students()
+        if count != 0:
+            return jsonify({"total": count})
+        else:
+            return jsonify({'message': "No hay estudiantes registrados!"}), 500
+    except Exception as ex:
+        return jsonify({"message": str(ex)})

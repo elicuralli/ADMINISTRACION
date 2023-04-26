@@ -11,7 +11,7 @@ class StudentModel():
             students = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password,estado from Student ORDER BY cedula ASC")
+                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password,estado from estudiantes ORDER BY cedula ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -25,12 +25,12 @@ class StudentModel():
             raise Exception(ex)
         
     @classmethod
-    def get_student(self,cedula):
+    def get_student(cedula: str):
         try:
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password, estado from Student WHERE cedula = %s",(cedula,))
+                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password, estado from estudiantes WHERE cedula = %s",(cedula,))
                 row = cursor.fetchone()
 
                 student = None
@@ -51,7 +51,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO student (cedula,fullname,correo,telefono,semestre,password,estado)VALUES (%s,%s,%s,%s,%s,%s,%s)""",(student.cedula,student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado))
+                cursor.execute("""INSERT INTO estudiantes (cedula,fullname,correo,telefono,semestre,password,estado)VALUES (%s,%s,%s,%s,%s,%s,%s)""",(student.cedula,student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -67,7 +67,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE student SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.cedula))
+                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -80,10 +80,10 @@ class StudentModel():
     @classmethod
     def delete_student(self,student):
         try:
-            conection = get_connection()
+            conection = get_connection()                                      
             
             with conection.cursor() as cursor:
-                cursor.execute("DELETE FROM student WHERE cedula = %s", (student.cedula,))
+                cursor.execute("DELETE FROM estudiantes WHERE cedula = %s", (student.cedula,))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -92,5 +92,20 @@ class StudentModel():
 
         except  Exception as ex:
             raise Exception(ex)
+    
+    @classmethod
+    def count_students():
+        try:
+            connection = get_connection()
+
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT COUNT(*) FROM estudiantes")
+                row = cursor.fetchone()
+                if row != None:
+                    return row[0]
+        except Exception as ex:
+            raise Exception(ex)
+            
+            
 
 
