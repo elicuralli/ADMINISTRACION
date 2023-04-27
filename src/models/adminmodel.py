@@ -1,6 +1,7 @@
 from database.db import get_connection 
 from models.entities.administracion import Administracion
 from models.entities.students import Student
+
 class AdminModel():
 
     @classmethod
@@ -30,7 +31,6 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                # SELECT * FROM pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = ?
                 cursor.execute("SELECT * from pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = %s",(id,))
                 row = cursor.fetchone()
 
@@ -104,7 +104,7 @@ class AdminModel():
             with connection.cursor() as cursor:
                 cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}-%".format(number)})
                 row = cursor.fetchone()
-                if row != None:
+                if row != None: 
                     return row[0]
         except Exception as ex:
             raise Exception(ex)
@@ -115,7 +115,7 @@ class AdminModel():
             connection = get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}%".format(number)})
+                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}".format(number)})
                 row = cursor.fetchone()
                 if row != None:
                     return row[0]

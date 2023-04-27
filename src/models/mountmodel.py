@@ -62,3 +62,20 @@ class MountModel():
         except  Exception as ex:
             print(ex)
             raise Exception(ex)
+        
+    @classmethod
+    def update_monto(self,monto: Monto):
+        try:
+            conection = get_connection()
+            
+            with conection.cursor() as cursor:
+                cursor.execute("""UPDATE monto SET id=%s,id_pago=%s,pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s """,(monto.id,monto.id_pago,monto.pre_inscripcion,monto.inscripcion,monto.cuota1,monto.cuota2,monto.cuota3,monto.cuota4,monto.cuota5))
+                affected_rows = cursor.rowcount
+                conection.commit()
+
+            conection.close()
+            return affected_rows
+
+        except  Exception as ex:
+            raise Exception(ex)
+        
