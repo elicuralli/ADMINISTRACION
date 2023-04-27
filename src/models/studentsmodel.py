@@ -11,7 +11,7 @@ class StudentModel():
             students = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password,estado from estudiantes ORDER BY cedula ASC")
+                cursor.execute("SELECT * from estudiantes ORDER BY cedula ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -30,7 +30,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT cedula,fullname,correo,telefono,semestre,password, estado from estudiantes WHERE cedula = %s",(cedula,))
+                cursor.execute("SELECT * from estudiantes WHERE cedula = %s",(cedula,))
                 row = cursor.fetchone()
 
                 student = None

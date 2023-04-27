@@ -1,6 +1,7 @@
 from database.db import get_connection 
 from models.entities.administracion import Administracion
 from models.entities.students import Student
+
 class AdminModel():
 
     @classmethod
@@ -10,7 +11,7 @@ class AdminModel():
             administracion = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT id,cedula_estudiante,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from pagos ORDER BY id ASC")
+                cursor.execute("SELECT * from pagos ORDER BY id ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -29,7 +30,7 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT admin.id, admin.cedula_estudiante, admin.pre_inscripcion, admin.inscripcion, admin.cuota1, admin.cuota2, admin.cuota3, admin.cuota4, admin.cuota5, est.cedula,est.fullname,est.correo,est.telefono,est.semestre,est.estado from pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = %s",(id,))
+                cursor.execute("SELECT * from pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = %s",(id,))
                 row = cursor.fetchone()
 
                 join = None
@@ -102,7 +103,7 @@ class AdminModel():
             with connection.cursor() as cursor:
                 cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}-%".format(number)})
                 row = cursor.fetchone()
-                if row != None:
+                if row != None: 
                     return row[0]
         except Exception as ex:
             raise Exception(ex)
@@ -113,7 +114,7 @@ class AdminModel():
             connection = get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}%".format(number)})
+                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}".format(number)})
                 row = cursor.fetchone()
                 if row != None:
                     return row[0]
