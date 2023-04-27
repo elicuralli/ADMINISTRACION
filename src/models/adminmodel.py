@@ -29,7 +29,8 @@ class AdminModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT admin.id, admin.cedula_estudiante, admin.pre_inscripcion, admin.inscripcion, admin.cuota1, admin.cuota2, admin.cuota3, admin.cuota4, admin.cuota5, est.cedula,est.fullname,est.correo,est.telefono,est.semestre,est.estado from pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = %s",(id,))
+                # SELECT * FROM pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = ?
+                cursor.execute("SELECT * from pagos admin INNER JOIN estudiantes est ON est.cedula = admin.cedula_estudiante WHERE admin.id = %s",(id,))
                 row = cursor.fetchone()
 
                 join = None

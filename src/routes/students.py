@@ -4,6 +4,7 @@ from models.studentsmodel import StudentModel
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 main= Blueprint('students_blueprint',__name__)
 CORS(main)
 
@@ -12,7 +13,7 @@ def get_students():
     try:
 
         students = StudentModel.get_students()
-        return jsonify(students)
+        return jsonify({"ok": True, "status":200,"data":students})
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -22,9 +23,9 @@ def get_student(cedula):
     try:
         student = StudentModel.get_student(cedula)
         if student != None:
-            return jsonify(student)
+            return jsonify({"ok": True, "status":200,"data":student})
         else:
-            return jsonify({}),404
+            return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}),404
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -40,15 +41,15 @@ def add_student():
         semestre = request.json['semestre']
         estado = request.json['estado']
         password = generate_password_hash(request.json["password"], method="sha256")
- 
+
         student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado)
 
         affected_rows = StudentModel.add_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.cedula)
+            return jsonify({"ok": True, "status":200,"data":student})
         else:
-            return jsonify({'message': "Error on insert"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -71,9 +72,9 @@ def update_student(cedula):
         affected_rows = StudentModel.update_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.cedula)
+            return jsonify({"ok": True, "status":200,"data":student})
         else:
-            return jsonify({'message': "Error on update"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -87,9 +88,9 @@ def delete_student(cedula):
         affected_rows = StudentModel.delete_student(student)
 
         if affected_rows == 1:
-            return jsonify(student.cedula)
+            return jsonify({"ok": True, "status":200,"data": None})
         else:
-            return jsonify({'message': "Does not exists!"}), 500
+            return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}) ,404
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -99,8 +100,8 @@ def count_student():
     try:
         count = StudentModel.count_students()
         if count != 0:
-            return jsonify({"total": count})
+            return jsonify({"ok": True, "status": 200, "total": count})
         else:
-            return jsonify({'message': "No hay estudiantes registrados!"}), 500
+            return jsonify({"ok": False, "status": 404, 'message': "No hay estudiantes registrados!"}), 404
     except Exception as ex:
-        return jsonify({"message": str(ex)})
+        return jsonify({"message": str(ex)}), 500

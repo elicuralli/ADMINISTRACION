@@ -21,9 +21,9 @@ def get_monto(id):
     try:
         monto = MountModel.get_monto(id)
         if monto != None:
-            return jsonify(monto)
+            return jsonify({"ok": True, "status":200,"data":monto})
         else:
-            return jsonify({}),404
+            return jsonify({"ok": False, "status":404,"data":{"message": "Monto no encontrado"}}),404
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -48,9 +48,9 @@ def add_admin():
         affected_rows = MountModel.add_monto(monto)
 
         if affected_rows == 1:
-            return jsonify(monto.id)
+            return jsonify({"ok": True, "status":200,"data":monto})
         else:
-            return jsonify({'message': "Error on insert"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500

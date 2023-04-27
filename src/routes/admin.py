@@ -21,9 +21,9 @@ def get_admin(id):
     try:
         admin = AdminModel.get_administracion_id(id)
         if admin != None:
-            return jsonify(admin)
+            return jsonify({"ok": True, "status":200,"data":admin})
         else:
-            return jsonify({}),404
+            return jsonify({"ok": False, "status":404,"data":{"message": "Pago no encontrado"}}),404
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -48,9 +48,9 @@ def add_admin():
         affected_rows = AdminModel.add_admin(admin)
 
         if affected_rows == 1:
-            return jsonify(admin.id)
+            return jsonify({"ok": True, "status":200,"data":admin})
         else:
-            return jsonify({'message': "Error on insert"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -75,9 +75,9 @@ def update_admin(id):
         affected_rows = AdminModel.update_admin(admin)
 
         if affected_rows == 1:
-            return jsonify(admin.id)
+            return jsonify({"ok": True, "status":200,"data":admin})
         else:
-            return jsonify({'message': "Error on insert"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -91,9 +91,9 @@ def delete_admin(id):
         affected_rows = AdminModel.delete_admin(admin)
 
         if affected_rows == 1:
-            return jsonify(admin.id)
+            return jsonify({"ok": True, "status":200,"data":None})
         else:
-            return jsonify({'message': "Does not exists!"}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar"}}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
@@ -102,7 +102,7 @@ def delete_admin(id):
 def count_month(number):
     try:
         count = AdminModel.count_month(number)
-        return jsonify({"total": count})
+        return jsonify({"ok": True, "status": 200, "total": count})
     except Exception as ex:
         return jsonify({"message": str(ex)})
 
@@ -110,6 +110,6 @@ def count_month(number):
 def count_day(number):
     try:
         count = AdminModel.count_day(number)
-        return jsonify({"total": count})
+        return jsonify({"ok": True, "status": 200, "total": count})
     except Exception as ex:
         return jsonify({"message": str(ex)})

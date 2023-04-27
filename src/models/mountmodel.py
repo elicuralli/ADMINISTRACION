@@ -11,7 +11,7 @@ class MountModel():
             montos = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT id,id_pago,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from monto ORDER BY id ASC")
+                cursor.execute("SELECT * from monto ORDER BY id ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -30,7 +30,7 @@ class MountModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT monto.id, monto.id_pago, monto.pre_inscripcion, monto.inscripcion, monto.cuota1, monto.cuota2, monto.cuota3, monto.cuota4, monto.cuota5, pagos.id, pagos.cedula_estudiante, pagos.pre_inscripcion, pagos.inscripcion, pagos.cuota1, pagos.cuota2, pagos.cuota3, pagos.cuota4, pagos.cuota5 FROM monto INNER JOIN pagos ON pagos.id = monto.id_pago WHERE monto.id = %s",(id,))
+                cursor.execute("SELECT * FROM monto INNER JOIN pagos ON pagos.id = monto.id_pago WHERE monto.id = %s",(id,))
                 row = cursor.fetchone()
 
                 join = None
