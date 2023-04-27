@@ -7,18 +7,19 @@ class AdminModel():
     def get_administracion(self):
         try:
             conection = get_connection()
-            administracion = []
+            join = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT id,cedula_estudiante,pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5 from pagos ORDER BY id ASC")
+                cursor.execute("SELECT * from pagos INNER JOIN estudiantes est ON est.cedula = pagos.cedula_estudiante ORDER BY pagos.id ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
                     admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
-                    administracion.append(admin.to_JSON())
+                    student = Student(row[9], row[10], row[11], row[13], row[14], None, row[15])
+                    join.append({"pago": admin.to_JSON(), "estudiante": student.to_JSON()})
             
             conection.close()
-            return administracion
+            return join
 
         except  Exception as ex:
             raise Exception(ex)
@@ -36,7 +37,7 @@ class AdminModel():
                 join = None
                 if row != None:
                     admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
-                    student = Student(row[9], row[10], row[11], row[12], row[13], None, row[14])
+                    student = Student(row[9], row[10], row[11], row[12], row[13], None, row[15])
                     join = {"pago": admin.to_JSON(), "estudiante": student.to_JSON()}
 
                 

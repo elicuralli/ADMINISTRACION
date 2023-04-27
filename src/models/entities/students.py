@@ -19,8 +19,7 @@ class Student():
             "correo": self.correo, 
             "telefono": self.telefono,
             "semestre": self.semestre,
-            "password": self. password,
-            "estado ": self.estado
+            "estado": self.estado
 
         }
 

@@ -11,7 +11,8 @@ def get_administracion():
     try:
 
         admin = AdminModel.get_administracion()
-        return jsonify(admin)
+        return jsonify({"ok": True, "status":200,"data":admin})
+
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500

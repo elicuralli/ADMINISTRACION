@@ -11,7 +11,8 @@ def get_montos():
     try:
 
         monto = MountModel.get_montos()
-        return jsonify(monto)
+        return jsonify({"ok": True, "status":200,"data":monto})
+
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
