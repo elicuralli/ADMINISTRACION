@@ -77,7 +77,7 @@ def update_admin(id):
         if affected_rows == 1:
             return jsonify(admin.id)
         else:
-            return jsonify({'message': "Error on insert"}), 500
+            return jsonify({'message': "Error on update"}), 500
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
