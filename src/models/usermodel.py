@@ -9,7 +9,7 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT into usuario (id,usuario,clave)VALUES(%s,%s,%s)""",(user.id,user.usuario,user.clave))
+                cursor.execute("""INSERT into usuarios (id, usuario, clave) VALUES (%s,%s,%s)""",(user.id,user.usuario,user.clave,))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -26,12 +26,12 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT usuario,clave FROM usuario WHERE usuario=%s, clave=%s",(user.usuario,user.clave)) 
+                cursor.execute("SELECT clave FROM usuarios WHERE usuario=%s",(user.usuario,)) 
                 row = cursor.fetchone()
                 conection.commit()
 
             conection.close()
-            return row
+            return row[0]
         
         except Exception as ex:
             raise Exception(ex)
@@ -43,7 +43,7 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                    cursor.execute("UPDATE usuario SET usuario=%s WHERE usuario = %s",(user.usuario)) 
+                    cursor.execute("UPDATE usuarios SET usuario=%s WHERE usuario = %s",(user.usuario)) 
                     affected_rows = cursor.rowcount
                     conection.commit()
 
@@ -60,7 +60,7 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                    cursor.execute("UPDATE usuario SET clave=%s WHERE clave = %s",(user.clave)) 
+                    cursor.execute("UPDATE usuarios SET clave=%s WHERE usuario = %s",(user.clave,user.usuario)) 
                     affected_rows = cursor.rowcount
                     conection.commit()
 

@@ -13,7 +13,7 @@ def register():
         usuario = request.json['usuario']
         clave = generate_password_hash(request.json["clave"], method="sha256")
 
-        user = (str(id),usuario,clave)
+        user = User(id=str(id),usuario=usuario,clave=clave)
         affected_rows = UserModel.register(user)
 
         
@@ -30,9 +30,8 @@ def login():
     try: 
         usuario = request.json['usuario']
         clave = request.json['clave']
+        user = User(usuario,clave)
         hashed_clave = UserModel.login(user)
- 
-        user = (usuario,clave,hashed_clave)
 
         if user:
             if check_password_hash(hashed_clave, clave):
@@ -47,19 +46,51 @@ def login():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
     
-@user.route('/update<usuario>',methods = ["PUT"])
+@user.route('/update/usuario/',methods = ["PUT"])
 def update_user():
     try: 
         usuario = request.json['usuario']
-        
-
-        affected_rows = UserModel.update_user()
-
-
-        if affected_rows == 1:
-                return jsonify()
+        nuevo = request.json['nuevo']
+        clave = request.json['clave']
+        user = User(usuario, clave)
+        hashed_clave = UserModel.login(user)
+        if hashed_clave:
+            if check_password_hash(hashed_clave, clave):
+                user.usuario = nuevo
+                affected_rows = UserModel.update_user(user)
+                if affected_rows == 1:
+                    return jsonify({"successful":True})
+                else:
+                    return jsonify({"successful": False})
+            else:
+                return jsonify({"message": "clave incorrecta"})
         else:
-            return jsonify({'message': "Error on update"}), 500
+            return jsonify({"message": "el usuario no existe"})
+        
+    except Exception as ex:
+        return jsonify({"message": str(ex)}),500
+    
+@user.route('/update/clave/',methods = ["PUT"])
+def update_clave():
+    try: 
+        usuario = request.json['usuario']
+        clave = request.json['clave']
+        nuevo = request.json['nuevo']
+        nuevo = generate_password_hash(nuevo, "sha256")
+        user = User(usuario, clave)
+        hashed_clave = UserModel.login(user)
+        if hashed_clave:
+            if check_password_hash(hashed_clave, clave):
+                user = User(usuario, nuevo)
+                affected_rows = UserModel.update_user(user)
+                if affected_rows == 1:
+                    return jsonify({"successful":True})
+                else:
+                    return jsonify({"successful": False})
+            else:
+                return jsonify({"message": "clave incorrecta"})
+        else:
+            return jsonify({"message": "el usuario no existe"})
         
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
