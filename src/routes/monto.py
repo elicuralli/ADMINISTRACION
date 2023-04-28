@@ -1,10 +1,14 @@
 from flask import Blueprint,jsonify,request
 from models.entities.monto import Monto
 from models.mountmodel import MountModel
-from flask_cors import CORS
 
 montos = Blueprint('monto_blueprint',__name__)
-CORS(montos)
+
+@montos.after_request 
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @montos.route('/')
 def get_montos():

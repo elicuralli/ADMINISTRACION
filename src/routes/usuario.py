@@ -1,10 +1,15 @@
 from flask import Blueprint,jsonify,request
 from models.entities.user import User
 from models.usermodel import UserModel
-from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 
 user = Blueprint('user_blueprint',__name__)
+
+@user.after_request 
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @user.route('/register', methods = ["POST"])
 def register():

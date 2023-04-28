@@ -1,12 +1,15 @@
 from flask import Blueprint,jsonify,request
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
-from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 main= Blueprint('students_blueprint',__name__)
-CORS(main)
+@main.after_request 
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @main.route('/')
 def get_students():

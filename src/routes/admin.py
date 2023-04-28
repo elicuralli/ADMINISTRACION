@@ -1,10 +1,14 @@
 from flask import Blueprint,jsonify,request
-from flask_cors import CORS
 from models.entities.administracion import Administracion
 from models.adminmodel import AdminModel
 
 admin = Blueprint('administracion_blueprint',__name__)
-CORS(admin)
+
+@admin.after_request 
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @admin.route('/')
 def get_administracion():
