@@ -16,7 +16,6 @@ class AdminModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    print(row)
                     admin = Administracion(id=row[0],pre_inscripcion=row[1],inscripcion=row[2],cuota1=row[3],cuota2=row[4],cuota3=row[5],cuota4=row[6],cuota5=row[7],cedula_estudiante=row[8])
                     join["pagos"].append(admin.to_JSON())
                     monto = Monto(row[9], row[0], row[10], row[11], row[12], row[13], row[14], row[15], row[16])
