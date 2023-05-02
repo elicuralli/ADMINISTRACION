@@ -1,6 +1,7 @@
 from database.db import get_connection 
 from models.entities.students import Student
-
+from models.entities.administracion import Administracion
+from models.entities.monto import Monto
 
 class StudentModel():
 
@@ -15,7 +16,7 @@ class StudentModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    student = Student(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
+                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6])
                     students.append(student.to_JSON())
             
             conection.close()
@@ -25,22 +26,21 @@ class StudentModel():
             raise Exception(ex)
         
     @classmethod
-    def get_student(cedula: str):
+    def get_student(self, cedula: str):
         try:
             conection = get_connection()
-            
+            join = {}
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from estudiantes WHERE cedula = %s",(cedula,))
+                cursor.execute("SELECT * from estudiantes INNER JOIN pagos ON pagos.cedula_estudiante = estudiantes.cedula INNER JOIN monto ON pagos.id = monto.id_pago WHERE cedula = %s",(cedula,))
                 row = cursor.fetchone()
 
-                student = None
                 if row != None:
-                    student = Student(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
-                    student = student.to_JSON()
-
+                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6]).to_JSON()
+                    join["pago"] = Administracion(row[7], row[0], row[8], row[9], row[10], row[11], row[12], row[13], row[14]).to_JSON()
+                    join["monto"] = Monto(row[17], row[7], row[18], row[19], row[20], row[21], row[22], row[23]).to_JSON()
                 
             conection.close()
-            return student
+            return join
 
         except  Exception as ex:
             raise Exception(ex)

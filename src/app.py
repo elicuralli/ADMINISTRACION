@@ -19,4 +19,4 @@ if __name__ == '__main__':
     app.register_blueprint(usuario.user, url_prefix = '/api/usuario')
     #manejador de errores
     app.register_error_handler(404,page_not_found)
-    app.run()
+    app.run(host="0.0.0.0", debug=True)

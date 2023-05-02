@@ -9,7 +9,7 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT into usuarios (id, usuario, clave) VALUES (%s,%s,%s)""",(user.id,user.usuario,user.clave,))
+                cursor.execute("""INSERT into usuarios (usuario, clave) VALUES (%s,%s)""",(user.usuario,user.clave,))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
