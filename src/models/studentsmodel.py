@@ -51,6 +51,11 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
+               
+                cursor.execute("SELECT * from estudiantes WHERE cedula =%s",(student.cedula,))
+                result = cursor.fetchone()
+                if result is not None: 
+                    return 'estudiante ya existe'
                 cursor.execute("""INSERT INTO estudiantes (cedula,fullname,correo,telefono,semestre,password,estado)VALUES (%s,%s,%s,%s,%s,%s,%s)""",(student.cedula,student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado))
                 affected_rows = cursor.rowcount
                 conection.commit()

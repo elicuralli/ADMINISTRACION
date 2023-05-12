@@ -53,10 +53,10 @@ def add_student():
         if affected_rows == 1:
             return jsonify({"ok": True, "status":200,"data":None})
         else:
-            return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar, compruebe los datos e intente nuevamente"}}), 500
+            return jsonify({"ok": False, "status":500,"data":{"message": affected_rows}}), 500
     
     except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": "Error al insertar, compruebe los datos e intente nuevamente"}}), 500
+        return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
     
 
@@ -85,21 +85,21 @@ def update_student(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
 
-# @main.route('/delete/<cedula>', methods = ["DELETE"])
-# def delete_student(cedula):
-#     try:
+@main.route('/delete/<cedula>', methods = ["DELETE"])
+def delete_student(cedula):
+    try:
         
-#         student = Student(str(cedula))
+        student = Student(str(cedula))
 
-#         affected_rows = StudentModel.delete_student(student)
+        affected_rows = StudentModel.delete_student(student)
 
-#         if affected_rows == 1:
-#             return jsonify({"ok": True, "status":200,"data": None})
-#         else:
-#             return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}) ,404
+        if affected_rows == 1:
+            return jsonify({"ok": True, "status":200,"data": None})
+        else:
+            return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}) ,404
     
-#     except Exception as ex:
-#         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+    except Exception as ex:
+        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 
 # @main.route("/count", methods = ["GET"])

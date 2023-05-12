@@ -69,6 +69,7 @@ def add_admin():
         monto_cuota3 = 0.0
         monto_cuota4 = 0.0
         monto_cuota5 = 0.0
+
         
         if "inscripcion" in request.json:
             inscripcion = request.json["inscripcion"]

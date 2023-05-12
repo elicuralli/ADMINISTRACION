@@ -48,7 +48,7 @@ class AdminModel():
             return join
 
         except  Exception as ex:
-            raise Exception(ex + str(len(row)))
+            raise Exception(ex)
     
     @classmethod
     def add_admin(self,administracion):
@@ -65,7 +65,7 @@ class AdminModel():
             return id_pago
 
         except  Exception as ex:
-            raise Exception(str(ex) + str(len(row)))
+            raise Exception(ex)
 
     @classmethod
     def update_admin(self,administracion):
