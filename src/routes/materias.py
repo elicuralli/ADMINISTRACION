@@ -49,9 +49,9 @@ def add_materia():
         ht = request.json['ht']
         semestre = request.json['semestre']
         id_carrera = request.json['id_carrera']
+        id_docente = request.json['id_docente']
 
-        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera)
-        print(materia)
+        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente)
 
         affected_rows = MateriaModel.add_materia(materia)
 
@@ -77,8 +77,9 @@ def update_materia(id):
             ht = request.json['ht']
             semestre = request.json['semestre']
             id_carrera = request.json['id_carrera']
+            id_docente = request.json['id_docente']
 
-            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera)
+            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente)
 
             affected_rows = MateriaModel.update_materia(materia)
 

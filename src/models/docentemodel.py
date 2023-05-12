@@ -1,46 +1,59 @@
 from database.db import get_connection 
 from models.entities.docente import Docente
-
+from models.entities.materias import Materias
 class DocenteModel():
 
     @classmethod
     def get_docentes(self):
         try:
             conection = get_connection()
-            docentes = []
+            join = {"docente": [], "materias": []}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from docentes ORDER BY cedula ASC")
-                resultset = cursor.fetchall()
+                cursor.execute("SELECT * from docentes INNER JOIN materias ON docentes.cedula = materias.id_docente")
+                result = cursor.fetchall()
 
-                for row in resultset:
-                    docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],asignatura=row[4],password= row[5])
-                    docentes.append(docente.to_JSON())
-            
+                if result is not None:
+                    for row in result:
+
+                        docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
+                        materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12])
+                        join["docente"].append(docente.to_JSON())
+                        join["materias"].append(materias.to_JSON())
+                
+                else: 
+                    return 'no existe'
+
             conection.close()
-            return docentes
+            return join
 
         except  Exception as ex:
             raise Exception(ex)
         
     @classmethod
     def get_docente(self,cedula :str):
+        
         try:
             conection = get_connection()
+            join = {"docente": [], "materias": []}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from docentes WHERE cedula =%s",(cedula,))
+                cursor.execute("SELECT * from docentes INNER JOIN materias ON docentes.cedula = materias.id_docente WHERE docentes.cedula =%s",(cedula,))
                 row = cursor.fetchone()
 
                 if row is not None:
-                    docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],asignatura=row[4],password=row[5])
-                    docentes = docente.to_JSON()
+                
+                    docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
+                    materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12])
+                    join["docente"] = docente.to_JSON()
+                    join["materias"].append(materias.to_JSON())
+                
                 else: 
                     return 'no existe'
                     
             
             conection.close()
-            return docentes
+            return join
 
         except  Exception as ex:
             raise Exception(ex)
@@ -56,7 +69,7 @@ class DocenteModel():
                 result = cursor.fetchone()
                 if result is not None: 
                     return 'docente ya existe'
-                cursor.execute("""INSERT INTO docentes(cedula,fullname,correo,telefono,asignatura,password)VALUES (%s,%s,%s,%s,%s,%s)""",(docente.cedula,docente.fullname,docente.correo,docente.telefono,docente.asignatura,docente.password))
+                cursor.execute("""INSERT INTO docentes(cedula,fullname,correo,telefono,password)VALUES (%s,%s,%s,%s,%s)""",(docente.cedula,docente.fullname,docente.correo,docente.telefono,docente.password))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -72,7 +85,7 @@ class DocenteModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE docentes SET fullname =%s,correo =%s,telefono=%s,asignatura =%s,password=%s WHERE cedula =%s""", (docente.fullname,docente.correo,docente.telefono,docente.asignatura,docente.password,docente.cedula))
+                cursor.execute("""UPDATE docentes SET fullname =%s,correo =%s,telefono=%s,password=%s WHERE cedula =%s""", (docente.fullname,docente.correo,docente.telefono,docente.password,docente.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 

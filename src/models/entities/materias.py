@@ -1,5 +1,5 @@
 class Materias():
-    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None) -> None:
+    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None) -> None:
         self.id = id
         self.nombre = nombre 
         self.prelacion = prelacion 
@@ -8,6 +8,7 @@ class Materias():
         self.ht = ht
         self.semestre = semestre
         self.id_carrera = id_carrera
+        self.id_docente = id_docente
     
     def to_JSON(self):
         return {
@@ -18,6 +19,7 @@ class Materias():
             "hp": self.hp,
             "ht": self.ht,
             "semestre": self.semestre,
-            "id_carrera": self.id_carrera
+            "id_carrera": self.id_carrera,
+            "id_docente": self.id_docente
         }
         

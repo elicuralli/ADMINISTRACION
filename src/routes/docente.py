@@ -42,10 +42,9 @@ def add_docente():
         fullname = request.json['fullname']
         correo = request.json['correo']
         telefono = request.json['telefono']
-        asignatura = request.json['asignatura']
         password = generate_password_hash(request.json["password"], method="sha256")
 
-        docente  = Docente(str(cedula),fullname,correo,telefono,asignatura,password)
+        docente  = Docente(str(cedula),fullname,correo,telefono,password)
 
         affected_rows = DocenteModel.add_docente(docente)
 
@@ -65,11 +64,10 @@ def update_docente(cedula):
         fullname = request.json['fullname']
         correo = request.json['correo']
         telefono = request.json['telefono']
-        asignatura = request.json['asignatura']
 
         password = generate_password_hash(request.json["password"], method="sha256")
  
-        docente = Docente(str(cedula),fullname,correo,telefono,asignatura,password)
+        docente = Docente(str(cedula),fullname,correo,telefono,password)
 
         affected_rows = DocenteModel.update_docente(docente)
 
