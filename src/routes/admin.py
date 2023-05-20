@@ -3,6 +3,8 @@ from models.entities.administracion import Administracion
 from models.adminmodel import AdminModel
 from models.entities.monto import Monto
 from models.mountmodel import MountModel
+from models.metodomodel import MetodoModel
+from models.entities.metodo import Metodo
 admin = Blueprint("administracion_blueprint", __name__)
 
 
@@ -55,14 +57,21 @@ def get_admin(id):
 def add_admin():
     try:
         pre_inscripcion = request.json["pre_inscripcion"]
+        metodo_pre_inscripcion = request.json["metodo_pre_inscripcion"]
         inscripcion = ""
+        metodo = ""
         cedula_student = request.json["cedula_student"]
         cuota1 = ""
+        metodo = ""
         cuota2 = ""
+        metodo = ""
         cuota3 = ""
+        metodo = ""
         cuota4 = ""
+        metodo = ""
         cuota5 = ""
-        monto_pre_inscripcion = request.json["montoPreInscripcion"]
+        metodo = ""
+        monto_pre_inscripcion = request.json["monto_pre_inscripcion"]
         monto_inscripcion = 0.0
         monto_cuota1 = 0.0
         monto_cuota2 = 0.0
@@ -73,27 +82,33 @@ def add_admin():
         
         if "inscripcion" in request.json:
             inscripcion = request.json["inscripcion"]
-            monto_inscripcion = request.json["montoInscripcion"]
+            metodo_inscripcion = request.json["metodo_inscripcion"]
+            monto_inscripcion = request.json["monto_inscripcion"]
             
         if "cuota1" in request.json:
             cuota1 = request.json["cuota1"]
-            monto_cuota1 = request.json["montoCuota1"]
+            metodo_cuota1 = request.json["metodo_cuota1"]
+            monto_cuota1 = request.json["monto_cuota1"]
         
         if "cuota2" in request.json:
             cuota2 = request.json["cuota2"]
-            monto_cuota2 = request.json["montoCuota2"]
+            metodo_cuota2 = request.json["metodo_cuota2"]
+            monto_cuota2 = request.json["monto_cuota2"]
             
         if "cuota3" in request.json:
             cuota3 = request.json["cuota3"]
-            monto_cuota3 = request.json["montoCuota3"]
+            metodo_cuota3 = request.json["metodo_cuota3"]
+            monto_cuota3 = request.json["monto_cuota3"]
         
         if "cuota4" in request.json:
             cuota4 = request.json["cuota4"]
-            monto_cuota4 = request.json["montoCuota4"]
+            metodo_cuota4 = request.json["metodo_cuota4"]
+            monto_cuota4 = request.json["monto_cuota4"]
         
         if "cuota5" in request.json:
             cuota5 = request.json["cuota5"]
-            monto_cuota5 = request.json["montoCuota5"]
+            metodo_cuota5 = request.json["metodo_cuota5"]
+            monto_cuota5 = request.json["monto_cuota5"]
 
         admin = Administracion(
             None,
@@ -105,13 +120,18 @@ def add_admin():
             cuota3,
             cuota4,
             cuota5,
+            
         )
 
         id_pago = AdminModel.add_admin(admin)
         monto = Monto(None, str(id_pago), monto_pre_inscripcion, monto_inscripcion, monto_cuota1, monto_cuota2, monto_cuota3, monto_cuota4, monto_cuota5)
+        metodo = Metodo(None,metodo_pre_inscripcion,metodo_inscripcion,metodo_cuota1,metodo_cuota2,metodo_cuota3,metodo_cuota4,metodo_cuota5,str(id_pago))
         affected_rows = MountModel.add_monto(monto)
-        if affected_rows == 1:
+        affected_rows_metodo = MetodoModel.add_metodo(metodo)
+        
+        if affected_rows == 1 and affected_rows_metodo == 1:
             return jsonify({"ok": True, "status": 200, "data": affected_rows})
+    
         else:
             return (
                 jsonify(
@@ -163,11 +183,22 @@ def update_admin(id):
         monto_cuota4 = request.json["montoCuota4"]
         monto_cuota5 = request.json["montoCuota5"]
 
+        metodo_pre_inscripcion = request.json["metodo_pre_inscripcion"]
+        metodo_inscripcion = request.json["metodo_inscripcion"]
+        metodo_cuota1 = request.json["metodo_cuota1"]
+        metodo_cuota2 = request.json["metodo_cuota2"]
+        metodo_cuota3 = request.json["metodo_cuota3"]
+        metodo_cuota4 = request.json["metodo_cuota4"]
+        metodo_cuota5 = request.json["metodo_cuota5"]
+
+
         affected_rows = AdminModel.update_admin(admin)
         monto = Monto(None, str(id), monto_pre_inscripcion, monto_inscripcion, monto_cuota1, monto_cuota2, monto_cuota3, monto_cuota4, monto_cuota5)
-
+        metodo = Metodo(str(id),metodo_pre_inscripcion,metodo_inscripcion,metodo_cuota1,metodo_cuota2,metodo_cuota3,metodo_cuota4,metodo_cuota5)
+        affected_rows_metodo = MetodoModel.add_metodo(metodo)
         affected_rows = MountModel.update_monto(monto)
-        if affected_rows == 1:
+
+        if affected_rows == 1 and affected_rows_metodo == 1:
             return jsonify({"ok": True, "status": 200, "data": None})
         else:
             return (

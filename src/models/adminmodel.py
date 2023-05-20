@@ -2,6 +2,7 @@ from database.db import get_connection
 from models.entities.administracion import Administracion
 from models.entities.students import Student
 from models.entities.monto import Monto
+from models.entities.metodo import Metodo
 
 class AdminModel():
 
@@ -9,10 +10,10 @@ class AdminModel():
     def get_administracion(self):
         try:
             conection = get_connection()
-            join = {"pagos": [], "montos": []}
+            join = {"pagos": [], "montos": [], "metodo":[]}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from pagos INNER JOIN monto ON monto.id_pago = pagos.id ORDER BY pagos.id ASC")
+                cursor.execute("SELECT * from pagos INNER JOIN monto ON monto.id_pago = pagos.id INNER JOIN metodo_pago ON metodo_pago.id = pagos.id  ORDER BY pagos.id ASC")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -20,6 +21,8 @@ class AdminModel():
                     join["pagos"].append(admin.to_JSON())
                     monto = Monto(row[9], row[0], row[10], row[11], row[12], row[13], row[14], row[15], row[16])
                     join["montos"].append(monto.to_JSON())
+                    metodo = Metodo(row[17],row[18],row[19],row[20],row[21],row[22],row[23],row[24],row[25])
+                    join["metodo"].append(metodo.to_JSON())
             
             conection.close()
             return join
@@ -41,7 +44,8 @@ class AdminModel():
                     admin = Administracion(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
                     student = Student(row[9], row[10], row[11], row[12], row[13], None, row[15])
                     monto = Monto(row[16], row[17], row[18], row[19], row[20], row[21], row[22], row[23], row[24])
-                    join = {"pago": admin.to_JSON(), "estudiante": student.to_JSON(), "monto": monto.to_JSON()}
+                    metodo = Metodo(row[24],row[26],row[27],row[28],row[29],row[30],row[21],row[32],row[33])
+                    join = {"pago": admin.to_JSON(), "estudiante": student.to_JSON(), "monto": monto.to_JSON(),"metodo":metodo.to_JSON()}
 
                 
             conection.close()

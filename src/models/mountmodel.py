@@ -71,9 +71,6 @@ class MountModel():
             with conection.cursor() as cursor:
                 cursor.execute("""UPDATE monto SET id_pago=%s,pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id_pago=%s""",(monto.id_pago,monto.pre_inscripcion,monto.inscripcion,monto.cuota1,monto.cuota2,monto.cuota3,monto.cuota4,monto.cuota5, monto.id_pago))
                 affected_rows = cursor.rowcount
-                query = cursor.query
-                msg = cursor.statusmessage
-                print(query, msg)
                 conection.commit()
 
             conection.close()
