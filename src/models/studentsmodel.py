@@ -16,7 +16,7 @@ class StudentModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6])
+                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6], carrera= row[7])
                     students.append(student.to_JSON())
             
             conection.close()
@@ -35,9 +35,9 @@ class StudentModel():
                 row = cursor.fetchone()
 
                 if row != None:
-                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6]).to_JSON()
-                    join["pago"] = Administracion(row[7], row[0], row[8], row[9], row[10], row[11], row[12], row[13], row[14]).to_JSON()
-                    join["monto"] = Monto(row[16], row[7], row[17], row[18], row[19], row[20], row[21], row[22]).to_JSON()
+                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7]).to_JSON()
+                    join["pago"] = Administracion(row[8], row[0], row[9], row[10], row[11], row[12], row[13], row[14], row[15]).to_JSON()
+                    join["monto"] = Monto(row[16], row[8], row[17], row[18], row[19], row[20], row[21], row[22]).to_JSON()
                 
             conection.close()
             return join
