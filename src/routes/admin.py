@@ -78,6 +78,12 @@ def add_admin():
         monto_cuota3 = 0.0
         monto_cuota4 = 0.0
         monto_cuota5 = 0.0
+        metodo_inscripcion = ""
+        metodo_cuota1 = ""
+        metodo_cuota2 = ""
+        metodo_cuota3 = ""
+        metodo_cuota4 = ""
+        metodo_cuota5 = ""
 
         
         if "inscripcion" in request.json:
@@ -129,6 +135,7 @@ def add_admin():
         affected_rows = MountModel.add_monto(monto)
         affected_rows_metodo = MetodoModel.add_metodo(metodo)
         
+        
         if affected_rows == 1 and affected_rows_metodo == 1:
             return jsonify({"ok": True, "status": 200, "data": affected_rows})
     
@@ -145,8 +152,9 @@ def add_admin():
             )
 
     except Exception as ex:
+        print(ex)
         return (
-            jsonify({"ok": False, "status": 500, "data": {"message": "Error al insertar, compruebe si insertó datos correctos"}}),
+            jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
             500,
         )
 

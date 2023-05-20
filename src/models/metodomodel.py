@@ -47,7 +47,7 @@ class MetodoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO metodo_pago (pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5,id_pago) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(metodo.id_pago,metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5))
+                cursor.execute("""INSERT INTO metodo_pago (pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5,id_pago) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",(metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5,metodo.id_pago))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
