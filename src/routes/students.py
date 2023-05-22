@@ -74,7 +74,7 @@ def update_student(cedula):
         carrera = request.json["carrera"]
         password = generate_password_hash(request.json["password"], method="sha256")
  
-        student = Student(str(cedula),fullname,correo,telefono,semestre,estado,carrera,password)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera)
 
         affected_rows = StudentModel.update_student(student)
 
@@ -84,7 +84,7 @@ def update_student(cedula):
             return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
     
     except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
+        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 
 @main.route('/delete/<cedula>', methods = ["DELETE"])
