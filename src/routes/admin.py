@@ -183,13 +183,13 @@ def update_admin(id):
             cuota5,
         )
         
-        monto_pre_inscripcion = request.json["montoPreInscripcion"]
-        monto_inscripcion = request.json["montoInscripcion"]
-        monto_cuota1 = request.json["montoCuota1"]
-        monto_cuota2 = request.json["montoCuota2"]
-        monto_cuota3 = request.json["montoCuota3"]
-        monto_cuota4 = request.json["montoCuota4"]
-        monto_cuota5 = request.json["montoCuota5"]
+        monto_pre_inscripcion = request.json["monto_pre_inscripcion"]
+        monto_inscripcion = request.json["monto_inscripcion"]
+        monto_cuota1 = request.json["monto_cuota1"]
+        monto_cuota2 = request.json["monto_cuota2"]
+        monto_cuota3 = request.json["monto_cuota3"]
+        monto_cuota4 = request.json["monto_cuota4"]
+        monto_cuota5 = request.json["monto_cuota5"]
 
         metodo_pre_inscripcion = request.json["metodo_pre_inscripcion"]
         metodo_inscripcion = request.json["metodo_inscripcion"]
@@ -203,10 +203,10 @@ def update_admin(id):
         affected_rows = AdminModel.update_admin(admin)
         monto = Monto(None, str(id), monto_pre_inscripcion, monto_inscripcion, monto_cuota1, monto_cuota2, monto_cuota3, monto_cuota4, monto_cuota5)
         metodo = Metodo(str(id),metodo_pre_inscripcion,metodo_inscripcion,metodo_cuota1,metodo_cuota2,metodo_cuota3,metodo_cuota4,metodo_cuota5)
-        affected_rows_metodo = MetodoModel.add_metodo(metodo)
-        affected_rows = MountModel.update_monto(monto)
+        MountModel.update_monto(monto)
+        affected_rows = MetodoModel.update_metodo(metodo)
 
-        if affected_rows == 1 and affected_rows_metodo == 1:
+        if affected_rows == 1:
             return jsonify({"ok": True, "status": 200, "data": None})
         else:
             return (
@@ -221,8 +221,9 @@ def update_admin(id):
             )
 
     except Exception as ex:
+        print(ex)
         return (
-            jsonify({"ok": False, "status": 500, "data": {"message": "Error al actualizar, compruebe los datos ingresados"}}),
+            jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
             500,
         )
 
