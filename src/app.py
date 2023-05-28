@@ -1,6 +1,6 @@
 from flask import Flask
 from config import config
-from routes import students,admin,usuario,docente,carreras,materias
+from routes import students,admin,usuario,docente,carreras,materias,billete
 
 app = Flask(__name__)
 
@@ -19,6 +19,7 @@ if __name__ == '__main__':
     app.register_blueprint(docente.doc, url_prefix ='/api/docente' )
     app.register_blueprint(carreras.carrera, url_prefix = '/api/carreras')
     app.register_blueprint(materias.materia, url_prefix = '/api/materias')
+    app.register_blueprint(billete.billete, url_prefix = '/api/billetes')
     #manejador de errores
     app.register_error_handler(404,page_not_found)
     app.run(host="0.0.0.0", debug=True)
