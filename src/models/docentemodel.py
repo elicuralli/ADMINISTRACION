@@ -10,7 +10,7 @@ class DocenteModel():
             join = {"docente": [], "materias": []}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from docentes INNER JOIN materias ON docentes.cedula = materias.id_docente")
+                cursor.execute("SELECT * from docentes LEFT JOIN materias ON docentes.cedula = materias.id_docente")
                 result = cursor.fetchall()
 
                 if result is not None:

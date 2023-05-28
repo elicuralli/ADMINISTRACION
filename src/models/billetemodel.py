@@ -18,6 +18,7 @@ class BilleteModel():
                     for row in result: 
                         billete = Billete(codigo=row[0],cantidad=row[1])
                         billetes.append(billete.to_JSON())
+                        
                 
                 conection.close()
                 return billetes

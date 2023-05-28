@@ -6,7 +6,7 @@ class Billete():
         self.cantidad = cantidad 
     
     def to_JSON(self):
-        {
+        return {
             "codigo": self.codigo, 
             "cantidad": self.cantidad
         }
