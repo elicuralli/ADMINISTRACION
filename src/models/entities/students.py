@@ -1,4 +1,3 @@
-
 class Student():
 
     def __init__(self,cedula,fullname= None,correo= None,telefono= None,semestre= None,password= None, estado = None,carrera = None) -> None:

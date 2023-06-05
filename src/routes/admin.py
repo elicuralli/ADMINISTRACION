@@ -137,7 +137,7 @@ def add_admin():
         
         
         if affected_rows == 1 and affected_rows_metodo == 1:
-            return jsonify({"ok": True, "status": 200, "data": affected_rows})
+            return jsonify({"ok": True, "status": 200, "data": id_pago})
     
         else:
             return (

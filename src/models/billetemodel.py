@@ -12,12 +12,13 @@ class BilleteModel():
                 billetes = []
 
                 with conection.cursor() as cursor: 
-                    cursor.execute("SELECT *from billete")
+                    cursor.execute("SELECT * from billete")
                     result = cursor.fetchall()
 
                     for row in result: 
-                        billete = Billete(codigo=row[0],cantidad=row[1])
+                        billete = Billete(row[0],row[1], row[2])
                         billetes.append(billete.to_JSON())
+                        print(row[0], billetes)
                 
                 conection.close()
                 return billetes
@@ -38,7 +39,7 @@ class BilleteModel():
 
                 if result is not None:
                      
-                        billete = Billete(codigo=result[0], cantidad=result[1])
+                        billete = Billete(codigo=result[0], cantidad=result[1], factura=result[2])
                         billetes = billete.to_JSON()
                     
                         
@@ -54,14 +55,14 @@ class BilleteModel():
             raise Exception(ex)
     
     @classmethod
-    def add_billete(self,billete):
+    def add_billete(self,billete: Billete):
          
         try:
             
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO billete (codigo,cantidad)VALUES(%s,%s)",(billete.codigo,billete.cantidad))
+                cursor.execute("INSERT INTO billete (codigo,cantidad,factura)VALUES(%s,%s,%s)",(billete.codigo,billete.cantidad,billete.factura))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
