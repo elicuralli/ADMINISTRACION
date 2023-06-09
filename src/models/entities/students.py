@@ -1,7 +1,7 @@
 
 class Student():
 
-    def __init__(self,cedula,fullname= None,correo= None,telefono= None,semestre= None,password= None, estado = None,carrera = None) -> None:
+    def __init__(self,cedula = None,fullname= None,correo= None,telefono= None,semestre= None,password= None, estado = None,carrera = None) -> None:
     
         self.cedula =cedula
         self.fullname = fullname
