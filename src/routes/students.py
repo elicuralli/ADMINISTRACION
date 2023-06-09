@@ -110,8 +110,7 @@ def login():
         clave = request.json.get('clave', None)
         estudiante = Student(correo=usuario)
         estudiante = StudentModel.login(estudiante)
-        print(estudiante)
-        if isinstance(estudiante, Student):
+        if estudiante is not None:
             if check_password_hash(estudiante.password, clave):
                 access_token = create_access_token(identity=estudiante.correo)
                 return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
