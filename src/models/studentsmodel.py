@@ -105,7 +105,7 @@ class StudentModel():
         try:
 
             conection = get_connection()
-            student: dict
+            student: Student
             with conection.cursor() as cursor:
                 cursor.execute("SELECT * FROM estudiantes WHERE correo=%s",(estudiante.correo,)) 
                 row = cursor.fetchone()
