@@ -101,18 +101,26 @@ class StudentModel():
             raise Exception(ex)
     
     @classmethod
-    def count_students(self):
+    def login(self,estudiante: Student) -> Student | str:
         try:
-            connection = get_connection()
 
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM estudiantes")
+            conection = get_connection()
+            student: dict
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * FROM estudiantes WHERE correo=%s",(estudiante.correo,)) 
                 row = cursor.fetchone()
-                if row != None:
-                    return row[0]
+                conection.commit()
+                if row is not None:
+                    print(row)
+                    student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7])
+                else:
+                    return "no encontrado"
+
+            conection.close()
+            return student
+        
         except Exception as ex:
             raise Exception(ex)
             
-            
-
+        
 

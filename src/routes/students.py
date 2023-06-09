@@ -2,7 +2,7 @@ from flask import Blueprint,jsonify,request
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 main= Blueprint('students_blueprint',__name__)
 @main.after_request 
@@ -59,7 +59,6 @@ def add_student():
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
-    
 
 @main.route('/update/<cedula>', methods = ["PUT"])
 def update_student(cedula):
@@ -104,13 +103,42 @@ def delete_student(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 
-# @main.route("/count", methods = ["GET"])
-# def count_student():
-#     try:
-#         count = StudentModel.count_students()
-#         if count != 0:
-#             return jsonify({"ok": True, "status": 200, "total": count})
-#         else:
-#             return jsonify({"ok": False, "status": 404, 'message': "No hay estudiantes registrados!"}), 404
-#     except Exception as ex:
-#         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+@main.route('/login',methods = ["POST"])
+def login():
+    try: 
+        usuario = request.json.get('usuario', None)
+        clave = request.json.get('clave', None)
+        estudiante = Student(correo=usuario)
+        estudiante = StudentModel.login(estudiante)
+        print(estudiante)
+        if isinstance(estudiante, Student):
+            if check_password_hash(estudiante.password, clave):
+                access_token = create_access_token(identity=estudiante.correo)
+                return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
+        
+            else:
+                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosb"}}), 401
+        else:
+            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosa"}}), 401
+
+
+    except Exception as ex:
+        return jsonify({"ok":False, "status": 500, "data": {"message": str(ex)}}), 500
+
+@main.route('/refresh')
+@jwt_required()
+def jwt_student():
+    try:
+        correo_estudiante = get_jwt_identity()
+        student: Student | None
+        if correo_estudiante is not None:
+            student_entity = Student(correo=correo_estudiante)
+            student = StudentModel.login(student_entity)
+            if student != None:
+                return jsonify({"ok": True, "status":200,"data":student.to_JSON()})
+            
+        else:
+            return jsonify({"ok": False, "status":401,"data":{"message": "no autorizado"}}),401
+    
+    except Exception as ex:
+        return jsonify({"message": str(ex)}),500
