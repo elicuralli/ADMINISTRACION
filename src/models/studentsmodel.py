@@ -101,7 +101,7 @@ class StudentModel():
             raise Exception(ex)
     
     @classmethod
-    def login(self,estudiante: Student) -> Student | str:
+    def login(self,estudiante: Student) -> Student:
         try:
 
             conection = get_connection()
@@ -114,7 +114,7 @@ class StudentModel():
                     print(row)
                     student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7])
                 else:
-                    return "no encontrado"
+                    return None
 
             conection.close()
             return student
