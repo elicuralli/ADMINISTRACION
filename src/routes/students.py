@@ -3,6 +3,7 @@ from models.entities.students import Student
 from models.studentsmodel import StudentModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from datetime import timedelta
 
 main= Blueprint('students_blueprint',__name__)
 @main.after_request 
@@ -111,14 +112,14 @@ def login():
         estudiante = Student(correo=usuario)
         estudiante = StudentModel.login(estudiante)
         if estudiante is not None:
-            if check_password_hash(estudiante.password, clave):
-                access_token = create_access_token(identity=estudiante.correo)
+            if check_password_hash(estudiante.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
+                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=1)) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:
-                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosb"}}), 401
+                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
         else:
-            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosa"}}), 401
+            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
 
 
     except Exception as ex:
@@ -128,13 +129,13 @@ def login():
 @jwt_required()
 def jwt_student():
     try:
-        correo_estudiante = get_jwt_identity()
-        student: Student | None
+        correo_estudiante = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo
+        student: Student | None # declaramos sin iniciar la variable del estudiante
         if correo_estudiante is not None:
-            student_entity = Student(correo=correo_estudiante)
-            student = StudentModel.login(student_entity)
+            student_entity = Student(correo=correo_estudiante) # creamos la entidad del estudiante
+            student = StudentModel.login(student_entity) #revisamos la bd
             if student != None:
-                return jsonify({"ok": True, "status":200,"data":student.to_JSON()})
+                return jsonify({"ok": True, "status":200,"data":student.to_JSON()}) # retornamos si es correcto
             
         else:
             return jsonify({"ok": False, "status":401,"data":{"message": "no autorizado"}}),401
