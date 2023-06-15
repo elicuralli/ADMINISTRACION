@@ -44,8 +44,9 @@ def add_billete():
 
         codigo = request.json['codigo']
         cantidad = request.json['cantidad']
+        factura = request.json['factura']
 
-        billete = Billete(str(codigo),cantidad)
+        billete = Billete(str(codigo),cantidad,factura)
 
         affected_rows = BilleteModel.add_billete(billete)
 

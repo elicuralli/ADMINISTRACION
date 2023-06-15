@@ -10,7 +10,7 @@ class AdminModel():
     def get_administracion(self):
         try:
             conection = get_connection()
-            join = {"pagos": [], "montos": [], "metodo":[]}
+            join = {"pagos": [], "montos": [], "metodos":[]}
 
             with conection.cursor() as cursor:
                 cursor.execute("SELECT * from pagos INNER JOIN monto ON monto.id_pago = pagos.id INNER JOIN metodo_pago ON metodo_pago.id = pagos.id  ORDER BY pagos.id ASC")
@@ -21,8 +21,8 @@ class AdminModel():
                     join["pagos"].append(admin.to_JSON())
                     monto = Monto(row[9], row[0], row[10], row[11], row[12], row[13], row[14], row[15], row[16])
                     join["montos"].append(monto.to_JSON())
-                    metodo = Metodo(row[17],row[18],row[19],row[20],row[21],row[22],row[23],row[24],row[25])
-                    join["metodo"].append(metodo.to_JSON())
+                    metodo = Metodo(row[17],row[19],row[20],row[21],row[22],row[23],row[24],row[25],row[18])
+                    join["metodos"].append(metodo.to_JSON())
             
             conection.close()
             return join

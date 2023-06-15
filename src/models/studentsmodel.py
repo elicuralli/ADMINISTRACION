@@ -2,6 +2,7 @@ from database.db import get_connection
 from models.entities.students import Student
 from models.entities.administracion import Administracion
 from models.entities.monto import Monto
+from models.entities.metodo import Metodo
 
 class StudentModel():
 
@@ -31,13 +32,14 @@ class StudentModel():
             conection = get_connection()
             join = {}
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from estudiantes INNER JOIN pagos ON pagos.cedula_estudiante = estudiantes.cedula INNER JOIN monto ON pagos.id = monto.id_pago WHERE cedula = %s",(cedula,))
+                cursor.execute("SELECT * from estudiantes INNER JOIN pagos ON pagos.cedula_estudiante = estudiantes.cedula INNER JOIN monto ON pagos.id = monto.id_pago INNER JOIN metodo_pago ON metodo_pago.id_pago = pagos.id WHERE cedula = %s",(cedula,))
                 row = cursor.fetchone()
 
                 if row != None:
                     join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7]).to_JSON()
                     join["pago"] = Administracion(row[8], row[0], row[9], row[10], row[11], row[12], row[13], row[14], row[15]).to_JSON()
-                    join["monto"] = Monto(row[16], row[8], row[17], row[18], row[19], row[20], row[21], row[22]).to_JSON()
+                    join["monto"] = Monto(row[17], row[8], row[18], row[19], row[20], row[21], row[22], row[23]).to_JSON()
+                    join["metodo"] = Metodo(row[26], row[27], row[28], row[29], row[30], row[31], row[32], row[33], row[8]).to_JSON()
                 
             conection.close()
             return join
@@ -99,18 +101,26 @@ class StudentModel():
             raise Exception(ex)
     
     @classmethod
-    def count_students(self):
+    def login(self,estudiante: Student) -> Student:
         try:
-            connection = get_connection()
 
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM estudiantes")
+            conection = get_connection()
+            student: Student
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * FROM estudiantes WHERE correo=%s",(estudiante.correo,)) 
                 row = cursor.fetchone()
-                if row != None:
-                    return row[0]
+                conection.commit()
+                if row is not None:
+                    print(row)
+                    student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7])
+                else:
+                    return None
+
+            conection.close()
+            return student
+        
         except Exception as ex:
             raise Exception(ex)
             
-            
-
+        
 

@@ -27,7 +27,7 @@ def register():
             return jsonify({"register": False}), 500
 
     except Exception as ex:
-        return jsonify({"register": False}),500
+        return jsonify({"register": str(ex)}),500
     
 @user.route('/login',methods = ["POST"])
 def login():

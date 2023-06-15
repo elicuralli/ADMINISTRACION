@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_jwt_extended import JWTManager
 from config import config
 from routes import students,admin,usuario,docente,carreras,materias,billete
 
@@ -9,6 +10,7 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
+    jwt = JWTManager(app)
     
     # acceso fuera desde otras url
 

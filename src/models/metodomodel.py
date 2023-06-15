@@ -64,7 +64,7 @@ class MetodoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE metodo_pago SET pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s,id_pago = %s WHERE id = %s""",(metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5, metodo.id_pago,metodo.id))
+                cursor.execute("""UPDATE metodo_pago SET pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id = %s""",(metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5, metodo.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
