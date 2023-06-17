@@ -5,7 +5,7 @@ class Billete():
         self.factura = factura
     
     def to_JSON(self) -> dict:
-        {
+       return {
             "codigo": self.codigo, 
             "cantidad": self.cantidad,
             "factura": self.factura

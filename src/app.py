@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from config import config
-from routes import students,admin,usuario,docente,carreras,materias,billete
+from routes import students,admin,usuario,docente,carreras,materias,billete,coordinacion
 
 app = Flask(__name__)
 
@@ -22,6 +22,7 @@ if __name__ == '__main__':
     app.register_blueprint(carreras.carrera, url_prefix = '/api/carreras')
     app.register_blueprint(materias.materia, url_prefix = '/api/materias')
     app.register_blueprint(billete.billete, url_prefix = '/api/billetes')
+    app.register_blueprint(coordinacion.coordinacion, url_prefix = '/api/coordinacion')
     #manejador de errores
     app.register_error_handler(404,page_not_found)
     app.run(host="0.0.0.0", debug=True)

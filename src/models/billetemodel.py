@@ -18,7 +18,7 @@ class BilleteModel():
                     for row in result: 
                         billete = Billete(row[0],row[1], row[2])
                         billetes.append(billete.to_JSON())
-                        print(row[0], billetes)
+                        
                 
                 conection.close()
                 return billetes

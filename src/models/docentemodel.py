@@ -10,7 +10,7 @@ class DocenteModel():
             join = {"docente": [], "materias": []}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from docentes INNER JOIN materias ON docentes.cedula = materias.id_docente")
+                cursor.execute("SELECT * from docentes LEFT JOIN materias ON docentes.cedula = materias.id_docente")
                 result = cursor.fetchall()
 
                 if result is not None:
@@ -109,4 +109,25 @@ class DocenteModel():
             return affected_rows
 
         except  Exception as ex:
+            raise Exception(ex)
+    
+    @classmethod
+    def login(self,docente: Docente) -> Docente:
+        try:
+
+            conection = get_connection()
+            doc: Docente
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * from docentes WHERE docentes.correo =%s",(docente.correo,))
+                row = cursor.fetchone()
+
+                if row is not None:
+                    doc = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
+                else:
+                    return None
+
+            conection.close()
+            return doc
+        
+        except Exception as ex:
             raise Exception(ex)
