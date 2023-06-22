@@ -1,7 +1,7 @@
 
 class Coordinacion():
 
-    def __init__(self,cedula, fullname = None,correo= None,telefono= None,password= None) -> None:
+    def __init__(self,cedula = None, fullname = None,correo= None,telefono= None,password= None) -> None:
 
         self.cedula = cedula 
         self.fullname = fullname
@@ -12,8 +12,7 @@ class Coordinacion():
     def to_JSON(self):
         return{
             "cedula": self.cedula,
-            "fullname": self.fullname,
+            "nombre": self.fullname,
             "correo": self.correo, 
             "telefono": self.telefono,
-            "password": self.password
         }

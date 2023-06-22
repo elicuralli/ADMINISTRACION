@@ -108,7 +108,7 @@ class CoordinacionModel():
             conection = get_connection()
             coord: Coordinacion
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from coordinacion WHERE coordinacion.correo =%s",(coordinador.correo,))
+                cursor.execute("SELECT * from coordinacion WHERE correo =%s",(coordinador.correo,))
                 row = cursor.fetchone()
 
                 if row is not None:

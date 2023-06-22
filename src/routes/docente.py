@@ -106,7 +106,7 @@ def login():
         docente = DocenteModel.login(docente)
         if docente is not None:
             if check_password_hash(docente.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
-                access_token = create_access_token(identity=docente.correo, expires_delta=timedelta(hours=1)) # creamos el token que vive una hora
+                access_token = create_access_token(identity=docente.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'D'}) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"docente": docente.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:
