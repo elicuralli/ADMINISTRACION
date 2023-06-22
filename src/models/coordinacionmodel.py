@@ -101,7 +101,23 @@ class CoordinacionModel():
         except  Exception as ex:
             raise Exception(ex)
 
+    @classmethod
+    def login(self,coordinador: Coordinacion) -> Coordinacion:
+        try:
 
-    
+            conection = get_connection()
+            coord: Coordinacion
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * from coordinacion WHERE coordinacion.correo =%s",(coordinador.correo,))
+                row = cursor.fetchone()
 
-       
+                if row is not None:
+                    coord = Coordinacion(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
+                else:
+                    return None
+
+            conection.close()
+            return coord
+        
+        except Exception as ex:
+            raise Exception(ex)
