@@ -21,7 +21,6 @@ def get_coordinadores():
         return jsonify({"ok": True, "status":200,"data": coordinadores})
     
     except Exception as ex:
-        print(ex)
         return jsonify({"message": str(ex)}),500
 
 @coordinacion.route('/<cedula>')
@@ -80,7 +79,7 @@ def update_coordinador(cedula):
             return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
     
     except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
+        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 @coordinacion.route('/delete/<cedula>', methods = ["DELETE"])
 def delete_coordinador(cedula):
