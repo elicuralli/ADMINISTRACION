@@ -38,7 +38,7 @@ class CoordinacionModel():
 
                 if row is not None:
                     coordinador = Coordinacion(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
-                    
+                    coordinador = coordinador.to_JSON()
             conection.close()
             return coordinador 
 
@@ -75,7 +75,7 @@ class CoordinacionModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE coordinacion SET fullname =%s,correo =%s,telefono=%s,password=%s WHERE cedula =%s",coordinador.fullname,coordinador.correo,coordinador.telefono,coordinador.password,coordinador.cedula)
+                cursor.execute("UPDATE coordinacion SET fullname =%s,correo =%s,telefono=%s,password=%s WHERE cedula =%s",(coordinador.fullname,coordinador.correo,coordinador.telefono,coordinador.password,coordinador.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -83,6 +83,7 @@ class CoordinacionModel():
             return affected_rows
         
         except  Exception as ex:
+            print(ex)
             raise Exception(ex)
         
     @classmethod
