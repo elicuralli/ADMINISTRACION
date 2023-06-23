@@ -1,17 +1,22 @@
+# imports
 from flask import Blueprint,jsonify,request
+from flask_apispec import use_kwargs
 from models.billetemodel import BilleteModel
 from models.entities.billete import Billete
+from models.entities.marshmallow_schemas import BilleteSchema
 
-
+# blueprint
 billete = Blueprint("billete_blueprint",__name__)
 
+# routes
 @billete.after_request 
 def after_request(response):
     header = response.headers
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@billete.route('/')
+
+@billete.route('/', methods=["GET"], provide_automatic_options=False)
 def get_billetes():
 
     try:
@@ -21,7 +26,7 @@ def get_billetes():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
     
-@billete.route('/<codigo>')
+@billete.route('/<codigo>', methods=["GET"], provide_automatic_options=False)
 def get_billete(codigo):
      
     try:
@@ -37,7 +42,8 @@ def get_billete(codigo):
         print(ex)
         return jsonify({"message": str(ex)}),500
     
-@billete.route('/add', methods = ['POST'])
+@billete.route('/add', methods = ['POST'], provide_automatic_options=False)
+@use_kwargs(BilleteSchema)
 def add_billete():
 
     try:
@@ -62,7 +68,8 @@ def add_billete():
         print(ex)
         return jsonify({"message": str(ex)}),500
 
-@billete.route('/update/<codigo>', methods = ['PUT'])
+@billete.route('/update/<codigo>', methods = ['PUT'], provide_automatic_options=False)
+@use_kwargs(BilleteSchema)
 def update_billete(codigo):
 
     try:
@@ -82,5 +89,3 @@ def update_billete(codigo):
         
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
-
-    
