@@ -1,8 +1,7 @@
 from flask import Blueprint,jsonify,request
-from flask_apispec import use_kwargs
 from models.carreramodel import CarreraModel
 from models.entities.carreras import Carrera
-from models.entities.marshmallow_schemas import CarreraSchema
+from werkzeug.security import generate_password_hash, check_password_hash
 
 carrera = Blueprint('carrera_blueprint', __name__)
 
@@ -12,7 +11,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@carrera.route('/', methods=["GET"], provide_automatic_options=False)
+@carrera.route('/')
 def get_carreras():
 
     try:
@@ -22,7 +21,7 @@ def get_carreras():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
     
-@carrera.route('/<id>', methods=["GET"], provide_automatic_options=False)
+@carrera.route('/<id>')
 def get_carrera(id):
      
     try:
@@ -39,8 +38,7 @@ def get_carrera(id):
         return jsonify({"message": str(ex)}),500
     
 
-@carrera.route('/add', methods = ['POST'], provide_automatic_options=False)
-@use_kwargs(CarreraSchema)
+@carrera.route('/add', methods = ['POST'])
 def add_carrera():
 
     try:
@@ -60,8 +58,7 @@ def add_carrera():
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
-@carrera.route('/update/<id>', methods = ['PUT'], provide_automatic_options=False)
-@use_kwargs(CarreraSchema)
+@carrera.route('/update/<id>', methods = ['PUT'])
 def update_carrera(id):
      
     try:
@@ -82,7 +79,7 @@ def update_carrera(id):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
-@carrera.route('/delete/<id>', methods = [ 'DELETE'], provide_automatic_options=False)
+@carrera.route('/delete/<id>', methods = [ 'DELETE'])
 def delete_carrera(id):
 
     try:

@@ -1,4 +1,3 @@
-# IMPORTS
 from flask import Blueprint, jsonify, request
 from models.entities.administracion import Administracion
 from models.adminmodel import AdminModel
@@ -6,11 +5,8 @@ from models.entities.monto import Monto
 from models.mountmodel import MountModel
 from models.metodomodel import MetodoModel
 from models.entities.metodo import Metodo
-
-# Blueprint
 admin = Blueprint("administracion_blueprint", __name__)
 
-# Routes
 
 @admin.after_request
 def after_request(response):
@@ -19,7 +15,7 @@ def after_request(response):
     return response
 
 
-@admin.route("/", methods=["GET"], provide_automatic_options=False)
+@admin.route("/")
 def get_administracion():
     try:
         admin = AdminModel.get_administracion()
@@ -32,7 +28,7 @@ def get_administracion():
         )
 
 
-@admin.route("/<id>", methods=["GET"], provide_automatic_options=False)
+@admin.route("/<id>")
 def get_admin(id):
     try:
         admin = AdminModel.get_administracion_id(id)
@@ -57,7 +53,7 @@ def get_admin(id):
         )
 
 
-@admin.route("/add", methods=["POST"], provide_automatic_options=False)
+@admin.route("/add", methods=["POST"])
 def add_admin():
     try:
         pre_inscripcion = request.json["pre_inscripcion"]
@@ -163,7 +159,7 @@ def add_admin():
         )
 
 
-@admin.route("/update/<id>", methods=["PUT"], provide_automatic_options=False)
+@admin.route("/update/<id>", methods=["PUT"])
 def update_admin(id):
     try:
         pre_inscripcion = request.json["pre_inscripcion"]
@@ -230,3 +226,27 @@ def update_admin(id):
             jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
             500,
         )
+
+
+# @admin.route("/count/month/<number>", methods=["GET"])
+# def count_month(number):
+#     try:
+#         count = AdminModel.count_month(number)
+#         return jsonify({"ok": True, "status": 200, "total": count})
+#     except Exception as ex:
+#         return (
+#             jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
+#             500,
+#         )
+
+
+# @admin.route("/count/day/<number>", methods=["GET"])
+# def count_day(number):
+#     try:
+#         count = AdminModel.count_day(number)
+#         return jsonify({"ok": True, "status": 200, "total": count})
+#     except Exception as ex:
+#         return (
+#             jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
+#             500,
+#         )

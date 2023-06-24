@@ -1,9 +1,8 @@
 from flask import Blueprint,jsonify,request
-from flask_apispec import use_kwargs
 from werkzeug.security import generate_password_hash
 from models.entities.control import Control
 from models.controlmodel import ControlModel
-from models.entities.marshmallow_schemas import ControlSchema
+
 control = Blueprint('control_es_blueprint',__name__)
 
 @control.after_request 
@@ -12,7 +11,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@control.route('/', methods = ["GET"], provide_automatic_options=False)
+@control.route('/')
 def get_todo_control():
     try:
 
@@ -22,7 +21,7 @@ def get_todo_control():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@control.route('/<cedula>', methods = ["GET"], provide_automatic_options=False)
+@control.route('/<cedula>')
 def get_control(cedula):
     try:
         control_es = ControlModel.get_control(cedula)
@@ -35,8 +34,7 @@ def get_control(cedula):
         print(ex)
         return jsonify({"message": str(ex)}),500
     
-@control.route('/add', methods = ["POST"], provide_automatic_options=False)
-@use_kwargs(ControlSchema)
+@control.route('/add', methods = ["POST"])
 def add_control():
     try:
 
@@ -59,9 +57,8 @@ def add_control():
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
-@control.route('/update/<cedula>', methods = ["PUT"], provide_automatic_options=False)
-@use_kwargs(ControlSchema)
-def update_control(cedula):
+@control.route('/update/<cedula>', methods = ["PUT"])
+def update_coordinador(cedula):
     try:
     
         cedula = request.json['cedula']
@@ -84,8 +81,8 @@ def update_control(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
-@control.route('/delete/<cedula>', methods = ["DELETE"], provide_automatic_options=False)
-def delete_control(cedula):
+@control.route('/delete/<cedula>', methods = ["DELETE"])
+def delete_coordinador(cedula):
     try:
         
         control_es  =  Control(str(cedula))

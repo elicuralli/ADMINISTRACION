@@ -1,8 +1,6 @@
 from flask import Blueprint,jsonify,request
-from flask_apispec import use_kwargs
 from models.entities.docente import Docente
 from models.docentemodel import DocenteModel
-from models.entities.marshmallow_schemas import DocenteSchema
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
@@ -15,7 +13,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@doc.route('/', methods = ["GET"], provide_automatic_options=False)
+@doc.route('/')
 def get_docentes():
     try:
 
@@ -25,7 +23,7 @@ def get_docentes():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@doc.route('/<cedula>', methods = ["GET"], provide_automatic_options=False)
+@doc.route('/<cedula>')
 def get_docente(cedula):
     try:
         docentes = DocenteModel.get_docente(cedula)
@@ -38,8 +36,7 @@ def get_docente(cedula):
         print(ex)
         return jsonify({"message": str(ex)}),500
     
-@doc.route('/add', methods = ["POST"], provide_automatic_options=False)
-@use_kwargs(DocenteSchema)
+@doc.route('/add', methods = ["POST"])
 def add_docente():
     try:
 
@@ -61,8 +58,7 @@ def add_docente():
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
-@doc.route('/update/<cedula>', methods = ["PUT"], provide_automatic_options=False)
-@use_kwargs(DocenteSchema)
+@doc.route('/update/<cedula>', methods = ["PUT"])
 def update_docente(cedula):
     try:
     
@@ -85,7 +81,7 @@ def update_docente(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
-@doc.route('/delete/<cedula>', methods = ["DELETE"], provide_automatic_options=False)
+@doc.route('/delete/<cedula>', methods = ["DELETE"])
 def delete_docente(cedula):
     try:
         
@@ -101,7 +97,7 @@ def delete_docente(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
-@doc.route('/login',methods = ["POST"], provide_automatic_options=False)
+@doc.route('/login',methods = ["POST"])
 def login():
     try: 
         usuario = request.json.get('usuario', None)
@@ -122,7 +118,7 @@ def login():
     except Exception as ex:
         return jsonify({"ok":False, "status": 500, "data": {"message": str(ex)}}), 500
 
-@doc.route('/refresh', methods = ["GET"], provide_automatic_options=False)
+@doc.route('/refresh')
 @jwt_required()
 def jwt_docente():
     try:

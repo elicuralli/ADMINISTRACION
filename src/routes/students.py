@@ -12,7 +12,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@main.route('/', methods = ["GET"], provide_automatic_options=False)
+@main.route('/')
 def get_students():
     try:
 
@@ -22,7 +22,7 @@ def get_students():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@main.route('/<cedula>', methods = ["GET"], provide_automatic_options=False)
+@main.route('/<cedula>')
 def get_student(cedula):
     try:
         student = StudentModel.get_student(cedula)
@@ -35,7 +35,7 @@ def get_student(cedula):
         print(ex)
         return jsonify({"message": str(ex)}),500
 
-@main.route('/add', methods = ["POST"], provide_automatic_options=False)
+@main.route('/add', methods = ["POST"])
 def add_student():
     try:
 
@@ -61,7 +61,7 @@ def add_student():
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
 
-@main.route('/update/<cedula>', methods = ["PUT"], provide_automatic_options=False)
+@main.route('/update/<cedula>', methods = ["PUT"])
 def update_student(cedula):
     try:
     
@@ -87,7 +87,7 @@ def update_student(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 
-@main.route('/delete/<cedula>', methods = ["DELETE"], provide_automatic_options=False)
+@main.route('/delete/<cedula>', methods = ["DELETE"])
 def delete_student(cedula):
     try:
         
@@ -104,7 +104,7 @@ def delete_student(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 
-@main.route('/login',methods = ["POST"], provide_automatic_options=False)
+@main.route('/login',methods = ["POST"])
 def login():
     try: 
         usuario = request.json.get('usuario', None)
@@ -125,7 +125,7 @@ def login():
     except Exception as ex:
         return jsonify({"ok":False, "status": 500, "data": {"message": str(ex)}}), 500
 
-@main.route('/refresh', methods = ["GET"], provide_automatic_options=False)
+@main.route('/refresh')
 @jwt_required()
 def jwt_student():
     try:

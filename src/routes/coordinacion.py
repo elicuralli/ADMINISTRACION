@@ -1,8 +1,6 @@
 from models.entities.coordinacion import Coordinacion
 from models.coordinacionmodel import CoordinacionModel
-from models.entities.marshmallow_schemas import CoordinacionSchema
 from flask import Blueprint,jsonify,request
-from flask_apispec import use_kwargs
 from flask_jwt_extended import get_jwt_identity, jwt_required, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
@@ -15,7 +13,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@coordinacion.route('/', methods = ["GET"], provide_automatic_options=False)
+@coordinacion.route('/')
 def get_coordinadores():
     try:
 
@@ -25,7 +23,7 @@ def get_coordinadores():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@coordinacion.route('/<cedula>', methods = ["GET"], provide_automatic_options=False)
+@coordinacion.route('/<cedula>')
 def get_coordinador(cedula):
     try:
         coordinador = CoordinacionModel.get_coordinador(cedula)
@@ -38,8 +36,7 @@ def get_coordinador(cedula):
         print(ex)
         return jsonify({"message": str(ex)}),500
     
-@coordinacion.route('/add', methods = ["POST"], provide_automatic_options=False)
-@use_kwargs(CoordinacionSchema)
+@coordinacion.route('/add', methods = ["POST"])
 def add_coordinador():
     try:
 
@@ -61,8 +58,7 @@ def add_coordinador():
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
     
-@coordinacion.route('/update/<cedula>', methods = ["PUT"], provide_automatic_options=False)
-@use_kwargs(CoordinacionSchema)
+@coordinacion.route('/update/<cedula>', methods = ["PUT"])
 def update_coordinador(cedula):
     try:
     
@@ -85,7 +81,7 @@ def update_coordinador(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
-@coordinacion.route('/delete/<cedula>', methods = ["DELETE"], provide_automatic_options=False)
+@coordinacion.route('/delete/<cedula>', methods = ["DELETE"])
 def delete_coordinador(cedula):
     try:
         
@@ -101,7 +97,7 @@ def delete_coordinador(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
-@coordinacion.route('/login',methods = ["POST"], provide_automatic_options=False)
+@coordinacion.route('/login',methods = ["POST"])
 def login():
     try: 
         usuario = request.json.get('usuario', None)
@@ -122,7 +118,7 @@ def login():
     except Exception as ex:
         return jsonify({"ok":False, "status": 500, "data": {"message": str(ex)}}), 500
 
-@coordinacion.route('/refresh', methods= ["GET"], provide_automatic_options=False)
+@coordinacion.route('/refresh')
 @jwt_required()
 def jwt_coordinador():
     try:
@@ -139,4 +135,3 @@ def jwt_coordinador():
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
-

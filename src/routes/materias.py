@@ -1,6 +1,7 @@
 from models.entities.materias import Materias
 from models.materiamodel import MateriaModel
 from flask import Blueprint,jsonify,request
+from werkzeug.security import generate_password_hash, check_password_hash
 
 materia = Blueprint('materia_blueprint', __name__)
 
@@ -10,7 +11,7 @@ def after_request(response):
     header['Access-Control-Allow-Origin'] = '*'
     return response
 
-@materia.route('/', methods = ["GET"], provide_automatic_options=False)
+@materia.route('/')
 def get_materias():
 
     try:
@@ -21,7 +22,7 @@ def get_materias():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
 
-@materia.route('/<id>', methods = ["GET"], provide_automatic_options=False)
+@materia.route('/<id>')
 def get_materia(id):
 
     try:
@@ -35,7 +36,7 @@ def get_materia(id):
     except Exception as ex:
             return jsonify({"message": str(ex)}),500
 
-@materia.route('/add', methods = ['POST'], provide_automatic_options=False)
+@materia.route('/add', methods = ['POST'])
 def add_materia():
 
     try: 
@@ -63,7 +64,7 @@ def add_materia():
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
              
 
-@materia.route('/update/<id>', methods = ['PUT'], provide_automatic_options=False)
+@materia.route('/update/<id>', methods = ['PUT'])
 def update_materia(id):
 
     try:
@@ -91,7 +92,7 @@ def update_materia(id):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
-@materia.route('/delete/<id>', methods = [ 'DELETE'], provide_automatic_options=False)
+@materia.route('/delete/<id>', methods = [ 'DELETE'])
 def delete_materia(id):
 
     try:
