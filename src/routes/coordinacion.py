@@ -21,7 +21,6 @@ def get_coordinadores():
         return jsonify({"ok": True, "status":200,"data": coordinadores})
     
     except Exception as ex:
-        print(ex)
         return jsonify({"message": str(ex)}),500
 
 @coordinacion.route('/<cedula>')
@@ -80,7 +79,7 @@ def update_coordinador(cedula):
             return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
     
     except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
+        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 @coordinacion.route('/delete/<cedula>', methods = ["DELETE"])
 def delete_coordinador(cedula):
@@ -107,13 +106,13 @@ def login():
         coordinador = CoordinacionModel.login(coordinador)
         if coordinador is not None:
             if check_password_hash(coordinador.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
-                access_token = create_access_token(identity=coordinador.correo, expires_delta=timedelta(hours=1)) # creamos el token que vive una hora
+                access_token = create_access_token(identity=coordinador.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'CO'}) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"coordinador": coordinador.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:
-                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
+                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosa"}}), 401
         else:
-            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
+            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosb"}}), 401
 
 
     except Exception as ex:
