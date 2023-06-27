@@ -17,7 +17,7 @@ class DocenteModel():
                     for row in result:
 
                         docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
-                        materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12])
+                        materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12],id_docente=row[13],dia = row[14], hora_inicio=row[15],hora_fin=row[16])
                         join["docente"].append(docente.to_JSON())
                         join["materias"].append(materias.to_JSON())
                 
@@ -44,7 +44,7 @@ class DocenteModel():
                 if row is not None:
                 
                     docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
-                    materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12])
+                    materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12],id_docente=row[13],dia = row[14], hora_inicio=row[15],hora_fin=row[16])
                     join["docente"] = docente.to_JSON()
                     join["materias"].append(materias.to_JSON())
                 
