@@ -18,7 +18,7 @@ class CarreraModel():
                 for row in result: 
                     carreras = Carrera(id = row[0], nombre = row[1])
                     join["carreras"].append(carreras.to_JSON())
-                    materias = Materias(id = row[2], nombre = row[3],prelacion= row[4], unidad_credito=row[5],hp=row[6],ht=row[7],semestre=row[8],id_carrera=row[9])
+                    materias = Materias(id = row[2], nombre = row[3],prelacion= row[4], unidad_credito=row[5],hp=row[6],ht=row[7],semestre=row[8],id_carrera=row[9],dia = row[10],hora_inicio = row[11],hora_fin = row[12])
                     join["materias"].append( materias.to_JSON())
 
             conection.close()
@@ -45,7 +45,7 @@ class CarreraModel():
                     
                     for row in result:
                         carreras = Carrera(id = row[0], nombre= row[1])
-                        materias = Materias(id = row[2], nombre = row[3],prelacion= row[4], unidad_credito=row[5],hp=row[6],ht=row[7],semestre=row[8],id_carrera=row[9])
+                        materias = Materias(id = row[2], nombre = row[3],prelacion= row[4], unidad_credito=row[5],hp=row[6],ht=row[7],semestre=row[8],id_carrera=row[9],dia = row[10],hora_inicio = row[11],hora_fin = row[12])
                         join["carreras"] = carreras.to_JSON()
                         join["materias"].append(materias.to_JSON())
                 
