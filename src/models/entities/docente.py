@@ -1,6 +1,6 @@
 class Docente():
 
-    def __init__(self,cedula,fullname= None,correo= None,telefono= None, password = None) -> None:
+    def __init__(self,cedula = None,fullname= None,correo= None,telefono= None, password = None) -> None:
     
         self.cedula =cedula
         self.fullname = fullname
