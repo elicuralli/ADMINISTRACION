@@ -103,6 +103,22 @@ def delete_student(cedula):
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
+@main.route("/add-materia/<materia>", methods= ["POST"])
+@jwt_required
+def add_student_to_materia(materia: str):
+    try:
+        correo_estudiante = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo
+        student: Student | None # declaramos sin iniciar la variable del estudiante
+        if correo_estudiante is not None:
+            student_entity = Student(correo=correo_estudiante) # creamos la entidad del estudiante
+            student = StudentModel.login(student_entity) #revisamos la bd
+            if student is not None:
+                affected_rows = StudentModel.add_materia(student, materia)
+                if affected_rows == 1:
+                    return jsonify({"ok":True, "status":200, "data": None}), 200
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}})
+
 
 @main.route('/login',methods = ["POST"])
 def login():
@@ -113,7 +129,7 @@ def login():
         estudiante = StudentModel.login(estudiante)
         if estudiante is not None:
             if check_password_hash(estudiante.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
-                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
+                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(minutes=20), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:

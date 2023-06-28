@@ -43,7 +43,7 @@ def add_materia():
         
         id = request.json['id']
         nombre = request.json['nombre']
-        prelacion = request.json['prelacion']
+        prelacion = request.json.get('prelacion', None)
         unidad_credito = request.json['unidad_credito']
         hp =  request.json['hp']
         ht = request.json['ht']

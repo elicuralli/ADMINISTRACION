@@ -121,6 +121,19 @@ class StudentModel():
         
         except Exception as ex:
             raise Exception(ex)
+    
+    @classmethod
+    def add_materia(self, estudiante: Student, materia: str):
+        try:
+            connection = get_connection()
+            affected_rows: int = 0
+            with connection.cursor() as cursor:
+                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante) VALUES (%s, %s)", (materia, estudiante.cedula))
+                connection.commit()
+                affected_rows = cursor.rowcount
             
-        
+            connection.close()
+            return affected_rows
+        except Exception as ex:
+            raise Exception(ex)
 

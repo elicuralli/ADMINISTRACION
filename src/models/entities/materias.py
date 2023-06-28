@@ -26,7 +26,7 @@ class Materias():
             "id_carrera": self.id_carrera,
             "id_docente": self.id_docente,
             "dia": self.dia,
-            "hora inicio": self.hora_inicio,
-            "hora fin": self.hora_fin
+            "hora_inicio": self.hora_inicio,
+            "hora_fin": self.hora_fin
         }
         
