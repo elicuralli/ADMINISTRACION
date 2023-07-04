@@ -128,7 +128,7 @@ class StudentModel():
             connection = get_connection()
             affected_rows: int = 0
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante) VALUES (%s, %s)", (materia, estudiante.cedula))
+                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,porc1,nota2,porc2,nota3,porc3) VALUES (%s, %s,0,0,0,0,0,0)", (materia, estudiante.cedula))
                 connection.commit()
                 affected_rows = cursor.rowcount
             
