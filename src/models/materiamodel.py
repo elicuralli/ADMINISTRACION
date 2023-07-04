@@ -44,7 +44,7 @@ class MateriaModel():
                     if row is not None:
                         materias = Materias(id = row[0], nombre = row[1],prelacion= row[2], unidad_credito=row[3],hp=row[4],ht=row[5],semestre=row[6],id_carrera=row[7],id_docente=row[8],dia = row[9],hora_inicio = row[10],hora_fin = row[11])
                         carrera = Carrera(id=row[12],nombre=row[13])
-                        join = {"carreras": carrera.to_JSON()," materias": materias.to_JSON()}
+                        join = {"carreras": carrera.to_JSON(),"materias": materias.to_JSON()}
                     
                     else: 
                             return 'no existe'

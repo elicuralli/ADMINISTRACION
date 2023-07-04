@@ -58,7 +58,7 @@ class ControlModel():
             
             with conection.cursor() as cursor:
                
-                cursor.execute("SELECT * from coordinacion WHERE cedula =%s",(control.cedula,))
+                cursor.execute("SELECT * from control WHERE cedula =%s",(control.cedula,))
                 result = cursor.fetchone()
                 if result is not None: 
                     return 'usuario ya existe'
@@ -105,7 +105,26 @@ class ControlModel():
         except  Exception as ex:
             raise Exception(ex)
 
+    @classmethod
+    def login(self,control: Control) -> Control:
+        try:
 
+            conection = get_connection()
+            cont: Control
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * from control WHERE correo =%s",(control.correo,))
+                row = cursor.fetchone()
+
+                if row is not None:
+                    cont = Control(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
+                else:
+                    return None
+
+            conection.close()
+            return cont
+        
+        except Exception as ex:
+            raise Exception(ex)
     
 
-       
+    
