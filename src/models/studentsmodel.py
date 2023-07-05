@@ -111,7 +111,6 @@ class StudentModel():
                 row = cursor.fetchone()
                 conection.commit()
                 if row is not None:
-                    print(row)
                     student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7])
                 else:
                     return None
@@ -128,7 +127,7 @@ class StudentModel():
             connection = get_connection()
             affected_rows: int = 0
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,porc1,nota2,porc2,nota3,porc3) VALUES (%s, %s,0,0,0,0,0,0)", (materia, estudiante.cedula))
+                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,porc1,nota2,porc2,nota3,porc3, promedio, uc) VALUES (%s, %s,0,0,0,0,0,0,0,0)", (materia, estudiante.cedula))
                 connection.commit()
                 affected_rows = cursor.rowcount
             
@@ -137,3 +136,29 @@ class StudentModel():
         except Exception as ex:
             raise Exception(ex)
 
+    @classmethod
+    def get_notas_estudiante(cls, cedula_estudiante: str):
+        try:
+            connection = get_connection()
+
+            with connection.cursor() as cursor:
+                cursor.execute("""
+                    SELECT m.nombre, me.nota1, me.porc1, me.nota2, me.porc2, me.nota3, me.porc3 
+                    FROM materias_estudiantes me
+                    JOIN materias m ON me.cod_materia = m.id
+                    WHERE me.cedula_estudiante = %s
+                """, (cedula_estudiante,))
+                notas = cursor.fetchall()
+
+                notas_obj = [{
+                    "materia": nota[0],
+                    "nota1": nota[1],
+                    "nota2": nota[3],
+                    "nota3": nota[5],
+                    "promedio": sum(nota[i]*((nota[i+1]*20)/100) for i in range(1, 7, 2))
+                } for nota in notas]
+                return notas_obj
+
+            connection.close()
+        except Exception as ex:
+            raise Exception(ex)

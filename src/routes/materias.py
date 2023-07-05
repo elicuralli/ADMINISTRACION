@@ -36,6 +36,20 @@ def get_materia(id):
     except Exception as ex:
             return jsonify({"message": str(ex)}),500
 
+
+@materia.route('/inscribir/<cedula_estudiante>', methods=['GET'])
+def get_materias_validas(cedula_estudiante: str):
+    try:
+        materias = MateriaModel.get_materias_validas(cedula_estudiante)
+        if materias:
+        # Convertimos cada objeto de la clase Materias en JSON
+            materias_json = [materia.to_JSON() for materia in materias]
+            return jsonify({"ok": True, "status":200,"data": {"materias":materias_json}}), 200
+        else:
+            return jsonify({"ok": False, "status":404,"data":{"message": "No se pueden inscribir materias"}}),404
+    except Exception as ex:
+        return str(ex), 500
+
 @materia.route('/add', methods = ['POST'])
 def add_materia():
 

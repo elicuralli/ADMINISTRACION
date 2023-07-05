@@ -104,7 +104,7 @@ def delete_student(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 @main.route("/add-materia/<materia>", methods= ["POST"])
-@jwt_required
+@jwt_required()
 def add_student_to_materia(materia: str):
     try:
         correo_estudiante = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo
@@ -119,6 +119,19 @@ def add_student_to_materia(materia: str):
     except Exception as ex:
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}})
 
+@main.route("/materias", methods=["GET"])
+@jwt_required()
+def get_notas():
+    try:
+        correo_estudiante = get_jwt_identity()
+        student: Student | None
+        if correo_estudiante is not None:
+            student_entity = Student(correo=correo_estudiante)
+            student_entity = StudentModel.login(student_entity)
+            notas_obj = StudentModel.get_notas_estudiante(student_entity.cedula)
+            return jsonify({"ok": True, "status": 200, "data": {"materias": notas_obj}}), 200
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}})
 
 @main.route('/login',methods = ["POST"])
 def login():
