@@ -33,30 +33,47 @@ class MateriaModel():
 
     @classmethod
     def get_materia(self, id: str):
-
         try:
-
             conection = get_connection()
-            join = {"materias": [], "carreras": []}
-
+            join = {"materia": {"id": "", "nombre": "", "estudiantes": [], "carrera": ""}}
             with conection.cursor() as cursor:
                 cursor.execute(
-                    "SELECT * from materias INNER JOIN carreras ON materias.id_carrera = carreras.id WHERE materias.id =%s", (id,))
-                row = cursor.fetchone()
-
-                if row is not None:
-                    materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4], ht=row[5],
-                                        semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9], hora_inicio=row[10], hora_fin=row[11])
-                    carrera = Carrera(id=row[12], nombre=row[13])
-                    join = {"carreras": carrera.to_JSON(
-                    ), "materias": materias.to_JSON()}
-
+                    """
+                    SELECT m.id, m.nombre, me.cedula_estudiante, me.nota1, me.porc1, me.nota2, me.porc2, me.nota3, me.porc3, me.promedio, c.nombre
+                    FROM materias m
+                    INNER JOIN carreras c ON m.id_carrera = c.id
+                    INNER JOIN materias_estudiantes me ON m.id = me.cod_materia
+                    WHERE m.id = %s
+                    """,
+                    (id,)
+                )
+                rows = cursor.fetchall()
+                if rows:
+                    for row in rows:
+                        estudiante = {
+                            "cedula": row[2],
+                            "nota1": row[3],
+                            "porc1": row[4],
+                            "nota2": row[5],
+                            "porc2": row[6],
+                            "nota3": row[7],
+                            "porc3": row[8],
+                            "promedio": row[9]
+                        }
+                        materia = {
+                            "id": row[0],
+                            "nombre": row[1],
+                        }
+                        carrera = row[10]
+                        
+                        join["materia"]["id"] = materia["id"]
+                        join["materia"]["nombre"] = materia["nombre"]
+                        join["materia"]["estudiantes"].append(estudiante)
+                        join["materia"]["carrera"] = carrera
+                    return join
                 else:
+                    conection.close()
                     return 'no existe'
-
-            conection.close()
-            return join
-
         except Exception as ex:
             raise Exception(ex)
 
