@@ -35,7 +35,8 @@ class MateriaModel():
     def get_materia(self, id: str):
         try:
             conection = get_connection()
-            join = {"materia": {"id": "", "nombre": "", "estudiantes": [], "carrera": ""}}
+            join = {"materia": {"id": "", "nombre": "",
+                                "estudiantes": [], "carrera": ""}}
             with conection.cursor() as cursor:
                 cursor.execute(
                     """
@@ -65,7 +66,7 @@ class MateriaModel():
                             "nombre": row[1],
                         }
                         carrera = row[10]
-                        
+
                         join["materia"]["id"] = materia["id"]
                         join["materia"]["nombre"] = materia["nombre"]
                         join["materia"]["estudiantes"].append(estudiante)
@@ -147,22 +148,25 @@ class MateriaModel():
 
             with conection.cursor() as cursor:
                 # Obtenemos el estado y el semestre del estudiante
-                cursor.execute("SELECT estado, semestre, carrera FROM estudiantes WHERE cedula = %s", (cedula_estudiante,))
+                cursor.execute(
+                    "SELECT estado, semestre, carrera FROM estudiantes WHERE cedula = %s", (cedula_estudiante,))
                 student = cursor.fetchone()
                 if student is None:
                     raise Exception("Estudiante no encontrado")
 
                 estado, semestre, carrera = student
-                
+
                 if estado == "nuevo ingreso" or semestre == 1:
-                    cursor.execute("SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s", (carrera,))
+                    cursor.execute(
+                        "SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s", (carrera,))
                     materias = cursor.fetchall()
                     materias_obj = [Materias(*materia) for materia in materias]
                     return materias_obj
-                
+
                 else:
-                # Obtenemos todas las materias
-                    cursor.execute("SELECT * FROM materias WHERE id_carrera = %s", (carrera,))
+                    # Obtenemos todas las materias
+                    cursor.execute(
+                        "SELECT * FROM materias WHERE id_carrera = %s", (carrera,))
                     materias = cursor.fetchall()
 
                     # Para cada materia, verificamos si el estudiante ha aprobado las materias pre-requisito
@@ -193,3 +197,43 @@ class MateriaModel():
             return materias_validas
         except Exception as ex:
             raise Exception(ex)
+
+    @classmethod
+    def modificar_materia_estudiante(self, cod_materia, cedula_estudiante, nombre_campo, valor):
+        try:
+            conection = get_connection()
+
+            with conection.cursor() as cursor:
+
+                cursor.execute(
+                    """
+                    UPDATE materias_estudiantes
+                    SET {campo} = %s
+                    WHERE cedula_estudiante = %s
+                    """.format(campo=nombre_campo),
+                    (valor, cedula_estudiante)
+                )
+                affected_rows = cursor.rowcount
+
+                conection.commit()
+
+                if affected_rows > 0:
+
+                    cursor.execute(
+                        """
+                        UPDATE materias_estudiantes
+                        SET promedio = (
+                        SELECT (nota1 * (porc1 / 100.0) + nota2 * (porc2 / 100.0) + nota3 * (porc3 / 100.0)) AS promedio
+                        FROM materias_estudiantes
+                        WHERE cedula_estudiante = %s AND cod_materia = %s
+                        )
+                        WHERE cedula_estudiante = %s AND cod_materia = %s
+                        """,
+                        (cedula_estudiante, cod_materia, cedula_estudiante, cod_materia)
+                    )
+                    
+                    conection.commit()
+        except Exception as ex:
+            raise Exception(ex)
+        finally:
+            conection.close()

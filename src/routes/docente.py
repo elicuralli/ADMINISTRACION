@@ -1,6 +1,8 @@
 from flask import Blueprint,jsonify,request
 from models.entities.docente import Docente
 from models.docentemodel import DocenteModel
+from models.materiamodel import MateriaModel
+from models.entities.materias import Materias
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
@@ -96,6 +98,23 @@ def delete_docente(cedula):
     
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+
+@doc.route("/upload", methods=["PATCH"])
+@jwt_required()
+def modificar_materia_estudiante():
+    try:
+        cedula_estudiante = request.json.get('cedula_estudiante')
+        nombre_campo = request.json.get('nombre_campo')
+        valor = request.json.get('valor')
+        materia = request.json.get('materia')
+        
+        message = MateriaModel.modificar_materia_estudiante(materia, cedula_estudiante, nombre_campo, valor)
+
+        # Aquí llamarías a la función modificar_materia_estudiante con los valores recibidos
+
+        return jsonify({"ok": True, "status": 200, "data": None}), 200
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 @doc.route('/login',methods = ["POST"])
 def login():

@@ -157,8 +157,8 @@ class StudentModel():
                     "nota3": nota[5],
                     "promedio": sum(nota[i]*((nota[i+1]*20)/100) for i in range(1, 7, 2))
                 } for nota in notas]
+                connection.close()
                 return notas_obj
 
-            connection.close()
         except Exception as ex:
             raise Exception(ex)

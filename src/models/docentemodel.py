@@ -38,18 +38,27 @@ class DocenteModel():
             join = {"docente": {}, "materias": []}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from docentes INNER JOIN materias ON docentes.cedula = materias.id_docente WHERE docentes.cedula =%s",(cedula,))
+                cursor.execute(
+                    """
+                    SELECT d.cedula, d.fullname, d.correo, d.telefono, d.password, m.id, m.nombre, m.prelacion, m.unidad_credito, m.hp, m.ht, m.semestre, m.id_carrera, m.id_docente, m.dia, m.hora_inicio, m.hora_fin, COUNT(me.cedula_estudiante) AS cantidad_estudiantes
+                    FROM docentes d
+                    INNER JOIN materias m ON d.cedula = m.id_docente
+                    LEFT JOIN materias_estudiantes me ON m.id = me.cod_materia
+                    WHERE d.cedula = %s
+                    GROUP BY d.cedula, d.fullname, d.correo, d.telefono, d.password, m.id, m.nombre, m.prelacion, m.unidad_credito, m.hp, m.ht, m.semestre, m.id_carrera, m.id_docente, m.dia, m.hora_inicio, m.hora_fin
+                    """,
+                    (cedula,)
+                )
                 result = cursor.fetchall()
-                
+
                 for row in result:
                     if row is not None:
-                        
-                        docente = Docente(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[3],password= row[4])
-                        materias = Materias(id = row[5], nombre = row[6],prelacion= row[7], unidad_credito=row[8],hp=row[9],ht=row[10],semestre=row[11],id_carrera=row[12],id_docente=row[13],dia = row[14], hora_inicio=row[15],hora_fin=row[16])
+                        docente = Docente(cedula=row[0], fullname=row[1], correo=row[2], telefono=row[3], password=row[4])
+                        materias = Materias(id=row[5], nombre=row[6], prelacion=row[7], unidad_credito=row[8], hp=row[9], ht=row[10], semestre=row[11], id_carrera=row[12], id_docente=row[13], dia=row[14], hora_inicio=row[15], hora_fin=row[16], cantidad_estudiantes=row[17])
                         join["docente"] = docente.to_JSON()
-                        join["materias"].append(materias.to_JSON())
-                    
-                    else: 
+                        join["materias"].append(materias.to_JSON_with_quantity())
+
+                    else:
                         return 'no existe'
                     
             
