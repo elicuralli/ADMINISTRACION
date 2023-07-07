@@ -1,9 +1,10 @@
 from flask import Blueprint,jsonify,request
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
+from models.configmodel import ConfigModel, Configuracion
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 main= Blueprint('students_blueprint',__name__)
 @main.after_request 
@@ -135,13 +136,40 @@ def get_notas():
 
 @main.route('/login',methods = ["POST"])
 def login():
-    try: 
+    try:
+        fecha_actual = datetime.now()
         usuario = request.json.get('usuario', None)
         clave = request.json.get('clave', None)
         estudiante = Student(correo=usuario)
         estudiante = StudentModel.login(estudiante)
         if estudiante is not None:
             if check_password_hash(estudiante.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
+                pagos = StudentModel.get_pago_by_student(estudiante.cedula)
+                config = ConfigModel.get_configuracion(1)
+
+                # if pagos.pre_inscripcion is None:
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la preinscripcion"}}), 401
+                
+                # if pagos.inscripcion is None:
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la inscripcion"}}), 401
+                
+                # print(pagos.to_JSON())
+                # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota1 is "":
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 1ra cuota"}}), 401
+                
+                # print(config.cuota2, pagos.cuota2)
+                # if fecha_actual >= datetime.strptime(config.cuota2, "%Y-%m-%d") and pagos.cuota2 is "":
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 2da cuota"}}), 401
+                
+                # if fecha_actual >= datetime.strptime(config.cuota3, "%Y-%m-%d") and pagos.cuota3 is "":
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 3ra cuota"}}), 401
+                
+                # if fecha_actual >= datetime.strptime(config.cuota4, "%Y-%m-%d") and pagos.cuota4 is "":
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 4ta cuota"}}), 401
+                
+                # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota5 is "":
+                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 5ta cuota"}}), 401
+                
                 access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(minutes=20), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
         

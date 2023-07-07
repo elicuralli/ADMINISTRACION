@@ -162,3 +162,24 @@ class StudentModel():
 
         except Exception as ex:
             raise Exception(ex)
+
+    @classmethod
+    def get_pago_by_student(self, cedula: str):
+        try:
+            conection = get_connection()
+            
+            pagos = {}
+            
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * from pagos WHERE cedula_estudiante = %s",(cedula,))
+                row = cursor.fetchone()
+
+                if row != None:
+                    pagos = Administracion(id=row[0],pre_inscripcion=row[1],inscripcion=row[2],cuota1=row[3],cuota2=row[4],cuota3=row[5],cuota4=row[6],cuota5=row[7],cedula_estudiante=row[8])
+
+                
+            conection.close()
+            return pagos
+
+        except  Exception as ex:
+            raise Exception(ex)

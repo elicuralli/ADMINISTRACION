@@ -8,15 +8,15 @@ class ConfigModel():
 
         try:
             conection = get_connection()
-            configuraciones = []
+            configuraciones = {}
 
             with conection.cursor() as cursor:
-                    cursor.execute("SELECT * from configuracion")
+                    cursor.execute("SELECT * from configuracion LIMIT 1")
                     resultset = cursor.fetchall()
 
                     for row in resultset:
                         config = Configuracion(id = row[0],ciclo= row[1],porc1= row[2],porc2= row[3],porc3 = row[4],horario_inicio=row[5],horario_fin=row[6],cuota1= row[7],cuota2= row[8],cuota3= row[9],cuota4= row[10],cuota5= row[11])
-                        configuraciones.append(config.to_JSON())
+                        configuraciones = config.to_JSON()
                 
             conection.close()
             return configuraciones 
@@ -38,7 +38,7 @@ class ConfigModel():
 
                     if row is not None:
                         config = Configuracion(id = row[0],ciclo= row[1],porc1= row[2],porc2= row[3],porc3 = row[4],horario_inicio=row[5],horario_fin=row[6],cuota1= row[7],cuota2= row[8],cuota3= row[9],cuota4= row[10],cuota5= row[11])
-                        configuracion = config.to_JSON()
+                        configuracion = config
                 
             conection.close()
             return configuracion
@@ -80,21 +80,5 @@ class ConfigModel():
             return affected_rows
             
     
-        except  Exception as ex:
-            raise Exception(ex)
-    
-    @classmethod
-    def delete_configuracion(self,config):
-        try:
-            conection = get_connection()                                      
-            
-            with conection.cursor() as cursor:
-                cursor.execute("DELETE FROM configuracion WHERE id = %s", (config.id,))
-                affected_rows = cursor.rowcount
-                conection.commit()
-
-            conection.close()
-            return affected_rows
-
         except  Exception as ex:
             raise Exception(ex)

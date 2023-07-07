@@ -102,29 +102,3 @@ class AdminModel():
 
         except  Exception as ex:
             raise Exception(ex)
-    
-    @classmethod
-    def count_month(self, number):
-        try:
-            connection = get_connection()
-
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}-%".format(number)})
-                row = cursor.fetchone()
-                if row != None: 
-                    return row[0]
-        except Exception as ex:
-            raise Exception(ex)
-    
-    @classmethod
-    def count_day(self, number):
-        try:
-            connection = get_connection()
-
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT COUNT(*) FROM pagos WHERE inscripcion LIKE %(date)s", {'date': "%-{}".format(number)})
-                row = cursor.fetchone()
-                if row != None:
-                    return row[0]
-        except Exception as ex:
-            raise Exception(ex)
