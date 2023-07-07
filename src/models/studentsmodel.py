@@ -127,7 +127,7 @@ class StudentModel():
             connection = get_connection()
             affected_rows: int = 0
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,porc1,nota2,porc2,nota3,porc3, promedio, uc) VALUES (%s, %s,0,0,0,0,0,0,0,0)", (materia, estudiante.cedula))
+                cursor.execute("INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,nota2,nota3, promedio, uc) VALUES (%s, %s,0,0,0,0,0)", (materia, estudiante.cedula))
                 connection.commit()
                 affected_rows = cursor.rowcount
             
@@ -143,7 +143,7 @@ class StudentModel():
 
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT m.nombre, me.nota1, me.porc1, me.nota2, me.porc2, me.nota3, me.porc3 
+                    SELECT m.nombre, me.nota1, me.nota2, me.nota3
                     FROM materias_estudiantes me
                     JOIN materias m ON me.cod_materia = m.id
                     WHERE me.cedula_estudiante = %s

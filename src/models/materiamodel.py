@@ -40,7 +40,7 @@ class MateriaModel():
             with conection.cursor() as cursor:
                 cursor.execute(
                     """
-                    SELECT m.id, m.nombre, me.cedula_estudiante, me.nota1, me.porc1, me.nota2, me.porc2, me.nota3, me.porc3, me.promedio, c.nombre
+                    SELECT m.id, m.nombre, me.cedula_estudiante, me.nota1, me.nota2,  me.nota3, me.promedio, c.nombre
                     FROM materias m
                     INNER JOIN carreras c ON m.id_carrera = c.id
                     INNER JOIN materias_estudiantes me ON m.id = me.cod_materia
@@ -54,12 +54,9 @@ class MateriaModel():
                         estudiante = {
                             "cedula": row[2],
                             "nota1": row[3],
-                            "porc1": row[4],
-                            "nota2": row[5],
-                            "porc2": row[6],
-                            "nota3": row[7],
-                            "porc3": row[8],
-                            "promedio": row[9]
+                            "nota2": row[4],
+                            "nota3": row[5],
+                            "promedio": row[6]
                         }
                         materia = {
                             "id": row[0],

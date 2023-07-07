@@ -69,8 +69,6 @@ def add_materia():
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
         
-        estado = request.json["estado"]
-        
 
         materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin)
 

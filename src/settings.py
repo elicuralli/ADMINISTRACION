@@ -1,12 +1,12 @@
 from decouple import config
 
-class Config:
+class Settings:
     SECRET_KEY = config('SECRET_KEY')
     JWT_SECRET_KEY = config('JWT_SECRET_KEY')
 
-class DevelopmentConfig(Config):
+class DevelopmentConfig(Settings):
     DEBUG = True
 
-config = {
+settings = {
     'development': DevelopmentConfig
 }
