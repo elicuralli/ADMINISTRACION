@@ -17,7 +17,7 @@ class StudentModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6], carrera= row[7])
+                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6], carrera= row[7],edad = row[9],sexo = row[8],promedio = row[10])
                     students.append(student.to_JSON())
             
             conection.close()
@@ -36,10 +36,10 @@ class StudentModel():
                 row = cursor.fetchone()
 
                 if row != None:
-                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7]).to_JSON()
-                    join["pago"] = Administracion(row[8], row[0], row[9], row[10], row[11], row[12], row[13], row[14], row[15]).to_JSON()
-                    join["monto"] = Monto(row[17], row[8], row[18], row[19], row[20], row[21], row[22], row[23]).to_JSON()
-                    join["metodo"] = Metodo(row[26], row[27], row[28], row[29], row[30], row[31], row[32], row[33], row[8]).to_JSON()
+                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7],edad = row[9],sexo = row[8],promedio = row[10]).to_JSON()
+                    join["pago"] = Administracion(row[11], row[0], row[12], row[13], row[14], row[15], row[16], row[17], row[18]).to_JSON()
+                    join["monto"] = Monto(row[19], row[11], row[20], row[21], row[22], row[23], row[24], row[25]).to_JSON()
+                    join["metodo"] = Metodo(row[26], row[27], row[28], row[29], row[30], row[31], row[32], row[33], row[11]).to_JSON()
                 
             conection.close()
             return join
@@ -58,7 +58,7 @@ class StudentModel():
                 result = cursor.fetchone()
                 if result is not None: 
                     return 'estudiante ya existe'
-                cursor.execute("""INSERT INTO estudiantes (cedula,fullname,correo,telefono,semestre,password,estado, carrera)VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",(student.cedula,student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera))
+                cursor.execute("""INSERT INTO estudiantes (cedula,fullname,correo,telefono,semestre,password,estado, carrera,edad,sexo,promedio)VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,0)""",(student.cedula,student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -74,7 +74,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s, carrera = %s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.cedula))
+                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s, carrera = %s,edad=%s,sexo=%s,promedio=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -111,7 +111,7 @@ class StudentModel():
                 row = cursor.fetchone()
                 conection.commit()
                 if row is not None:
-                    student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7])
+                    student = Student(row[0], row[1], row[2], row[4], row[5], row[3], row[6], row[7],row[8],row[9],row[10])
                 else:
                     return None
 
@@ -135,6 +135,7 @@ class StudentModel():
             return affected_rows
         except Exception as ex:
             raise Exception(ex)
+
 
     @classmethod
     def get_notas_estudiante(cls, cedula_estudiante: str):
