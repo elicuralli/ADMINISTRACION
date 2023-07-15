@@ -68,10 +68,10 @@ def add_materia():
         dia = request.json['dia']
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
-        
+        ciclo = request.json['ciclo']
 
-        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin)
-
+        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo)
+        print(materia.to_JSON())
         affected_rows = MateriaModel.add_materia(materia)
 
         if affected_rows == 1:
@@ -100,8 +100,9 @@ def update_materia(id):
             dia = request.json['dia']
             hora_inicio = request.json['hora_inicio']
             hora_fin = request.json['hora_fin']
+            ciclo = request.json['ciclo']
 
-            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin)
+            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,ciclo)
 
             affected_rows = MateriaModel.update_materia(materia)
 
