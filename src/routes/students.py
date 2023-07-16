@@ -138,7 +138,7 @@ def get_notas():
             notas_obj = StudentModel.get_notas_estudiante(student_entity.cedula)
             return jsonify({"ok": True, "status": 200, "data": {"materias": notas_obj}}), 200
     except Exception as ex:
-        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}})
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 @main.route('/login',methods = ["POST"])
 def login():
@@ -176,7 +176,7 @@ def login():
                 # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota5 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 5ta cuota"}}), 401
                 
-                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(minutes=20), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
+                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=2), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
                 return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:

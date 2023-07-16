@@ -122,7 +122,7 @@ class DocenteModel():
             raise Exception(ex)
     
     @classmethod
-    def login(self,docente: Docente) -> Docente:
+    def login(self,docente: Docente) -> Docente | None:
         try:
 
             conection = get_connection()

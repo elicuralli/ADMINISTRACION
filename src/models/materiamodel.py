@@ -1,7 +1,7 @@
 from models.entities.materias import Materias
 from database.db import get_connection
 from models.entities.carreras import Carrera
-
+from models.configmodel import ConfigModel, Configuracion
 
 class MateriaModel():
 
@@ -22,7 +22,7 @@ class MateriaModel():
                     materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4], ht=row[5],
                                         semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9], hora_inicio=row[10], hora_fin=row[11],ciclo = row[12])
                     join["materias"].append(materias.to_JSON())
-                    carrera = Carrera(id=row[12], nombre=row[13])
+                    carrera = Carrera(id=row[13], nombre=row[14])
                     join["carreras"].append(carrera.to_JSON())
 
             conection.close()
@@ -62,7 +62,7 @@ class MateriaModel():
                             "id": row[0],
                             "nombre": row[1],
                         }
-                        carrera = row[10]
+                        carrera = row[7]
 
                         join["materia"]["id"] = materia["id"]
                         join["materia"]["nombre"] = materia["nombre"]
@@ -214,21 +214,30 @@ class MateriaModel():
 
                 conection.commit()
 
+
                 if affected_rows > 0:
+                    cursor.execute(
+                        """
+                        SELECT nota1, nota2, nota3 FROM materias_estudiantes
+                        WHERE cedula_estudiante = %s AND cod_materia = %s
+                        """,
+                        (cedula_estudiante, cod_materia)
+                    )
+
+                    res = cursor.fetchone()
+                    config = ConfigModel.get_configuracion("1")
+
+                    promedio = res[0] * (config.porc1 / 100) + res[1] * (config.porc2 / 100) + res[2] * (config.porc3 / 100)
 
                     cursor.execute(
                         """
                         UPDATE materias_estudiantes
-                        SET promedio = (
-                        SELECT (nota1 * (porc1 / 100.0) + nota2 * (porc2 / 100.0) + nota3 * (porc3 / 100.0)) AS promedio
-                        FROM materias_estudiantes
-                        WHERE cedula_estudiante = %s AND cod_materia = %s
-                        )
+                        SET promedio = %s
                         WHERE cedula_estudiante = %s AND cod_materia = %s
                         """,
-                        (cedula_estudiante, cod_materia, cedula_estudiante, cod_materia)
+                        (promedio, cedula_estudiante, cod_materia)
                     )
-                    
+
                     conection.commit()
         except Exception as ex:
             raise Exception(ex)

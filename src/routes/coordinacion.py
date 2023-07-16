@@ -1,5 +1,6 @@
 from models.entities.coordinacion import Coordinacion
 from models.coordinacionmodel import CoordinacionModel
+from models.studentsmodel import StudentModel, Student
 from flask import Blueprint,jsonify,request
 from flask_jwt_extended import get_jwt_identity, jwt_required, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -96,6 +97,14 @@ def delete_coordinador(cedula):
     
     except Exception as ex:
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+
+@coordinacion.route("/materias/<cedula>", methods=["GET"])
+def get_nota(cedula: str):
+    try:
+        notas_obj = StudentModel.get_notas_estudiante(cedula)
+        return jsonify({"ok": True, "status": 200, "data": {"materias": notas_obj}}), 200
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 @coordinacion.route('/login',methods = ["POST"])
 def login():

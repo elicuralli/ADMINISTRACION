@@ -3,7 +3,7 @@ from models.entities.students import Student
 from models.entities.administracion import Administracion
 from models.entities.monto import Monto
 from models.entities.metodo import Metodo
-
+from models.configmodel import Configuracion, ConfigModel
 class StudentModel():
 
     @classmethod
@@ -74,7 +74,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s, carrera = %s,edad=%s,sexo=%s,promedio=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.cedula))
+                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s, carrera = %s, edad=%s,sexo=%s,promedio=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -143,8 +143,10 @@ class StudentModel():
             connection = get_connection()
 
             with connection.cursor() as cursor:
+                config = ConfigModel.get_configuracion("1")
+
                 cursor.execute("""
-                    SELECT m.nombre, me.nota1, me.nota2, me.nota3
+                    SELECT m.nombre, me.nota1, me.nota2, me.nota3, me.promedio
                     FROM materias_estudiantes me
                     JOIN materias m ON me.cod_materia = m.id
                     WHERE me.cedula_estudiante = %s
@@ -154,9 +156,9 @@ class StudentModel():
                 notas_obj = [{
                     "materia": nota[0],
                     "nota1": nota[1],
-                    "nota2": nota[3],
-                    "nota3": nota[5],
-                    "promedio": sum(nota[i]*((nota[i+1]*20)/100) for i in range(1, 7, 2))
+                    "nota2": nota[2],
+                    "nota3": nota[3],
+                    "promedio": nota[4]
                 } for nota in notas]
                 connection.close()
                 return notas_obj
