@@ -1,7 +1,6 @@
 from models.entities.materias import Materias
 from models.materiamodel import MateriaModel
 from flask import Blueprint,jsonify,request
-from werkzeug.security import generate_password_hash, check_password_hash
 
 materia = Blueprint('materia_blueprint', __name__)
 
@@ -35,7 +34,8 @@ def get_materia(id):
             return jsonify({"ok": False, "status":404,"data":{"message": "materia no encontrada"}}),404
     
     except Exception as ex:
-            return jsonify({"message": str(ex)}),500
+        print(ex)
+        return jsonify({"message": str(ex)}),500
 
 
 @materia.route('/inscribir/<cedula_estudiante>', methods=['GET'])

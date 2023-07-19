@@ -1,7 +1,8 @@
 from models.entities.materias import Materias
 from database.db import get_connection
 from models.entities.carreras import Carrera
-from models.configmodel import ConfigModel, Configuracion
+from models.configmodel import ConfigModel
+
 
 class MateriaModel():
 
@@ -19,8 +20,10 @@ class MateriaModel():
                 result = cursor.fetchall()
 
                 for row in result:
-                    materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4], ht=row[5],
-                                        semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9], hora_inicio=row[10], hora_fin=row[11],ciclo = row[12])
+                    materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4],
+                                        ht=row[5],
+                                        semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9],
+                                        hora_inicio=row[10], hora_fin=row[11], ciclo=row[12])
                     join["materias"].append(materias.to_JSON())
                     carrera = Carrera(id=row[13], nombre=row[14])
                     join["carreras"].append(carrera.to_JSON())
@@ -35,8 +38,8 @@ class MateriaModel():
     def get_materia(self, id: str):
         try:
             conection = get_connection()
-            join = {"materia": {"id": "", "nombre": "",
-                                "estudiantes": [], "carrera": ""}}
+            join = {"ciclo": ConfigModel.get_configuracion("1").ciclo, "materia": {"id": "", "nombre": "",
+                                                                                   "estudiantes": [], "carrera": ""}}
             with conection.cursor() as cursor:
                 cursor.execute(
                     """
@@ -88,8 +91,12 @@ class MateriaModel():
                 result = cursor.fetchone()
                 if result is not None:
                     return 'materia ya existe'
-                cursor.execute("INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,ciclo)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (materia.id,
-                               materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht, materia.semestre, materia.id_carrera, materia.id_docente, materia.dia, materia.hora_inicio, materia.hora_fin,materia.ciclo))
+                cursor.execute(
+                    "INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,ciclo)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                    (materia.id,
+                     materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
+                     materia.semestre, materia.id_carrera, materia.id_docente, materia.dia, materia.hora_inicio,
+                     materia.hora_fin, materia.ciclo))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -107,8 +114,12 @@ class MateriaModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,ciclo = %s WHERE id=%s ", (
-                    materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht, materia.semestre, materia.id_carrera, materia.id, materia.id_docente, materia.dia, materia.hora_inicio, materia.hora_fin,materia.ciclo))
+                cursor.execute(
+                    "UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,ciclo = %s WHERE id=%s ",
+                    (
+                        materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
+                        materia.semestre, materia.id_carrera, materia.id, materia.id_docente, materia.dia,
+                        materia.hora_inicio, materia.hora_fin, materia.ciclo))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -197,6 +208,7 @@ class MateriaModel():
 
     @classmethod
     def modificar_materia_estudiante(self, cod_materia, cedula_estudiante, nombre_campo, valor):
+        global conection
         try:
             conection = get_connection()
 
@@ -214,7 +226,6 @@ class MateriaModel():
 
                 conection.commit()
 
-
                 if affected_rows > 0:
                     cursor.execute(
                         """
@@ -227,7 +238,8 @@ class MateriaModel():
                     res = cursor.fetchone()
                     config = ConfigModel.get_configuracion("1")
 
-                    promedio = res[0] * (config.porc1 / 100) + res[1] * (config.porc2 / 100) + res[2] * (config.porc3 / 100)
+                    promedio = res[0] * (config.porc1 / 100) + res[1] * (config.porc2 / 100) + res[2] * (
+                                config.porc3 / 100)
 
                     cursor.execute(
                         """
