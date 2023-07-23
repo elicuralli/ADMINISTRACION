@@ -1,7 +1,6 @@
 from flask import Blueprint,jsonify,request
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
-from models.configmodel import ConfigModel, Configuracion
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta, datetime
@@ -136,7 +135,7 @@ def get_notas():
             student_entity = Student(correo=correo_estudiante)
             student_entity = StudentModel.login(student_entity)
             notas_obj = StudentModel.get_notas_estudiante(student_entity.cedula)
-            return jsonify({"ok": True, "status": 200, "data": {"materias": notas_obj}}), 200
+            return jsonify({"ok": True, "status": 200, "data": notas_obj}), 200
     except Exception as ex:
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
@@ -150,8 +149,8 @@ def login():
         estudiante = StudentModel.login(estudiante)
         if estudiante is not None:
             if check_password_hash(estudiante.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
-                pagos = StudentModel.get_pago_by_student(estudiante.cedula)
-                config = ConfigModel.get_configuracion(1)
+                #pagos = StudentModel.get_pago_by_student(estudiante.cedula)
+                #config = ConfigModel.get_configuracion("1")
 
                 # if pagos.pre_inscripcion is None:
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la preinscripcion"}}), 401

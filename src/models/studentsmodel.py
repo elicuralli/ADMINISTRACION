@@ -3,7 +3,7 @@ from models.entities.students import Student
 from models.entities.administracion import Administracion
 from models.entities.monto import Monto
 from models.entities.metodo import Metodo
-from models.configmodel import Configuracion, ConfigModel
+from models.configmodel import ConfigModel
 class StudentModel():
 
     @classmethod
@@ -13,7 +13,7 @@ class StudentModel():
             students = []
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT * from estudiantes ORDER BY cedula ASC")
+                cursor.execute("SELECT * from estudiantes ORDER BY cedula")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
@@ -74,7 +74,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE estudiantes SET fullname =%s,correo =%s,telefono=%s,semestre =%s,password=%s,estado=%s, carrera = %s, edad=%s,sexo=%s,promedio=%s WHERE cedula =%s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.cedula))
+                cursor.execute("""UPDATE estudiantes SET fullname = %s,correo = %s,telefono = %s,semestre = %s,password = %s,estado = %s, carrera = %s, edad = %s,sexo = %s,promedio = %s WHERE cedula = %s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -146,7 +146,7 @@ class StudentModel():
                 config = ConfigModel.get_configuracion("1")
 
                 cursor.execute("""
-                    SELECT m.nombre, me.nota1, me.nota2, me.nota3, me.promedio
+                    SELECT m.nombre, m.id, me.nota1, me.nota2, me.nota3, me.promedio
                     FROM materias_estudiantes me
                     JOIN materias m ON me.cod_materia = m.id
                     WHERE me.cedula_estudiante = %s
@@ -155,13 +155,14 @@ class StudentModel():
 
                 notas_obj = [{
                     "materia": nota[0],
-                    "nota1": nota[1],
-                    "nota2": nota[2],
-                    "nota3": nota[3],
-                    "promedio": nota[4]
+                    "id": nota[1],
+                    "nota1": nota[2],
+                    "nota2": nota[3],
+                    "nota3": nota[4],
+                    "promedio": nota[5]
                 } for nota in notas]
                 connection.close()
-                return notas_obj
+                return {"notas": notas_obj, "ciclo": config.ciclo}
 
         except Exception as ex:
             raise Exception(ex)
