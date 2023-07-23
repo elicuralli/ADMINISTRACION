@@ -1,6 +1,9 @@
 from database.db import get_connection 
 from models.entities.docente import Docente
 from models.entities.materias import Materias
+from models.entities.peticiones import Peticiones
+
+
 class DocenteModel():
 
     @classmethod
@@ -66,6 +69,29 @@ class DocenteModel():
             return join
 
         except  Exception as ex:
+            raise Exception(ex)
+    
+    @classmethod
+    def get_peticiones_por_docente(cls, cedula_docente):
+        try:
+            conection = get_connection()
+            peticiones = []
+
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * FROM peticiones WHERE id_docente = %s", (cedula_docente,))
+                result = cursor.fetchall()
+
+                if result is not None:
+                    for row in result:
+                        peticion = Peticiones(id=row[0], fecha=row[1], descripcion=row[2], id_docente=row[3])
+                        peticiones.append(peticion.to_JSON())
+                else:
+                    return 'no existen peticiones para el docente'
+
+            conection.close()
+            return peticiones
+
+        except Exception as ex:
             raise Exception(ex)
     
     @classmethod

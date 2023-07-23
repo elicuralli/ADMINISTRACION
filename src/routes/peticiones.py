@@ -35,6 +35,15 @@ def get_peticion(id):
     except Exception as ex:
             return jsonify({"message": str(ex)}),500
 
+@peticion.route('/pendientes')
+def get_peticiones_pendientes():
+    try:
+        peticiones_pendientes = PeticionesModel.get_peticiones_pendientes()
+        return jsonify({"ok": True, "status": 200, "data": peticiones_pendientes})
+
+    except Exception as ex:
+        return jsonify({"message": str(ex)}), 500
+
 @peticion.route('/add' ,methods = ["POST"])
 def add_peticion():
 

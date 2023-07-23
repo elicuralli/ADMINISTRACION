@@ -46,6 +46,28 @@ class PeticionesModel():
          except  Exception as ex:
             raise Exception(ex)
          
+    
+    @classmethod
+    def get_peticiones_pendientes(cls):
+        try:
+            connection = get_connection()
+            peticiones_pendientes = []
+
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM peticiones WHERE estado = 'Pendiente'")
+                resultset = cursor.fetchall()
+
+                for row in resultset:
+                    peticion = Peticiones(id=row[0], id_docente=row[1], descripcion=row[2], destino=row[3], estado=row[4], id_estudiante=row[5], id_materia=row[6], campo=row[7])
+                    peticiones_pendientes.append(peticion.to_JSON())
+
+            connection.close()
+            return peticiones_pendientes
+
+        except Exception as ex:
+            raise Exception(ex)
+    
+         
     @classmethod
     def add_peticion(self,peticion):
          

@@ -6,6 +6,8 @@ from models.entities.materias import Materias
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
+from models.entities.peticiones import Peticiones
+
 
 doc = Blueprint('docentes_blueprint',__name__)
 
@@ -37,6 +39,16 @@ def get_docente(cedula):
     except Exception as ex:
         print(ex)
         return jsonify({"message": str(ex)}),500
+
+@doc.route('/peticiones/<cedula>')
+def get_peticiones_por_docente(cedula):
+    try:
+        peticiones = DocenteModel.get_peticiones_por_docente(cedula)
+        return jsonify({"ok": True, "status": 200, "data": peticiones})
+
+    except Exception as ex:
+        return jsonify({"message": str(ex)}), 500
+
     
 @doc.route('/add', methods = ["POST"])
 def add_docente():
