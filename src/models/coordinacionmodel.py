@@ -103,7 +103,7 @@ class CoordinacionModel():
             raise Exception(ex)
 
     @classmethod
-    def login(self,coordinador: Coordinacion) -> Coordinacion:
+    def login(self,coordinador: Coordinacion):
         try:
 
             conection = get_connection()

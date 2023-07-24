@@ -106,7 +106,7 @@ class ControlModel():
             raise Exception(ex)
 
     @classmethod
-    def login(self,control: Control) -> Control:
+    def login(self,control: Control):
         try:
 
             conection = get_connection()
