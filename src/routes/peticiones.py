@@ -49,10 +49,8 @@ def add_peticion():
 
     try:
 
-        id = request.json['id']
         id_docente = request.json['id_docente']
         descripcion = request.json['descripcion']
-        destino = request.json['destino']
 
         estado = request.json['estado']
         if estado not in ["Aprobado", "Denegado", "Pendiente"]:
@@ -62,7 +60,7 @@ def add_peticion():
         id_materia = request.json['id_materia']
         campo = request.json['campo']
 
-        peticion = Peticiones(str(id),id_docente,descripcion,destino,estado,id_estudiante,id_materia,campo)
+        peticion = Peticiones(None,id_docente,descripcion,estado,id_estudiante,id_materia,campo)
         affected_rows = PeticionesModel.add_peticion(peticion)
 
         if affected_rows == 1:

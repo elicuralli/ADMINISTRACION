@@ -15,7 +15,7 @@ class PeticionesModel():
                     resultset = cursor.fetchall()
 
                     for row in resultset:
-                        peticion = Peticiones(id = row[0],id_docente= row[1],descripcion= row[2],destino= row[3],estado = row[4],id_estudiante=row[5],id_materia=row[6],campo= row[7])
+                        peticion = Peticiones(id = row[0],id_docente= row[1],descripcion= row[2],estado = row[3],id_estudiante=row[4],id_materia=row[5],campo= row[6])
                         peticiones.append(peticion.to_JSON())
                 
             conection.close()
@@ -37,7 +37,7 @@ class PeticionesModel():
                     row = cursor.fetchone()
 
                     if row is not None:
-                        peticion = Peticiones(id = row[0],id_docente= row[1],descripcion= row[2],destino= row[3],estado = row[4],id_estudiante=row[5],id_materia=row[6],campo= row[7])
+                        peticion = Peticiones(id = row[0],id_docente= row[1],descripcion= row[2],estado = row[3],id_estudiante=row[4],id_materia=row[5],campo= row[6])
                         peticiones = peticion.to_JSON()
                 
             conection.close()
@@ -58,7 +58,7 @@ class PeticionesModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    peticion = Peticiones(id=row[0], id_docente=row[1], descripcion=row[2], destino=row[3], estado=row[4], id_estudiante=row[5], id_materia=row[6], campo=row[7])
+                    peticion = Peticiones(id=row[0], id_docente=row[1], descripcion=row[2],estado=row[3], id_estudiante=row[4], id_materia=row[5], campo=row[6])
                     peticiones_pendientes.append(peticion.to_JSON())
 
             connection.close()
@@ -76,7 +76,7 @@ class PeticionesModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO peticiones(id,id_docente ,descripcion ,destino ,estado ,id_estudiante ,id_materia ,campo)VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",(peticion.id,peticion.id_docente ,peticion.descripcion ,peticion.destino ,peticion.estado ,peticion.id_estudiante ,peticion.id_materia ,peticion.campo))
+                cursor.execute("INSERT INTO peticiones(id_docente ,descripcion ,estado ,id_estudiante ,id_materia ,campo)VALUES(%s,%s,%s,%s,%s,%s)",(peticion.id_docente ,peticion.descripcion ,peticion.estado ,peticion.id_estudiante ,peticion.id_materia ,peticion.campo))
                 affected_rows = cursor.rowcount
                 conection.commit()
               
@@ -94,8 +94,8 @@ class PeticionesModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE peticiones SET id_docente=%s ,descripcion=%s ,destino=%s ,estado=%s ,id_estudiante=%s ,id_materia=%s ,campo=%s WHERE id = %s",(peticion.id_docente ,peticion.descripcion ,peticion.destino ,peticion.estado ,peticion.id_estudiante ,peticion.id_materia ,peticion.campo,peticion.id))
                 affected_rows = cursor.rowcount
+                cursor.execute("UPDATE peticiones SET id_docente = %s ,descripcion = %s,estado = %s ,id_estudiante = %s ,id_materia = %s ,campo = %s WHERE id = %s",(peticion.id_docente ,peticion.descripcion ,peticion.estado ,peticion.id_estudiante ,peticion.id_materia ,peticion.campo,peticion.id))
                 conection.commit()
 
             conection.close()

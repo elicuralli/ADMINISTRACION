@@ -1,10 +1,9 @@
 
 class Peticiones():
-    def __init__(self,id,id_docente = None,descripcion = None,destino = None,estado = None,id_estudiante = None,id_materia = None,campo =None) -> None:
+    def __init__(self,id,id_docente = None,descripcion = None,estado = None,id_estudiante = None,id_materia = None,campo =None) -> None:
         self.id = id
         self.id_docente = id_docente
         self.descripcion = descripcion
-        self.destino = destino
         self.estado = estado 
         self.id_estudiante = id_estudiante
         self.id_materia = id_materia
