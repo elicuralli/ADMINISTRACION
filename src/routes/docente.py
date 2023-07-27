@@ -112,7 +112,6 @@ def delete_docente(cedula):
         return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
 
 @doc.route("/upload", methods=["PATCH"])
-@jwt_required()
 def modificar_materia_estudiante():
     try:
         cedula_estudiante = request.json.get('cedula_estudiante')

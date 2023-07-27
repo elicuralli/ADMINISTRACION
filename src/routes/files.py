@@ -14,7 +14,6 @@ def create_folder_if_not_exists(folder_path):
 @files.post("/upload")
 def upload_file():
     try:
-        print(request.files.to_dict(), request.form.to_dict())
         file = request.files['file']
         ciclo = request.form.get('ciclo', '')
         folder = request.form.get('folder', '')

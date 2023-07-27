@@ -15,7 +15,6 @@ class Peticiones():
             "id": self.id,
             "id_docente": self.id_docente,
             "descripcion": self.descripcion,
-            "destino": self.destino,
             "estado": self.estado,
             "id_estudiante":self.id_estudiante,
             "id_materia": self.id_materia,

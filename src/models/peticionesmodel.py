@@ -86,23 +86,50 @@ class PeticionesModel():
 
         except  Exception as ex:
             raise Exception(ex)
-    
+
+    # En el modelo Peticiones, modificamos la función update_peticion para permitir actualizaciones dinámicas basadas en los campos proporcionados en la solicitud.
     @classmethod
-    def update_peticion(self,peticion):
-
+    def update_peticion(cls, peticion):
         try:
-            conection = get_connection()
+            connection = get_connection()
+            fields_to_update = []
+            values_to_update = []
 
-            with conection.cursor() as cursor:
+            if peticion.id_docente:
+                fields_to_update.append("id_docente = %s")
+                values_to_update.append(peticion.id_docente)
+            if peticion.descripcion:
+                fields_to_update.append("descripcion = %s")
+                values_to_update.append(peticion.descripcion)
+            if peticion.estado:
+                fields_to_update.append("estado = %s")
+                values_to_update.append(peticion.estado)
+            if peticion.id_estudiante:
+                fields_to_update.append("id_estudiante = %s")
+                values_to_update.append(peticion.id_estudiante)
+            if peticion.id_materia:
+                fields_to_update.append("id_materia = %s")
+                values_to_update.append(peticion.id_materia)
+            if peticion.campo:
+                fields_to_update.append("campo = %s")
+                values_to_update.append(peticion.campo)
+
+            if not fields_to_update:
+                return 0
+
+            fields_to_update = ", ".join(fields_to_update)
+            query = "UPDATE peticiones SET " + fields_to_update + " WHERE id = %s"
+            values_to_update.append(peticion.id)
+
+            with connection.cursor() as cursor:
+                cursor.execute(query, tuple(values_to_update))
                 affected_rows = cursor.rowcount
-                cursor.execute("UPDATE peticiones SET id_docente = %s ,descripcion = %s,estado = %s ,id_estudiante = %s ,id_materia = %s ,campo = %s WHERE id = %s",(peticion.id_docente ,peticion.descripcion ,peticion.estado ,peticion.id_estudiante ,peticion.id_materia ,peticion.campo,peticion.id))
-                conection.commit()
+                connection.commit()
 
-            conection.close()
+            connection.close()
             return affected_rows
-            
-    
-        except  Exception as ex:
+
+        except Exception as ex:
             raise Exception(ex)
     
     @classmethod
