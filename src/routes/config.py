@@ -28,12 +28,13 @@ def get_configuracion(id):
 
         configuracion = ConfigModel.get_configuracion(id)
         if configuracion != None:
-            return jsonify({"ok": True, "status":200,"data":configuracion})
+            return jsonify({"ok": True, "status":200,"data":configuracion.to_JSON()})
         else:
             return jsonify({"ok": False, "status":404,"data":{"message": "config no disponible"}}),404
     
     except Exception as ex:
-            return jsonify({"message": str(ex)}),500
+        print(str(ex))
+        return jsonify({"message": str(ex)}),500
 
 @config.route('/add' ,methods = ["POST"])
 def add_configuracion():
@@ -69,8 +70,6 @@ def add_configuracion():
 def update_configuracion(id):
     
     try:
-
-        
         ciclo = request.json['ciclo']
         porc1 = request.json['porc1']
         porc2 = request.json['porc2']

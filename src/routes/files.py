@@ -39,7 +39,7 @@ def get_file(name_file):
     file_path = path.join(PATH_FILES + ciclo, folder, name_file)
 
     if not path.isfile(file_path):
-        return jsonify({"ok": False, "status": 500, "data": {"message": "Archivo no encontrado"}}), 500
+        return jsonify({"ok": False, "status": 500, "data": {"message": "Archivo no encontrado"}}), 404
 
     try:
         return send_from_directory(path.join(PATH_FILES, ciclo, folder), path=name_file, as_attachment=False)
@@ -54,7 +54,7 @@ def download_file(name_file):
     file_path = path.join(PATH_FILES + ciclo, folder, name_file)
 
     if not path.isfile(file_path):
-        return jsonify({"ok": False, "status": 500, "data": {"message": "Archivo no encontrado"}}), 500
+        return jsonify({"ok": False, "status": 500, "data": {"message": "Archivo no encontrado"}}), 404
     return send_from_directory(path.join(PATH_FILES, ciclo, folder), path=name_file, as_attachment=True)
 
 

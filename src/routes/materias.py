@@ -1,5 +1,6 @@
 from models.entities.materias import Materias
 from models.materiamodel import MateriaModel
+from models.configmodel import ConfigModel
 from flask import Blueprint,jsonify,request
 
 materia = Blueprint('materia_blueprint', __name__)
@@ -68,7 +69,7 @@ def add_materia():
         dia = request.json['dia']
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
-        ciclo = request.json['ciclo']
+        ciclo = ConfigModel.get_configuracion(1).ciclo
 
         materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo)
         print(materia.to_JSON())
