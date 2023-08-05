@@ -2,12 +2,6 @@ FROM python:3.7-alpine
 RUN apk update \
 && apk upgrade --no-cache
 
-RUN \
- apk add --no-cache postgresql-libs && \
- apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
- pip install -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps \
-
 # Set an environment variable with the directory
 # where we’ll be running the app
 ENV APP /app
@@ -19,9 +13,14 @@ WORKDIR $APP
 # Python dependencies
 COPY requirements.txt .
 # Install Python dependencies
-RUN pip install -r requirements.txt
+RUN \
+ apk add --no-cache postgresql-libs && \
+ apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+ pip install -r requirements.txt --no-cache-dir && \
+ apk --purge del .build-deps \
+
 # We copy the rest of the codebase into the image
 COPY . .
 # Finally, we run uWSGI with the ini file we
 # created earlier
-CMD ["uwsgi","app.ini"]
+CMD ["uwsgi","src/app.ini"]
