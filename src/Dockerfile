@@ -1,5 +1,5 @@
 FROM python:3.7
-RUN apk -qq -y update \
+RUN apt -qq -y update \
 && apt -qq -y upgrade
 # Set an environment variable with the directory
 # where we’ll be running the app
