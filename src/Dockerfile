@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7-alpine
 RUN apt -qq -y update \
 && apt -qq -y upgrade
 # Set an environment variable with the directory
