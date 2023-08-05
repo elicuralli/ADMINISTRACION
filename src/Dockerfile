@@ -1,6 +1,6 @@
-FROM python:3.7
-RUN apt-get -y update \
-&& apt-get -y upgrade
+FROM python:3.7-alpine
+RUN apk -y update \
+&& apk -y upgrade --no-cache
 # Set an environment variable with the directory
 # where we’ll be running the app
 ENV APP /app
