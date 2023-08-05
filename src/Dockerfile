@@ -1,6 +1,6 @@
 FROM python:3.7
-RUN apt -qq -y update \
-&& apt -qq -y upgrade
+RUN apt -y update \
+&& apt -y upgrade
 # Set an environment variable with the directory
 # where we’ll be running the app
 ENV APP /app
