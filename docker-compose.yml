@@ -4,13 +4,6 @@ services:
     build: ./src
     container_name: flask
     restart: always
-    environment:
-      - SECRET_KEY=*p4sc4alc4gu4*
-      - PGSQL_HOST=db
-      - PGSQL_USER=postgres
-      - PGSQL_PASSWORD=Reyshell
-      - PGSQL_DATABASE=universidad
-      - JWT_SECRET_KEY=*p4sc4lc4gu4.
     ports:
       - "5001:5000"
     networks:
