@@ -15,14 +15,6 @@ services:
       - 8080
     networks:
       - nginxproxymanager_default
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    restart: always
-    ports:
-      - "8003:80"
-    networks:
-      - nginxproxymanager_default
   db:
     image: postgres:14
     ports:
