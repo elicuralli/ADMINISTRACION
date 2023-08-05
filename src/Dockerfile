@@ -17,7 +17,7 @@ RUN \
  apk add --no-cache postgresql-libs && \
  apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
  pip install -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps \
+ apk --purge del .build-deps
 
 # We copy the rest of the codebase into the image
 COPY . .
