@@ -14,4 +14,4 @@ RUN apk add --no-cache postgresql-libs linux-headers && \
 
 COPY . .
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--workers", "4", "--threads", "2", "--timeout", "600", "--graceful-timeout", "600", "--log-level", "info"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
