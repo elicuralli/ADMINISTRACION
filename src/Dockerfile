@@ -1,19 +1,63 @@
-FROM python:3-alpine
+###########
+# BUILDER #
+###########
 
-RUN apk update && apk upgrade --no-cache
+# pull official base image
+FROM python:3.11.3-slim-buster as builder
 
-ENV APP /app
-RUN mkdir $APP
-WORKDIR $APP
+# set work directory
+WORKDIR /usr/src/app
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install system dependencies
+RUN apt-get update && \
+    apt-get install -y gcc libpq-dev build-essential
+
+# lint
+RUN pip install --upgrade pip
+COPY . /usr/src/app/
+
+# install python dependencies
 COPY ./requirements.txt .
-RUN apk add --no-cache postgresql-libs linux-headers && \
-    apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    pip install -r requirements.txt --no-cache-dir && \
-    apk --purge del .build-deps
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
-COPY . .
 
-EXPOSE 5000
+#########
+# FINAL #
+#########
 
-CMD ["python", "app.py"]
+# pull official base image
+FROM python:3.11.3-slim-buster
+
+# create directory for the app user
+RUN mkdir -p /home/app
+
+# create the app user
+RUN addgroup --system app && adduser --system --group app
+
+# create the appropriate directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+RUN apt-get update && apt-get install -y netcat libpq5
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+# copy project
+COPY . $APP_HOME
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# change to the app user
+USER app
+
+CMD ["uwsgi", "--socket", "0.0.0.0:5000", "--protocol=http", "--wsgi-file", "app.py", "--callable", "app"]
