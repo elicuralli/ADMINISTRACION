@@ -28,10 +28,10 @@ services:
     ports:
       - "32000:3306"
     environment:
-      - PGSQL_HOST=localhost
-      - PGSQL_USER=postgres
-      - PGSQL_PASSWORD=Reyshell
-      - PGSQL_DATABASE=universidad
+      - POSTGRES_HOST=localhost
+      - POSTGRESL_USER=postgres
+      - POSTGRES_PASSWORD=Reyshell
+      - POSTGRES_DATABASE=universidad
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
     networks:
