@@ -11,10 +11,10 @@ RUN mkdir $APP
 WORKDIR $APP
 # Copy the requirements file in order to install
 # Python dependencies
-COPY requirements.txt .
+COPY ./requirements.txt .
 # Install Python dependencies
 RUN \
- apk add --no-cache postgresql-libs && \
+ apk add --no-cache postgresql-libs linux-headers && \
  apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
  pip install -r requirements.txt --no-cache-dir && \
  apk --purge del .build-deps
