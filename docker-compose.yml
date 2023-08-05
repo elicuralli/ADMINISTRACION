@@ -6,8 +6,8 @@ services:
     restart: always
     ports:
       - "5001:5000"
-#    networks:
-#      - nginxproxymanager_default
+    networks:
+      - nginxproxymanager_default
   db:
     image: postgres:14
     ports:
@@ -19,9 +19,9 @@ services:
       - POSTGRES_DATABASE=universidad
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
-#    networks:
-#      - nginxproxymanager_default
+    networks:
+      - nginxproxymanager_default
 
-#networks:
-#  nginxproxymanager_default:
-#    external: true
+networks:
+  nginxproxymanager_default:
+    external: true
