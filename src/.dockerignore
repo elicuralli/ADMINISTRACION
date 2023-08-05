@@ -1,0 +1,9 @@
+.env
+src/**/__pycache__/
+venv/
+venv/pyvenv.cfg
+venv/Scripts/activate
+venv/Scripts/activate.bat
+.vscode/settings.json
+.python-version
+/.idea/

@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  flask:
+    build: ./src
+    container_name: flask
+    restart: always
+    environment:
+      - SECRET_KEY=*p4sc4alc4gu4*
+      - PGSQL_HOST=localhost
+      - PGSQL_USER=postgres
+      - PGSQL_PASSWORD=Reyshell
+      - PGSQL_DATABASE=universidad
+      - JWT_SECRET_KEY=*p4sc4lc4gu4.
+    expose:
+      - 8080
+    networks:
+      - nginxproxymanager_default
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "8003:80"
+    networks:
+      - nginxproxymanager_default
+  db:
+    image: postgres:14
+    ports:
+      - "32000:3306"
+    environment:
+      - PGSQL_HOST=localhost
+      - PGSQL_USER=postgres
+      - PGSQL_PASSWORD=Reyshell
+      - PGSQL_DATABASE=universidad
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - nginxproxymanager_default
+
+networks:
+  nginxproxymanager_default:
+    external: true
