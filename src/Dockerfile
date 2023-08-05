@@ -23,4 +23,4 @@ RUN \
 COPY . .
 # Finally, we run uWSGI with the ini file we
 # created earlier
-CMD ["uwsgi","src/app.ini"]
+CMD ["uwsgi","./app.ini"]
