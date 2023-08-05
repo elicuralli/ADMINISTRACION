@@ -11,7 +11,7 @@ services:
       - PGSQL_PASSWORD=Reyshell
       - PGSQL_DATABASE=universidad
       - JWT_SECRET_KEY=*p4sc4lc4gu4.
-    expose:
+    ports:
       - "5001:5000"
     networks:
       - nginxproxymanager_default
