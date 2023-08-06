@@ -50,8 +50,10 @@ def add_student():
         edad = request.json['edad']
         sexo = request.json['sexo']
         promedio = request.json['promedio']
+        direccion = request.json['direccion']
+        fecha_nac = request.json['fecha_nac']
 
-        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio,direccion,fecha_nac)
 
         affected_rows = StudentModel.add_student(student)
 
@@ -79,8 +81,11 @@ def update_student(cedula):
         edad = request.json['edad']
         sexo = request.json['sexo']
         promedio = request.json['promedio']
+        direccion = request.json['direccion']
+        fecha_nac = request.json['fecha_nac']
+
  
-        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio,direccion,fecha_nac)
 
         affected_rows = StudentModel.update_student(student)
 

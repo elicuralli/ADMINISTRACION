@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Técnica de Datos Estudiantiles</title>
+  
+
+</head>
+<body>
+    <h1 class="center">Ficha Técnica de Datos Estudiantiles</h1>
+    <div class="personal-info">
+        <h2>Información Personal</h2>
+        <ul>
+            <li><strong>Fecha:</strong> {{fecha_actual}}</li>
+            <li><strong>Nombre Completo:</strong> {{student.get("nombre")}}</li>
+            <li><strong>Sexo:</strong> {{student.get("sexo")}}</li>
+            <li><strong>Cédula de Identidad:</strong> {{student.get("cedula")}}</li>
+            
+            <li><strong>Número de teléfono celular:</strong> {{student.get("cedula")}}</li>
+            <li><strong>Correo Electrónico:</strong> {{student.get("correo")}}</li>
+           
+            <li><strong>Edad:</strong> {{student.get("edad")}}</li>
+            <li><strong>Estado:</strong> {{student.get("estado")}}</li>
+            <li><strong>Carrera:</strong> {{student.get("carrera")}}</li>
+        </ul>
+    </div>
+    <div class="academic-info">
+        <h2>Datos académicos universitarios</h2>
+        <ul>
+            {% for materia in materias %}
+                <li><strong>Modalidad:</strong> {{materia.modalidad}}, <strong>Asignatura:</strong> {{materia.asignatura}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="inscripciones">
+        <h2>Inscripciones generales</h2>
+        <ul>
+            {% for inscripcion in inscripciones %}
+                <li><strong>Periodo Académico:</strong> {{inscripcion.periodo}}</li>
+            {% endfor %}
+        </ul>
+    
+</body>
+</html>
