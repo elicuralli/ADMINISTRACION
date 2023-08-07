@@ -84,5 +84,25 @@ class SuperUsuarioModel():
         except  Exception as ex:
             raise Exception(ex)
 
+    @classmethod
+    def login(self,super_usuario: SuperUsuario):
+        try:
+
+            conection = get_connection()
+            superu: SuperUsuario
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT * FROM superusuario WHERE correo=%s",(super_usuario.correo,))
+                row = cursor.fetchone()
+                conection.commit()
+                if row is not None:
+                    superu = SuperUsuario(row[0], row[1], row[2], row[3])
+                else:
+                    return None
+
+            conection.close()
+            return superu
+
+        except Exception as ex:
+            raise Exception(ex)
         
 

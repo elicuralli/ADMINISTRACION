@@ -12,5 +12,4 @@ class SuperUsuario:
             "cedula": self.cedula,
             "nombre": self.nombre,
             "correo": self.correo,
-            "password": self.password
         }

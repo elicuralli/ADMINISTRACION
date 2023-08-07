@@ -62,8 +62,7 @@ def add_control():
 @control.route('/update/<cedula>', methods = ["PUT"])
 def update_coordinador(cedula):
     try:
-    
-        cedula = request.json['cedula']
+
         fullname = request.json['fullname']
         correo = request.json['correo']
         telefono = request.json['telefono']
@@ -81,6 +80,7 @@ def update_coordinador(cedula):
             return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
     
     except Exception as ex:
+        print(ex)
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
 @control.route('/delete/<cedula>', methods = ["DELETE"])
