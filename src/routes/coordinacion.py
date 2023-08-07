@@ -62,8 +62,7 @@ def add_coordinador():
 @coordinacion.route('/update/<cedula>', methods = ["PUT"])
 def update_coordinador(cedula):
     try:
-    
-        cedula = request.json['cedula']
+
         fullname = request.json['fullname']
         correo = request.json['correo']
         telefono = request.json['telefono']
