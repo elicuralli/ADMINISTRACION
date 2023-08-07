@@ -3,7 +3,7 @@ from flask_jwt_extended import JWTManager
 from settings import settings
 from flask_bootstrap import Bootstrap
 from routes import students, admin, usuario, docente, carreras, materias, billete, coordinacion, control, peticiones, \
-    config, files,generar
+    config, files,generar,SuperUsuario
 
 app = Flask(__name__)
 
@@ -32,6 +32,7 @@ if __name__ == '__main__':
     app.register_blueprint(config.config, url_prefix='/api/config')
     app.register_blueprint(files.files, url_prefix='/api/archivos')
     app.register_blueprint(generar.generar_pdf,url_prefix = '/api/generar_ficha')
+    app.register_blueprint(SuperUsuario.superUs,url_prefix = '/api/superUsuario')
     # manejador de errores
     app.register_error_handler(404, page_not_found)
     app.run(host="0.0.0.0", debug=True)
