@@ -217,6 +217,24 @@ class StudentModel():
             raise Exception(ex)
 
     @classmethod
+    def get_inscritas(self, cedula: str):
+        try:
+            connection = get_connection()
+            join = []
+            with connection.cursor() as cursor:
+                ciclo = ConfigModel.get_configuracion("1").ciclo
+                cursor.execute("""SELECT m.id, m.nombre, m.hp, m.ht, m.dia, m.hora_inicio, m.hora_fin, m.unidad_credito, d.fullname FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia INNER JOIN docentes d on d.cedula = m.id_docente WHERE m.ciclo = %s""",(ciclo,))
+
+                consulta = cursor.fetchall()
+
+                for row in consulta:
+                    join.append({"id": row[0], "nombre": row[1], "hp": row[2], "ht": row[3], "dia": row[4], "hora_inicio": row[5], "hora_fin": row[6], "unidad_credito": row[7], "id_docente": row[8]})
+
+            return join
+        except Exception as ex:
+            raise Exception(ex)
+
+    @classmethod
     def get_pago_by_student(self, cedula: str):
         try:
             conection = get_connection()

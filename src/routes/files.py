@@ -52,6 +52,7 @@ def download_file(name_file):
     folder = request.args.get("folder", "")
     ciclo = request.args.get("ciclo", "")
     file_path = path.join(PATH_FILES + ciclo, folder, name_file)
+    print(file_path)
 
     if not path.isfile(file_path):
         return jsonify({"ok": False, "status": 500, "data": {"message": "Archivo no encontrado"}}), 404

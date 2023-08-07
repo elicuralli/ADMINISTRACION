@@ -69,7 +69,7 @@ def add_materia():
         dia = request.json['dia']
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
-        ciclo = ConfigModel.get_configuracion(1).ciclo
+        ciclo = ConfigModel.get_configuracion("1").ciclo
         modalidad = request.json['modalidad']
 
         materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo,modalidad)

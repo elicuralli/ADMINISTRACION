@@ -159,6 +159,23 @@ def get_historico():
         print(ex.with_traceback(None))
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
+
+@main.route("/horario", methods=["GET"])
+@jwt_required()
+def get_horario():
+    try:
+        correo_estudiante = get_jwt_identity()
+        student: Student | None
+        if correo_estudiante is not None:
+            student_entity = Student(correo=correo_estudiante)
+            student_entity = StudentModel.login(student_entity)
+            materias = StudentModel.get_inscritas(student_entity.cedula)
+            return jsonify({"ok": True, "status": 200, "data": {"materias":materias}}), 200
+    except Exception as ex:
+        print(ex.with_traceback(None))
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+
+
 @main.route('/login',methods = ["POST"])
 def login():
     try:
