@@ -17,7 +17,7 @@ class StudentModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6], carrera= row[7],edad = row[9],sexo = row[8],promedio = row[10],direccion=row[11],fecha_nac=row[12])
+                    student = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6], carrera= row[7],edad = row[8],sexo = row[9],promedio = row[10],direccion=row[11],fecha_nac=row[12])
                     students.append(student.to_JSON())
             
             conection.close()
