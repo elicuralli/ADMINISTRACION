@@ -23,9 +23,9 @@ class MateriaModel():
                     materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4],
                                         ht=row[5],
                                         semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9],
-                                        hora_inicio=row[10], hora_fin=row[11], ciclo=row[12])
+                                        hora_inicio=row[10], hora_fin=row[11], ciclo=row[12],modalidad=row[13])
                     join["materias"].append(materias.to_JSON())
-                    carrera = Carrera(id=row[13], nombre=row[14])
+                    carrera = Carrera(id=row[14], nombre=row[15])
                     join["carreras"].append(carrera.to_JSON())
 
             conection.close()
@@ -43,10 +43,11 @@ class MateriaModel():
             with conection.cursor() as cursor:
                 cursor.execute(
                     """
-                    SELECT m.id, m.nombre, me.cedula_estudiante, me.nota1, me.nota2,  me.nota3, me.promedio, c.nombre
+                    SELECT m.id, m.nombre, me.cedula_estudiante, es.fullname, me.nota1, me.nota2,  me.nota3, me.promedio, c.nombre
                     FROM materias m
                     INNER JOIN carreras c ON m.id_carrera = c.id
                     INNER JOIN materias_estudiantes me ON m.id = me.cod_materia
+                    INNER JOIN estudiantes es ON es.cedula = me.cedula_estudiante
                     WHERE m.id = %s
                     """,
                     (id,)
@@ -56,16 +57,17 @@ class MateriaModel():
                     for row in rows:
                         estudiante = {
                             "cedula": row[2],
-                            "nota1": row[3],
-                            "nota2": row[4],
-                            "nota3": row[5],
-                            "promedio": row[6]
+                            "nombre": row[3],
+                            "nota1": row[4],
+                            "nota2": row[5],
+                            "nota3": row[6],
+                            "promedio": row[7]
                         }
                         materia = {
                             "id": row[0],
                             "nombre": row[1],
                         }
-                        carrera = row[7]
+                        carrera = row[8]
 
                         join["materia"]["id"] = materia["id"]
                         join["materia"]["nombre"] = materia["nombre"]
@@ -92,11 +94,11 @@ class MateriaModel():
                 if result is not None:
                     return 'materia ya existe'
                 cursor.execute(
-                    "INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,ciclo)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                    "INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,ciclo,modalidad)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     (materia.id,
                      materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
                      materia.semestre, materia.id_carrera, materia.id_docente, materia.dia, materia.hora_inicio,
-                     materia.hora_fin, materia.ciclo))
+                     materia.hora_fin, materia.ciclo,materia.modalidad))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -115,11 +117,11 @@ class MateriaModel():
 
             with conection.cursor() as cursor:
                 cursor.execute(
-                    "UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,ciclo = %s WHERE id=%s ",
+                    "UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,ciclo = %s,modalidad =%s WHERE id=%s ",
                     (
                         materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
-                        materia.semestre, materia.id_carrera, materia.id, materia.id_docente, materia.dia,
-                        materia.hora_inicio, materia.hora_fin, materia.ciclo))
+                        materia.semestre, materia.id_carrera, materia.id_docente, materia.dia,
+                        materia.hora_inicio, materia.hora_fin, materia.ciclo,materia.modalidad,materia.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -156,6 +158,12 @@ class MateriaModel():
 
             with conection.cursor() as cursor:
                 # Obtenemos el estado y el semestre del estudiante
+
+                cursor.execute("SELECT COUNT(*) FROM materias_estudiantes WHERE cedula_estudiante = %s", (cedula_estudiante,))
+                row = cursor.fetchone()
+                if(row[0] > 0):
+                    raise Exception("Usted ya tiene inscrito su horario, no puede inscribir más materias o modificarlo")
+
                 cursor.execute(
                     "SELECT estado, semestre, carrera FROM estudiantes WHERE cedula = %s", (cedula_estudiante,))
                 student = cursor.fetchone()

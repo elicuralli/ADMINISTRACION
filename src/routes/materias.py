@@ -50,7 +50,7 @@ def get_materias_validas(cedula_estudiante: str):
         else:
             return jsonify({"ok": False, "status":404,"data":{"message": "No se pueden inscribir materias"}}),404
     except Exception as ex:
-        return str(ex), 500
+        return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
 
 @materia.route('/add', methods = ['POST'])
 def add_materia():
@@ -70,8 +70,9 @@ def add_materia():
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
         ciclo = ConfigModel.get_configuracion(1).ciclo
+        modalidad = request.json['modalidad']
 
-        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo)
+        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo,modalidad)
         print(materia.to_JSON())
         affected_rows = MateriaModel.add_materia(materia)
 
@@ -88,8 +89,7 @@ def add_materia():
 def update_materia(id):
 
     try:
-            
-            id = request.json['id']
+
             nombre = request.json['nombre']
             prelacion = request.json['prelacion']
             unidad_credito = request.json['unidad_credito']
@@ -102,8 +102,9 @@ def update_materia(id):
             hora_inicio = request.json['hora_inicio']
             hora_fin = request.json['hora_fin']
             ciclo = request.json['ciclo']
+            modalidad = request.json['modalidad']
 
-            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,ciclo)
+            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,ciclo,modalidad)
 
             affected_rows = MateriaModel.update_materia(materia)
 

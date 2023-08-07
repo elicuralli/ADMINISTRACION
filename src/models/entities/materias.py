@@ -1,5 +1,5 @@
 class Materias():
-    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None,dia = None, hora_inicio = None, hora_fin = None, cantidad_estudiantes = None,ciclo = None) -> None:
+    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None,dia = None, hora_inicio = None, hora_fin = None, cantidad_estudiantes = None,ciclo = None,modalidad = None) -> None:
         self.id = id
         self.nombre = nombre 
         self.prelacion = prelacion 
@@ -14,6 +14,7 @@ class Materias():
         self.hora_fin = hora_fin
         self.cantidad_estudiantes = cantidad_estudiantes
         self.ciclo = ciclo
+        self.modalidad = modalidad
     
     def to_JSON(self):
         return {
@@ -30,7 +31,8 @@ class Materias():
             "dia": self.dia,
             "hora_inicio": self.hora_inicio,
             "hora_fin": self.hora_fin,
-            "ciclo": self.ciclo
+            "ciclo": self.ciclo,
+            "modalidad": self.modalidad
         }
     
     def to_JSON_with_quantity(self):
@@ -49,6 +51,7 @@ class Materias():
             "hora_inicio": self.hora_inicio,
             "hora_fin": self.hora_fin,
             "cantidad_estudiantes": self.cantidad_estudiantes,
-            "ciclo": self.ciclo
+            "ciclo": self.ciclo,
+            "modalidad": self.modalidad
         }
         

@@ -15,6 +15,6 @@ class Docente():
             "nombre": self.fullname,
             "correo": self.correo, 
             "telefono": self.telefono,
-            "password": self.password
+         
 
         }

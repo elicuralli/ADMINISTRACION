@@ -50,8 +50,10 @@ def add_student():
         edad = request.json['edad']
         sexo = request.json['sexo']
         promedio = request.json['promedio']
+        direccion = request.json['direccion']
+        fecha_nac = request.json['fecha_nac']
 
-        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio)
+        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio,direccion,fecha_nac)
 
         affected_rows = StudentModel.add_student(student)
 
@@ -75,12 +77,14 @@ def update_student(cedula):
         semestre = request.json['semestre']
         estado = request.json['estado']
         carrera = request.json["carrera"]
-        password = generate_password_hash(request.json["password"], method="sha256")
         edad = request.json['edad']
         sexo = request.json['sexo']
         promedio = request.json['promedio']
- 
-        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio)
+        direccion = request.json['direccion']
+        fecha_nac = request.json['fecha_nac']
+
+
+        student = Student(str(cedula),fullname,correo,telefono,semestre,None,estado,carrera,edad,sexo,promedio)
 
         affected_rows = StudentModel.update_student(student)
 
@@ -137,6 +141,22 @@ def get_notas():
             notas_obj = StudentModel.get_notas_estudiante(student_entity.cedula)
             return jsonify({"ok": True, "status": 200, "data": notas_obj}), 200
     except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+
+
+@main.route("/historico", methods=["GET"])
+@jwt_required()
+def get_historico():
+    try:
+        correo_estudiante = get_jwt_identity()
+        student: Student | None
+        if correo_estudiante is not None:
+            student_entity = Student(correo=correo_estudiante)
+            student_entity = StudentModel.login(student_entity)
+            notas_obj = StudentModel.get_historico(student_entity.cedula)
+            return jsonify({"ok": True, "status": 200, "data": notas_obj}), 200
+    except Exception as ex:
+        print(ex.with_traceback(None))
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 @main.route('/login',methods = ["POST"])
