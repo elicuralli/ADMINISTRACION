@@ -74,7 +74,7 @@ class StudentModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE estudiantes SET fullname = %s,correo = %s,telefono = %s,semestre = %s,password = %s,estado = %s, carrera = %s, edad = %s,sexo = %s,promedio = %s, direccion = %s, fecha_nac =%s WHERE cedula = %s""", (student.fullname,student.correo,student.telefono,student.semestre,student.password,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.direccion,student.fecha_nac,student.cedula))
+                cursor.execute("""UPDATE estudiantes SET fullname = %s,correo = %s,telefono = %s,semestre = %s, estado = %s, carrera = %s, edad = %s,sexo = %s,promedio = %s, direccion = %s, fecha_nac =%s WHERE cedula = %s""", (student.fullname,student.correo,student.telefono,student.semestre,student.estado,student.carrera,student.edad,student.sexo,student.promedio,student.direccion,student.fecha_nac,student.cedula))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -149,8 +149,8 @@ class StudentModel():
                     SELECT m.nombre, m.id, me.nota1, me.nota2, me.nota3, me.promedio
                     FROM materias_estudiantes me
                     JOIN materias m ON me.cod_materia = m.id
-                    WHERE me.cedula_estudiante = %s
-                """, (cedula_estudiante,))
+                    WHERE me.cedula_estudiante = %s AND m.ciclo = %s
+                """, (cedula_estudiante,config.ciclo))
                 notas = cursor.fetchall()
 
                 notas_obj = [{
@@ -164,6 +164,55 @@ class StudentModel():
                 connection.close()
                 return {"notas": notas_obj, "ciclo": config.ciclo}
 
+        except Exception as ex:
+            raise Exception(ex)
+
+    @classmethod
+    def get_historico(cls, cedula_estudiante: str):
+        try:
+            connection = get_connection()
+
+            with connection.cursor() as cursor:
+
+                cursor.execute("""
+                    SELECT m.nombre, m.id, m.ciclo, m.semestre, me.nota1, me.nota2, me.nota3, me.promedio
+                    FROM materias_estudiantes me
+                    JOIN materias m ON me.cod_materia = m.id
+                    WHERE me.cedula_estudiante = %s
+                """, (cedula_estudiante,))
+                notas = cursor.fetchall()
+
+                notas_obj = [{
+                    "materia": nota[0],
+                    "id": nota[1],
+                    "ciclo": nota[2],
+                    "semestre": nota[3],
+                    "nota1": nota[4],
+                    "nota2": nota[5],
+                    "nota3": nota[6],
+                    "promedio": nota[7]
+                } for nota in notas]
+                connection.close()
+                return {"notas": notas_obj}
+
+        except Exception as ex:
+            raise Exception(ex)
+
+    @classmethod
+    def get_materias_inscritas(self, cedula: str):
+        try:
+            connection = get_connection()
+            join = {"ciclo": "", "contenido":[]}
+            with connection.cursor() as cursor:
+                cursor.execute("""SELECT m.modalidad, CONCAT(m.id, ' ', m.nombre), m.ciclo FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia""")
+
+                consulta = cursor.fetchall()
+
+                for row in consulta:
+                    join["ciclo"] = row[2]
+                    join["contenido"].append({"modalidad": row[0], "asignatura": row[1] })
+
+            return join
         except Exception as ex:
             raise Exception(ex)
 

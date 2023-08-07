@@ -102,9 +102,9 @@ def delete_coordinador(cedula):
 def get_nota(cedula: str):
     try:
         notas_obj = StudentModel.get_notas_estudiante(cedula)
-        return jsonify({"ok": True, "status": 200, "data": {"materias": notas_obj}}), 200
+        return jsonify({"ok": True, "status": 200, "data": notas_obj}), 200
     except Exception as ex:
-        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+        return jsonify({"ok": False, "status": 500, "data": {"mess age": str(ex)}}), 500
 
 @coordinacion.route('/login',methods = ["POST"])
 def login():

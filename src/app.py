@@ -1,11 +1,11 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 from settings import settings
+from flask_bootstrap import Bootstrap
 from routes import students, admin, usuario, docente, carreras, materias, billete, coordinacion, control, peticiones, \
     config, files,generar
 
 app = Flask(__name__)
-
 
 def page_not_found(error):
     return jsonify({"ok": False, "status": 404, "data": {"message": "Page not found"}}), 404
@@ -14,6 +14,7 @@ def page_not_found(error):
 if __name__ == '__main__':
     app.config.from_object(settings['development'])
     jwt = JWTManager(app)
+    bootstrap = Bootstrap(app)
 
     # acceso fuera desde otras url
 

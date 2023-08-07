@@ -50,7 +50,7 @@ def get_materias_validas(cedula_estudiante: str):
         else:
             return jsonify({"ok": False, "status":404,"data":{"message": "No se pueden inscribir materias"}}),404
     except Exception as ex:
-        return str(ex), 500
+        return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
 
 @materia.route('/add', methods = ['POST'])
 def add_materia():
@@ -88,8 +88,7 @@ def add_materia():
 def update_materia(id):
 
     try:
-            
-            id = request.json['id']
+
             nombre = request.json['nombre']
             prelacion = request.json['prelacion']
             unidad_credito = request.json['unidad_credito']
@@ -103,8 +102,9 @@ def update_materia(id):
             hora_fin = request.json['hora_fin']
             ciclo = request.json['ciclo']
 
-            materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,ciclo)
-
+            materia = Materias(id=str(id),nombre=nombre,prelacion=prelacion,unidad_credito=unidad_credito,hp=hp,ht=ht,semestre=semestre,id_carrera=id_carrera,id_docente=id_docente,dia=dia, hora_inicio=hora_inicio, hora_fin=hora_fin,ciclo=ciclo)
+            print(materia.to_JSON())
+            print(request.json)
             affected_rows = MateriaModel.update_materia(materia)
 
             if affected_rows == 1:
@@ -114,6 +114,7 @@ def update_materia(id):
                 return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
             
     except Exception as ex:
+        print(str(ex))
         return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
 
 @materia.route('/delete/<id>', methods = [ 'DELETE'])

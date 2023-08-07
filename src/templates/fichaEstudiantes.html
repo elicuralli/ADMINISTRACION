@@ -4,42 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha Técnica de Datos Estudiantiles</title>
-  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
 
+        h1 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .personal-info, .academic-info {
+            margin-bottom: 30px;
+        }
+
+        .personal-info h2, .academic-info h2 {
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        .signature {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        /* Estilos para el enlace */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+        }
+
+        .profile-picture {
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="center">Ficha Técnica de Datos Estudiantiles</h1>
-    <div class="personal-info">
-        <h2>Información Personal</h2>
-        <ul>
-            <li><strong>Fecha:</strong> {{fecha_actual}}</li>
-            <li><strong>Nombre Completo:</strong> {{student.get("nombre")}}</li>
-            <li><strong>Sexo:</strong> {{student.get("sexo")}}</li>
-            <li><strong>Cédula de Identidad:</strong> {{student.get("cedula")}}</li>
-            
-            <li><strong>Número de teléfono celular:</strong> {{student.get("cedula")}}</li>
-            <li><strong>Correo Electrónico:</strong> {{student.get("correo")}}</li>
-           
-            <li><strong>Edad:</strong> {{student.get("edad")}}</li>
-            <li><strong>Estado:</strong> {{student.get("estado")}}</li>
-            <li><strong>Carrera:</strong> {{student.get("carrera")}}</li>
-        </ul>
-    </div>
-    <div class="academic-info">
-        <h2>Datos académicos universitarios</h2>
-        <ul>
-            {% for materia in materias %}
-                <li><strong>Modalidad:</strong> {{materia.modalidad}}, <strong>Asignatura:</strong> {{materia.asignatura}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="inscripciones">
-        <h2>Inscripciones generales</h2>
-        <ul>
-            {% for inscripcion in inscripciones %}
-                <li><strong>Periodo Académico:</strong> {{inscripcion.periodo}}</li>
-            {% endfor %}
-        </ul>
-    
+<div class="profile-picture">
+    <!-- Espacio para la imagen -->
+    <img src="C:\Users\Admin\Documents\proyectos\PROYECTO-IUTP\src\templates\pascal-fondo.png"
+         alt="Imagen del estudiante">
+</div>
+<h1 class="center">Ficha Técnica de Datos Estudiantiles</h1>
+<div class="personal-info">
+    <h2>Información Personal</h2>
+    <table>
+        <tbody>
+        <tr>
+            <th scope="row">Fecha de emisión de la ficha</th>
+            <td>{{ fecha_actual }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Fecha de Nacimiento</th>
+            <td>{{ student.get("fecha_nac") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Edad</th>
+            <td>{{ student.get("edad") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Cédula de Identidad</th>
+            <td>{{ student.get("cedula") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Nombre completo:</th>
+            <td style="text-transform: capitalize">{{ student.get("nombre") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Sexo</th>
+            <td>{{ student.get("sexo") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Correo Electrónico</th>
+            <td>{{ student.get("correo") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Número de teléfono celular</th>
+            <td>{{ student.get("telefono") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Estado</th>
+            <td>{{ student.get("estado") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Dirección</th>
+            <td>{{ student.get("direccion") }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Carrera</th>
+            <td>{{ student.get("carrera") }}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+<div class="academic-info">
+    <h2>Datos académicos universitarios</h2>
+    <table>
+        <thead>
+        <th>Modalidad</th>
+        <th>Asignatura</th>
+        </thead>
+        <tbody>
+        {% for materia in materias %}
+            <tr>
+                <td>{{ materia.modalidad }}</td>
+                <td>{{ materia.asignatura }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
