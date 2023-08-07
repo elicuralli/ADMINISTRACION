@@ -45,7 +45,7 @@ class DocenteModel():
                     """
                     SELECT d.cedula, d.fullname, d.correo, d.telefono, d.password, m.id, m.nombre, m.prelacion, m.unidad_credito, m.hp, m.ht, m.semestre, m.id_carrera, m.id_docente, m.dia, m.hora_inicio, m.hora_fin, COUNT(me.cedula_estudiante) AS cantidad_estudiantes
                     FROM docentes d
-                    INNER JOIN materias m ON d.cedula = m.id_docente
+                    LEFT JOIN materias m ON d.cedula = m.id_docente
                     LEFT JOIN materias_estudiantes me ON m.id = me.cod_materia
                     WHERE d.cedula = %s
                     GROUP BY d.cedula, d.fullname, d.correo, d.telefono, d.password, m.id, m.nombre, m.prelacion, m.unidad_credito, m.hp, m.ht, m.semestre, m.id_carrera, m.id_docente, m.dia, m.hora_inicio, m.hora_fin
