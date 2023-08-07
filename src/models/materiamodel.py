@@ -16,7 +16,7 @@ class MateriaModel():
 
             with conection.cursor() as cursor:
                 cursor.execute(
-                    "SELECT * from materias INNER JOIN carreras ON materias.id_carrera = carreras.id")
+                    "SELECT * from materias RIGHT JOIN carreras ON materias.id_carrera = carreras.id")
                 result = cursor.fetchall()
 
                 for row in result:
