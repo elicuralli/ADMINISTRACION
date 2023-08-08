@@ -9,7 +9,7 @@ class UserModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT into usuarios (usuario, clave) VALUES (%s,%s)""",(user.usuario,user.clave,))
+                cursor.execute("""INSERT into usuarios (usuario, nombre, clave) VALUES (%s,%s,%s)""",(user.usuario,user.nombre,user.clave,))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -20,19 +20,41 @@ class UserModel():
             raise Exception(ex)
         
     @classmethod
-    def login(self,user):
+    def get_user(self,user):
         try:
 
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT clave FROM usuarios WHERE usuario=%s",(user.usuario,)) 
+                cursor.execute("SELECT usuario, clave, id, nombre FROM usuarios WHERE usuario=%s",(user.usuario,))
                 row = cursor.fetchone()
                 conection.commit()
+                user = User(row[0], row[1],row[2], row[3])
 
             conection.close()
-            return row[0]
+            return user
         
+        except Exception as ex:
+            raise Exception(ex)
+
+    @classmethod
+    def login(self,user: User):
+        try:
+
+            conection = get_connection()
+            student: User
+            with conection.cursor() as cursor:
+                cursor.execute("SELECT id, usuario, nombre FROM usuarios WHERE usuario=%s",(user.usuario,))
+                row = cursor.fetchone()
+                conection.commit()
+                if row is not None:
+                    user = User(row[1], None, row[0], row[2])
+                else:
+                    return None
+
+            conection.close()
+            return user
+
         except Exception as ex:
             raise Exception(ex)
         
