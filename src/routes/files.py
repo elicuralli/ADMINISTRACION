@@ -3,7 +3,7 @@ from os import getcwd, path, remove, makedirs
 
 files = Blueprint("files", __name__)
 
-PATH_FILES = getcwd() + "\\planificacion\\"
+PATH_FILES = getcwd() + "/planificacion/"
 
 
 def create_folder_if_not_exists(folder_path):

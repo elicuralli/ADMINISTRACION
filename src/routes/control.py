@@ -45,9 +45,8 @@ def add_control():
         correo = request.json['correo']
         telefono = request.json['telefono']
         password = generate_password_hash(request.json["password"], method="sha256")
-        rol = request.json['rol']
 
-        control_es = Control(str(cedula),fullname,correo,telefono,password,rol)
+        control_es = Control(str(cedula),fullname,correo,telefono,password)
 
         affected_rows = ControlModel.add_control(control_es)
 
@@ -67,10 +66,9 @@ def update_coordinador(cedula):
         correo = request.json['correo']
         telefono = request.json['telefono']
         password = generate_password_hash(request.json["password"], method="sha256")
-        rol = request.json['rol']
 
  
-        control_es = Control(str(cedula),fullname,correo,telefono,password,rol)
+        control_es = Control(str(cedula),fullname,correo,telefono,password)
 
         affected_rows = ControlModel.update_control(control_es)
 
