@@ -1,4 +1,7 @@
 from models.entities.peticiones import Peticiones
+from models.entities.students import Student
+from models.entities.docente import Docente
+from models.entities.materias import Materias
 from database.db import get_connection 
 
 class PeticionesModel():
@@ -8,18 +11,42 @@ class PeticionesModel():
 
         try:
             conection = get_connection()
-            peticiones = []
+            join = {}
 
             with conection.cursor() as cursor:
-                    cursor.execute("SELECT * from peticiones")
+                    cursor.execute("""
+                    SELECT p.id, p.descripcion, p.estado,
+                           e.cedula, e.fullname as estudiante_fullname,
+                           d.cedula as docente_cedula, d.fullname as docente_fullname,
+                           m.id as id_materia, m.nombre as nombre_materia
+                    FROM peticiones p
+                    LEFT JOIN estudiantes e ON p.id_estudiante = e.cedula
+                    LEFT JOIN docentes d ON p.id_docente = d.cedula
+                    LEFT JOIN materias m ON p.id_materia = m.id
+                """)
+                    
                     resultset = cursor.fetchall()
 
                     for row in resultset:
-                        peticion = Peticiones(id = row[0],id_docente= row[1],descripcion= row[2],estado = row[3],id_estudiante=row[4],id_materia=row[5],campo= row[6])
-                        peticiones.append(peticion.to_JSON())
-                
+                        id_peticion = row[0]
+                        descripcion = row[1]
+                        estado = row[2]
+
+                        join["estudiante"] = Student(cedula=row[3], fullname=row[4], correo='', telefono='', semestre='',
+                                                password='', estado='', carrera='', edad=0, sexo='', promedio=0,
+                                                direccion='', fecha_nac=None).to_JSON()
+
+                        join["docente"] = Docente(cedula=row[5], fullname=row[6], correo='', telefono='', password='').to_JSON()
+
+                        join["materia"] = Materias(id=row[7], nombre=row[8], prelacion='', unidad_credito=0, hp=0, ht=0, semestre='',
+                                        id_carrera='', id_docente='', dia='', hora_inicio='', hora_fin='').to_JSON()
+
+                        join["peticion"] = Peticiones(id=id_peticion, descripcion=descripcion, estado=estado,
+                                            id_estudiante=estudiante, id_docente=docente, id_materia=materia).to_JSON()
+
+                       
             conection.close()
-            return peticiones 
+            return join 
 
         except  Exception as ex:
             raise Exception(ex)
