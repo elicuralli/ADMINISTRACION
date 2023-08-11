@@ -1,41 +1,46 @@
-from flask import Blueprint,jsonify,request
+from flask import Blueprint, jsonify, request
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta, datetime
 
-main= Blueprint('students_blueprint',__name__)
-@main.after_request 
+main = Blueprint('students_blueprint', __name__)
+
+
+@main.after_request
 def after_request(response):
     header = response.headers
     header['Access-Control-Allow-Origin'] = '*'
     return response
+
 
 @main.route('/')
 def get_students():
     try:
 
         students = StudentModel.get_students()
-        return jsonify({"ok": True, "status":200,"data":students})
-    
+        return jsonify({"ok": True, "status": 200, "data": students})
+
     except Exception as ex:
-        return jsonify({"message": str(ex)}),500
+        return jsonify({"message": str(ex)}), 500
+
 
 @main.route('/<cedula>')
 def get_student(cedula):
     try:
         student = StudentModel.get_student(cedula)
         if student != None:
-            return jsonify({"ok": True, "status":200,"data":student})
+            return jsonify({"ok": True, "status": 200, "data": student})
         else:
-            return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}),404
-    
+            return jsonify({"ok": False, "status": 404, "data": {"message": "Estudiante no encontrado"}}), 404
+
     except Exception as ex:
         print(ex)
-        return jsonify({"message": str(ex)}),500
+        return jsonify({"message": str(ex)}), 500
 
-@main.route('/add', methods = ["POST"])
+
+@main.route('/add', methods=["POST"])
 def add_student():
     try:
 
@@ -49,28 +54,27 @@ def add_student():
         password = generate_password_hash(request.json["password"], method="sha256")
         edad = request.json['edad']
         sexo = request.json['sexo']
-        promedio = request.json['promedio']
         direccion = request.json['direccion']
         fecha_nac = request.json['fecha_nac']
 
-        student = Student(str(cedula),fullname,correo,telefono,semestre,password,estado,carrera,edad,sexo,promedio,direccion,fecha_nac)
+        student = Student(str(cedula), fullname, correo, telefono, semestre, password, estado, carrera, edad, sexo,
+                          0, direccion, fecha_nac)
 
         affected_rows = StudentModel.add_student(student)
 
         if affected_rows == 1:
-            return jsonify({"ok": True, "status":200,"data":None})
+            return jsonify({"ok": True, "status": 200, "data": None})
         else:
-            return jsonify({"ok": False, "status":500,"data":{"message": affected_rows}}), 500
-    
-    except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
-    
+            return jsonify({"ok": False, "status": 500, "data": {"message": affected_rows}}), 500
 
-@main.route('/update/<cedula>', methods = ["PUT"])
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+
+
+@main.route('/update/<cedula>', methods=["PUT"])
 def update_student(cedula):
     try:
-    
-        cedula = request.json['cedula']
+
         fullname = request.json['fullname']
         correo = request.json['correo']
         telefono = request.json['telefono']
@@ -79,55 +83,56 @@ def update_student(cedula):
         carrera = request.json["carrera"]
         edad = request.json['edad']
         sexo = request.json['sexo']
-        promedio = request.json['promedio']
         direccion = request.json['direccion']
         fecha_nac = request.json['fecha_nac']
 
-
-        student = Student(str(cedula),fullname,correo,telefono,semestre,None,estado,carrera,edad,sexo,promedio)
+        student = Student(str(cedula), fullname, correo, telefono, semestre, None, estado, carrera, edad, sexo, 0, direccion, fecha_nac)
 
         affected_rows = StudentModel.update_student(student)
 
         if affected_rows == 1:
-            return jsonify({"ok": True, "status":200,"data":None})
+            return jsonify({"ok": True, "status": 200, "data": None})
         else:
-            return jsonify({"ok": False, "status":500,"data":{"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
-    
+            return jsonify({"ok": False, "status": 500,
+                            "data": {"message": "Error al actualizar, compruebe los datos e intente nuevamente"}}), 500
+
     except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 
-@main.route('/delete/<cedula>', methods = ["DELETE"])
+@main.route('/delete/<cedula>', methods=["DELETE"])
 def delete_student(cedula):
     try:
-        
+
         student = Student(str(cedula))
 
         affected_rows = StudentModel.delete_student(student)
 
         if affected_rows == 1:
-            return jsonify({"ok": True, "status":200,"data": None})
+            return jsonify({"ok": True, "status": 200, "data": None})
         else:
-            return jsonify({"ok": False, "status":404,"data":{"message": "Estudiante no encontrado"}}) ,404
-    
-    except Exception as ex:
-        return jsonify({"ok": False, "status":500,"data":{"message": str(ex)}}), 500
+            return jsonify({"ok": False, "status": 404, "data": {"message": "Estudiante no encontrado"}}), 404
 
-@main.route("/add-materia/<materia>", methods= ["POST"])
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+
+
+@main.route("/add-materia/<materia>", methods=["POST"])
 @jwt_required()
 def add_student_to_materia(materia: str):
     try:
-        correo_estudiante = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo
-        student: Student | None # declaramos sin iniciar la variable del estudiante
+        correo_estudiante = get_jwt_identity()  # esto obtiene la identidad del token, en este caso, un correo
+        student: Student | None  # declaramos sin iniciar la variable del estudiante
         if correo_estudiante is not None:
-            student_entity = Student(correo=correo_estudiante) # creamos la entidad del estudiante
-            student = StudentModel.login(student_entity) #revisamos la bd
+            student_entity = Student(correo=correo_estudiante)  # creamos la entidad del estudiante
+            student = StudentModel.login(student_entity)  # revisamos la bd
             if student is not None:
                 affected_rows = StudentModel.add_materia(student, materia)
                 if affected_rows == 1:
-                    return jsonify({"ok":True, "status":200, "data": None}), 200
+                    return jsonify({"ok": True, "status": 200, "data": None}), 200
     except Exception as ex:
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}})
+
 
 @main.route("/materias", methods=["GET"])
 @jwt_required()
@@ -170,13 +175,13 @@ def get_horario():
             student_entity = Student(correo=correo_estudiante)
             student_entity = StudentModel.login(student_entity)
             materias = StudentModel.get_inscritas(student_entity.cedula)
-            return jsonify({"ok": True, "status": 200, "data": {"materias":materias}}), 200
+            return jsonify({"ok": True, "status": 200, "data": {"materias": materias}}), 200
     except Exception as ex:
         print(ex.with_traceback(None))
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 
-@main.route('/login',methods = ["POST"])
+@main.route('/login', methods=["POST"])
 def login():
     try:
         fecha_actual = datetime.now()
@@ -185,59 +190,63 @@ def login():
         estudiante = Student(correo=usuario)
         estudiante = StudentModel.login(estudiante)
         if estudiante is not None:
-            if check_password_hash(estudiante.password, clave): # comprobamos que el hash sea igual a la clave ingrasada
-                #pagos = StudentModel.get_pago_by_student(estudiante.cedula)
-                #config = ConfigModel.get_configuracion("1")
+            if check_password_hash(estudiante.password,
+                                   clave):  # comprobamos que el hash sea igual a la clave ingrasada
+                # pagos = StudentModel.get_pago_by_student(estudiante.cedula)
+                # config = ConfigModel.get_configuracion("1")
 
                 # if pagos.pre_inscripcion is None:
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la preinscripcion"}}), 401
-                
+
                 # if pagos.inscripcion is None:
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la inscripcion"}}), 401
-                
+
                 # print(pagos.to_JSON())
                 # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota1 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 1ra cuota"}}), 401
-                
+
                 # print(config.cuota2, pagos.cuota2)
                 # if fecha_actual >= datetime.strptime(config.cuota2, "%Y-%m-%d") and pagos.cuota2 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 2da cuota"}}), 401
-                
+
                 # if fecha_actual >= datetime.strptime(config.cuota3, "%Y-%m-%d") and pagos.cuota3 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 3ra cuota"}}), 401
-                
+
                 # if fecha_actual >= datetime.strptime(config.cuota4, "%Y-%m-%d") and pagos.cuota4 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 4ta cuota"}}), 401
-                
+
                 # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota5 is "":
                 #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 5ta cuota"}}), 401
-                
-                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=2), additional_claims={'rol': 'E'}) # creamos el token que vive una hora
-                return jsonify({"ok":True, "status": 200, "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
-        
+
+                access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=2),
+                                                   additional_claims={'rol': 'E'})  # creamos el token que vive una hora
+                return jsonify({"ok": True, "status": 200,
+                                "data": {"estudiante": estudiante.to_JSON(), "access_token": f"Bearer {access_token}"}})
+
             else:
-                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
+                return jsonify({"ok": False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
         else:
-            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
+            return jsonify({"ok": False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
 
 
     except Exception as ex:
-        return jsonify({"ok":False, "status": 500, "data": {"message": str(ex)}}), 500
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+
 
 @main.route('/refresh')
 @jwt_required()
 def jwt_student():
     try:
-        correo_estudiante = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo
-        student: Student | None # declaramos sin iniciar la variable del estudiante
+        correo_estudiante = get_jwt_identity()  # esto obtiene la identidad del token, en este caso, un correo
+        student: Student | None  # declaramos sin iniciar la variable del estudiante
         if correo_estudiante is not None:
-            student_entity = Student(correo=correo_estudiante) # creamos la entidad del estudiante
-            student = StudentModel.login(student_entity) #revisamos la bd
+            student_entity = Student(correo=correo_estudiante)  # creamos la entidad del estudiante
+            student = StudentModel.login(student_entity)  # revisamos la bd
             if student != None:
-                return jsonify({"ok": True, "status":200,"data":student.to_JSON()}) # retornamos si es correcto
-            
+                return jsonify({"ok": True, "status": 200, "data": student.to_JSON()})  # retornamos si es correcto
+
         else:
-            return jsonify({"ok": False, "status":401,"data":{"message": "no autorizado"}}),401
-    
+            return jsonify({"ok": False, "status": 401, "data": {"message": "no autorizado"}}), 401
+
     except Exception as ex:
-        return jsonify({"message": str(ex)}),500
+        return jsonify({"message": str(ex)}), 500

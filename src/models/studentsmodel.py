@@ -36,7 +36,7 @@ class StudentModel():
                 row = cursor.fetchone()
 
                 if row != None:
-                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7],edad = row[9],sexo = row[8],promedio = row[10],direccion=row[11],fecha_nac=row[12]).to_JSON()
+                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7],edad = row[8],sexo = row[9],promedio = row[10],direccion=row[11],fecha_nac=row[12]).to_JSON()
                     join["pago"] = Administracion(row[13], row[0], row[14], row[15], row[16], row[17], row[18], row[19], row[20]).to_JSON()
                     join["monto"] = Monto(row[21], row[13], row[22], row[23], row[24], row[25], row[26], row[27]).to_JSON()
                     join["metodo"] = Metodo(row[28], row[29], row[30], row[31], row[32], row[33], row[34], row[35], row[13]).to_JSON()
