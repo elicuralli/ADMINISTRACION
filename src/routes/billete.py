@@ -21,12 +21,12 @@ def get_billetes():
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
     
-@billete.route('/<codigo>')
-def get_billete(codigo):
+@billete.route('/<id>')
+def get_billete(id):
      
     try:
            
-        billete = BilleteModel.get_billete(codigo)
+        billete = BilleteModel.get_billete(id)
         if billete != None:
             return jsonify({"ok": True, "status":200,"data": billete})
         else:
@@ -42,11 +42,11 @@ def add_billete():
 
     try:
 
-        codigo = request.json['codigo']
-        cantidad = request.json['cantidad']
-        factura = request.json['factura']
+        id = request.json['id']
+        serial = request.json['serial']
+        monto = request.json['monto']
 
-        billete = Billete(str(codigo),cantidad,factura)
+        billete = Billete(str(id),serial,monto)
 
         affected_rows = BilleteModel.add_billete(billete)
 
@@ -62,15 +62,16 @@ def add_billete():
         print(ex)
         return jsonify({"message": str(ex)}),500
 
-@billete.route('/update/<codigo>', methods = ['PUT'])
-def update_billete(codigo):
+@billete.route('/update/<id>', methods = ['PUT'])
+def update_billete(id):
 
     try:
 
-        codigo = request.json['codigo']
-        cantidad = request.json['cantidad']
+       
+        serial = request.json['serial']
+        monto = request.json['monto']
 
-        billete = Billete(str(codigo),cantidad)
+        billete = Billete(serial,monto)
 
         affected_rows = BilleteModel.update_billete(billete)
 

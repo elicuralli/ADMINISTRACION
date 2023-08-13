@@ -1,68 +1,67 @@
-from models.entities.billete import Billete
-from database.db import get_connection 
+from entities.transferencias import Transferencia
+from database.db import get_connection
 
-
-class BilleteModel():
+class TransferenciaModel():
 
     @classmethod
-    def get_billetes(self):
+    def get_transferencias(self):
 
         try: 
                 conection = get_connection()
-                billetes = []
+                transferencias = []
 
                 with conection.cursor() as cursor: 
-                    cursor.execute("SELECT * from billete")
+                    cursor.execute("SELECT * from transferencias")
                     result = cursor.fetchall()
 
                     for row in result: 
-                        billete = Billete(row[0],row[1], row[2])
-                        billetes.append(billete.to_JSON())
+                        transferencia = Transferencia(row[0],row[1], row[2])
+                        transferencias.append(transferencia.to_JSON())
                         
                 
                 conection.close()
-                return billetes
+                return transferencias
 
         except Exception as ex:
                 raise Exception(ex)
     
     @classmethod
-    def get_billete(self,id: str):
+    def get_transferencia(self,id: str):
          
         try:
             
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT *FROM billete WHERE id =%s",(id,))
+                cursor.execute("SELECT *FROM transferencias WHERE id =%s",(id,))
                 result = cursor.fetchone()
 
                 if result is not None:
                      
-                        billete = Billete(id=result[0], serial=result[1], monto=result[2])
-                        billetes = billete.to_JSON()
+                       transferencia = Transferencia(id=result[0],codigo_referencia=result[1], metodo_pago=result[2])
+                       transferencias = transferencia.to_JSON()
                     
                         
                 else:
-                    raise Exception("Billete no existe")
+                    raise Exception("transferencia no existe")
 
             
             conection.close()
-            return billetes
+            return transferencias
 
              
         except Exception as ex:
             raise Exception(ex)
     
     @classmethod
-    def add_billete(self,billete: Billete):
+    def add_transferencia(self,transferencia: Transferencia):
          
         try:
             
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO billete (id,serial,monto)VALUES(%s,%s,%s)",(billete.id,billete.serial,billete.monto))
+                cursor.execute("INSERT INTO transferencias (id,codigo_referencia,metodo_pago)VALUES(%s,%s,%s)",(transferencia.id,transferencia.codigo_referencia,transferencia.metodo_pago))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -73,13 +72,13 @@ class BilleteModel():
             raise Exception(ex)
     
     @classmethod
-    def update_billete(self, billete):
+    def update_transferencia(self, transferencia):
     
         try:
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE billete SET monto = %s WHERE id = %s ",(billete.monto,billete.id))
+                cursor.execute("UPDATE transferencias SET codigo_referencia = %s,metodo_pago = %s WHERE id = %s ",(transferencia.codigo_referencia,transferencia.metodo_pago,transferencia.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 

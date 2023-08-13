@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
 from settings import settings
 from routes import students, admin, usuario, docente, carreras, materias, billete, coordinacion, control, peticiones, \
-    config, files,generar,SuperUsuario
+    config, files,generar,SuperUsuario,transferencia
 
 app = Flask(__name__)
 
@@ -27,6 +27,7 @@ def create_app(config_filename):
         app.register_blueprint(files.files, url_prefix='/api/archivos')
         app.register_blueprint(generar.generar_pdf,url_prefix = '/api/generar_ficha')
         app.register_blueprint(SuperUsuario.superUs,url_prefix = '/api/superUsuario')
+        app.register_blueprint(transferencia.transf, url_prefix = 'api/transferencias')
         # manejador de errores
         app.register_error_handler(404, page_not_found)
         t = 1

@@ -1,12 +1,12 @@
 class Billete():
-    def __init__(self, codigo = None, cantidad= None, factura = None) -> None:
-        self.codigo = codigo
-        self.cantidad = cantidad
-        self.factura = factura
+    def __init__(self, id = None, serial= None, monto = None) -> None:
+        self.id = id
+        self.serial = serial
+        self.monto = monto
     
     def to_JSON(self) -> dict:
        return {
-            "codigo": self.codigo, 
-            "cantidad": self.cantidad,
-            "factura": self.factura
+            "id": self.id,
+            "serial": self.serial,
+            "monto":self.monto
         }

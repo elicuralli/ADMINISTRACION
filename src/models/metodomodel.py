@@ -14,7 +14,7 @@ class MetodoModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    metodo = Metodo(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9])
+                    metodo = Metodo(row[0],row[1],row[2])
                     metodos.append(metodo.to_JSON())
             
             conection.close()
@@ -33,7 +33,7 @@ class MetodoModel():
                 row = cursor.fetchone()
 
                 if row != None:
-                    metodo = Metodo(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9])
+                    metodo = Metodo(row[0],row[1],row[2])
                 
             conection.close()
             return metodo
@@ -47,7 +47,7 @@ class MetodoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO metodo_pago (pre_inscripcion,inscripcion,cuota1,cuota2,cuota3,cuota4,cuota5,id_pago) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)""",(metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5,metodo.id_pago))
+                cursor.execute("""INSERT INTO metodo_pago (id,nombre,descripcion)VALUES(%s,%s,%s)""" ,(metodo.id,metodo.nombre,metodo.descripcion))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -64,7 +64,7 @@ class MetodoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""UPDATE metodo_pago SET pre_inscripcion=%s,inscripcion=%s,cuota1=%s,cuota2=%s,cuota3=%s,cuota4=%s,cuota5=%s WHERE id = %s""",(metodo.pre_inscripcion,metodo.inscripcion,metodo.cuota1,metodo.cuota2,metodo.cuota3,metodo.cuota4,metodo.cuota5, metodo.id))
+                cursor.execute("""UPDATE metodo_pago SET nombre = %s,descripcion =%s WHERE id = %s""",(metodo.nombre,metodo.descripcion,metodo.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
