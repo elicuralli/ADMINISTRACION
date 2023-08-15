@@ -7,7 +7,7 @@ from database.db import get_connection
 class PeticionesModel():
 
     @classmethod
-    def get_peticiones(self):
+    def get_peticiones(cls):
 
         try:
             conection = get_connection()
@@ -51,7 +51,7 @@ class PeticionesModel():
             raise Exception(ex)
     
     @classmethod
-    def get_peticion(self,id: str):
+    def get_peticion(cls,id: str):
          
          try:
             
@@ -95,7 +95,7 @@ class PeticionesModel():
     
          
     @classmethod
-    def add_peticion(self,peticion):
+    def add_peticion(cls,peticion):
          
         try:
              
@@ -159,7 +159,7 @@ class PeticionesModel():
             raise Exception(ex)
     
     @classmethod
-    def delete_peticion(self,peticion):
+    def delete_peticion(cls,peticion):
         try:
             conection = get_connection()                                      
             

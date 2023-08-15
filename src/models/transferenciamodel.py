@@ -1,4 +1,4 @@
-from entities.transferencias import Transferencia
+from models.entities.transferencias import Transferencia
 from database.db import get_connection
 
 class TransferenciaModel():
