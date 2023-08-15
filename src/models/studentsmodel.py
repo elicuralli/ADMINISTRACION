@@ -1,6 +1,6 @@
 from database.db import get_connection 
 from models.entities.students import Student
-from models.entities.administracion import Administracion
+from models.entities.pagos import Pago
 from models.entities.monto import Monto
 from models.entities.metodo import Metodo
 from models.configmodel import ConfigModel
@@ -29,22 +29,41 @@ class StudentModel():
     @classmethod
     def get_student(self, cedula: str):
         try:
-            conection = get_connection()
+            connection = get_connection()
             join = {}
-            with conection.cursor() as cursor:
-                cursor.execute("SELECT * from estudiantes INNER JOIN pagos ON pagos.cedula_estudiante = estudiantes.cedula INNER JOIN monto ON pagos.id = monto.id_pago INNER JOIN metodo_pago ON metodo_pago.id_pago = pagos.id WHERE cedula = %s",(cedula,))
+            with connection.cursor() as cursor:
+                cursor.execute("""
+                    SELECT e.cedula, e.fullname, e.correo, e.telefono, e.semestre, e.estado, e.carrera, e.edad, e.sexo, e.promedio, e.direccion, e.fecha_nac,
+                           p.id, p.metodo_pago_id, m.monto, mt.id AS metodo_id, mt.nombre AS metodo_nombre
+                    FROM estudiantes e
+                    LEFT JOIN pagos p ON p.cedula_estudiante = e.cedula
+                    LEFT JOIN monto m ON p.monto_id = m.id
+                    LEFT JOIN metodo_pago mt ON p.metodo_pago_id = mt.id
+                    WHERE e.cedula = %s
+                """, (cedula,))
                 row = cursor.fetchone()
 
-                if row != None:
-                    join["estudiante"] = Student(cedula=row[0],fullname=row[1],correo=row[2],telefono=row[4],semestre=row[5],password=None,estado=row[6],carrera= row[7],edad = row[8],sexo = row[9],promedio = row[10],direccion=row[11],fecha_nac=row[12]).to_JSON()
-                    join["pago"] = Administracion(row[13], row[0], row[14], row[15], row[16], row[17], row[18], row[19], row[20]).to_JSON()
-                    join["monto"] = Monto(row[21], row[13], row[22], row[23], row[24], row[25], row[26], row[27]).to_JSON()
-                    join["metodo"] = Metodo(row[28], row[29], row[30], row[31], row[32], row[33], row[34], row[35], row[13]).to_JSON()
-                
-            conection.close()
+                if row is not None:
+                    student = Student(
+                        cedula=row[0], fullname=row[1], correo=row[2], telefono=row[3], semestre=row[4],
+                        estado=row[5], carrera=row[6], edad=row[7], sexo=row[8], promedio=row[9],
+                        direccion=row[10], fecha_nac=row[11]
+                    )
+                    pago = Pago(
+                        id=row[12], cedula_estudiante=row[0], metodo_pago_id=row[13], monto_id=row[12],
+                        referencia_transferencia=None, referencia_billete=None
+                    )
+                    metodo = Metodo(id=row[15], nombre=row[16])
+
+                    join["estudiante"] = student.to_JSON()
+                    join["pago"] = pago.to_JSON()
+                    join["monto"] = {"monto": row[14]}
+                    join["metodo"] = metodo.to_JSON()
+
+            connection.close()
             return join
 
-        except  Exception as ex:
+        except Exception as ex:
             raise Exception(ex)
         
     @classmethod

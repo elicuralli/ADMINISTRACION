@@ -1,11 +1,11 @@
 from database.db import get_connection 
 from models.entities.monto import Monto
-from models.entities.administracion import Administracion
+from models.entities.pagos import Pago
 
 class MountModel():
 
     @classmethod
-    def get_montos(self):
+    def get_montos(cls):
         try:
             conection = get_connection()
             montos = []
@@ -25,7 +25,7 @@ class MountModel():
             raise Exception(ex)
     
     @classmethod
-    def get_monto(self,id):
+    def get_monto(cls,id):
         try:
             conection = get_connection()
             
@@ -46,7 +46,7 @@ class MountModel():
             raise Exception(ex)
     
     @classmethod
-    def add_monto(self,monto: Monto):
+    def add_monto(cls,monto: Monto):
         try:
             conection = get_connection()
             
@@ -63,7 +63,7 @@ class MountModel():
             raise Exception(ex)
         
     @classmethod
-    def update_monto(self,monto: Monto):
+    def update_monto(cls,monto: Monto):
         try:
             conection = get_connection()
             

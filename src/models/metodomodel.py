@@ -4,7 +4,7 @@ from models.entities.metodo import Metodo
 class MetodoModel():
 
     @classmethod
-    def get_metodos(self):
+    def get_metodos(cls):
         try:
             conection = get_connection()
             metodos = []
@@ -24,7 +24,7 @@ class MetodoModel():
             raise Exception(ex)
     
     @classmethod
-    def get_metodo(self,id):
+    def get_metodo(cls,id):
         try:
             conection = get_connection()
             
@@ -42,7 +42,7 @@ class MetodoModel():
             raise Exception(ex)
     
     @classmethod
-    def add_metodo(self,metodo: Metodo):
+    def add_metodo(cls,metodo: Metodo):
         try:
             conection = get_connection()
             
@@ -59,7 +59,7 @@ class MetodoModel():
             raise Exception(ex)
         
     @classmethod
-    def update_metodo(self,metodo: Metodo):
+    def update_metodo(cls,metodo: Metodo):
         try:
             conection = get_connection()
             

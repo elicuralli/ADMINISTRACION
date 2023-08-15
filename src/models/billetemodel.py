@@ -5,7 +5,7 @@ from database.db import get_connection
 class BilleteModel():
 
     @classmethod
-    def get_billetes(self):
+    def get_billetes(cls):
 
         try: 
                 conection = get_connection()
@@ -27,7 +27,7 @@ class BilleteModel():
                 raise Exception(ex)
     
     @classmethod
-    def get_billete(self,id: str):
+    def get_billete(cls,id: str):
          
         try:
             
@@ -55,7 +55,7 @@ class BilleteModel():
             raise Exception(ex)
     
     @classmethod
-    def add_billete(self,billete: Billete):
+    def add_billete(cls,billete: Billete):
          
         try:
             
@@ -73,7 +73,7 @@ class BilleteModel():
             raise Exception(ex)
     
     @classmethod
-    def update_billete(self, billete):
+    def update_billete(cls, billete):
     
         try:
             conection = get_connection()
