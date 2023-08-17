@@ -84,7 +84,7 @@ class PagoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO pagos(id,cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia,referencia_billete)VALUES(%s,%s,%s,%s,%s,%s,%s)"(pago.id,pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia,pago.referencia_billete))
+                cursor.execute("INSERT INTO pagos(id,cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)VALUES(%s,%s,%s,%s,%s,%s)"(pago.id,pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -100,7 +100,7 @@ class PagoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE pagos SET cedula_estudiante=%s,metodo_pago_id=%s,monto_id=%s,fecha_pago=%s,referencia_transferencia=%s,referencia_billete=%s WHERE id = %s",(pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia,pago.referencia_billete,pago.id) )
+                cursor.execute("UPDATE pagos SET cedula_estudiante=%s,metodo_pago_id=%s,monto_id=%s,fecha_pago=%s,referencia_transferencia=%s WHERE id = %s",(pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia,pago.id) )
                 affected_rows = cursor.rowcount
                 conection.commit()
 

@@ -63,9 +63,9 @@ def add_pago():
         monto_id = request.json['monto_id']
         fecha_pago = request.json['fecha_pago']
         referencia_transferencia = request.json[' referencia_transferencia']
-        referencia_billete = request.json[' referencia_billete']
+        
 
-        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia,referencia_billete)
+        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)
         pagos = PagoModel.add_pago(pago)
 
         if pagos == 1:
@@ -88,9 +88,9 @@ def update_pago(id):
         monto_id = request.json['monto_id']
         fecha_pago = request.json['fecha_pago']
         referencia_transferencia = request.json[' referencia_transferencia']
-        referencia_billete = request.json[' referencia_billete']
+      
 
-        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia,referencia_billete)
+        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)
         pagos = PagoModel.update_pago(pago)
 
         if pagos == 1:
