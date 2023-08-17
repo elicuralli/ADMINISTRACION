@@ -22,6 +22,7 @@ def get_pagos():
         return jsonify({"ok": True, "status": 200, "data": pago})
 
     except Exception as ex:
+        print(ex)
         return (
             jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
             500,

@@ -18,7 +18,9 @@ class PagoModel():
                            mo.id AS monto_id, mo.concepto AS monto_concepto, mo.monto AS monto_monto
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
-                    INNER JOIN monto mo ON p.monto_id = mo.id
+                    LEFT JOIN transferencias t ON m.id = t.metodo_pago_id
+                    LEFT JOIN billetes b ON b.metodo_pago_id = m.id
+                    INNER JOIN montos mo ON p.monto_id = mo.id
                     ORDER BY p.id ASC
                 """)
                 resultset = cursor.fetchall()
@@ -53,7 +55,7 @@ class PagoModel():
                            mo.id AS monto_id, mo.concepto AS monto_concepto, mo.monto AS monto_monto
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
-                    INNER JOIN monto mo ON p.monto_id = mo.id
+                    INNER JOIN montos mo ON p.monto_id = mo.id
                     WHERE p.id = %s
                 """, (id,))
                 row = cursor.fetchone()

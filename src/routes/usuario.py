@@ -22,7 +22,7 @@ def register():
         nombre = request.json['nombre']
         clave = generate_password_hash(request.json["clave"], method="sha256")
 
-        user = User(id=None,usuario=usuario,clave=clave)
+        user = User(id=None,usuario=usuario,clave=clave, nombre=nombre)
         affected_rows = UserModel.register(user)
 
         
