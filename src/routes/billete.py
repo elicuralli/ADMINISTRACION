@@ -42,11 +42,11 @@ def add_billete():
 
     try:
 
-        id = request.json['id']
         serial = request.json['serial']
         monto = request.json['monto']
+        pago_id = request.json["pago_id"]
 
-        billete = Billete(str(id),serial,monto)
+        billete = Billete(None,serial,monto,pago_id)
 
         affected_rows = BilleteModel.add_billete(billete)
 

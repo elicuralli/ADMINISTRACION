@@ -13,27 +13,28 @@ class PagoModel():
 
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT p.id, p.cedula_estudiante, p.fecha_pago,
-                           m.id AS metodo_id, m.nombre AS metodo_nombre,
-                           mo.id AS monto_id, mo.concepto AS monto_concepto, mo.monto AS monto_monto
+                    SELECT p.id, p.cedula_estudiante, p.fecha_pago, m.descripcion,
+                           m.id, m.nombre, mo.id, mo.concepto, mo.monto, t.codigo_referencia
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
-                    LEFT JOIN transferencias t ON m.id = t.metodo_pago_id
-                    LEFT JOIN billetes b ON b.metodo_pago_id = m.id
+                    LEFT JOIN transferencias t ON p.referencia_transferencias = t.id
+                    LEFT JOIN billetes b ON b.pago_id = p.id
                     INNER JOIN montos mo ON p.monto_id = mo.id
                     ORDER BY p.id ASC
                 """)
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    metodo = Metodo(row['metodo_id'], row['metodo_nombre'])
-                    monto = Monto(row['monto_id'], row['monto_concepto'], row['monto_monto'])
+                    print(row)
+                    metodo = Metodo(row[4], row[5], row[3])
+                    monto = Monto(row[6], row[7], row[8])
                     pago = Pago(
-                        id=row['id'],
-                        cedula_estudiante=row['cedula_estudiante'],
-                        metodo_pago=metodo,
-                        monto=monto,
-                        fecha_pago=row['fecha_pago']
+                        id=row[0],
+                        cedula_estudiante=row[1],
+                        metodo_pago_id=metodo,
+                        monto_id=monto,
+                        fecha_pago=row[2],
+                        referencia_transferencia=row[9]
                     )
                     pagos.append(pago.to_JSON())
             
@@ -50,26 +51,29 @@ class PagoModel():
 
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT p.id, p.cedula_estudiante, p.fecha_pago,
-                           m.id AS metodo_id, m.nombre AS metodo_nombre,
-                           mo.id AS monto_id, mo.concepto AS monto_concepto, mo.monto AS monto_monto
+                    SELECT p.id, p.cedula_estudiante, p.fecha_pago, m.descripcion,
+                           m.id, m.nombre, mo.id, mo.concepto, mo.monto,
+                           t.codigo_referencia
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
+                    LEFT JOIN transferencias t ON p.referencia_transferencias = t.id
+                    LEFT JOIN billetes b ON b.pago_id = p.id
                     INNER JOIN montos mo ON p.monto_id = mo.id
                     WHERE p.id = %s
                 """, (id,))
                 row = cursor.fetchone()
 
                 if row is not None:
-                    metodo = Metodo(row['metodo_id'], row['metodo_nombre'])
-                    monto = Monto(row['monto_id'], row['monto_concepto'], row['monto_monto'])
+                    metodo = Metodo(row[4], row[5], row[3])
+                    monto = Monto(row[6], row[7], row[8])
                     pago = Pago(
-                        id=row['id'],
-                        cedula_estudiante=row['cedula_estudiante'],
-                        metodo_pago=metodo,
-                        monto=monto,
-                        fecha_pago=row['fecha_pago']
-                    )
+                        id=row[0],
+                        cedula_estudiante=row[1],
+                        metodo_pago_id=metodo,
+                        monto_id=monto,
+                        fecha_pago=row[2],
+                        referencia_transferencia=row[9]
+                    ).to_JSON()
                 else:
                     pago = None
                 
@@ -86,13 +90,15 @@ class PagoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO pagos(id,cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)VALUES(%s,%s,%s,%s,%s,%s)"(pago.id,pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia))
+                cursor.execute("INSERT INTO pagos(cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencias)VALUES(%s,%s,%s,%s,%s) RETURNING id", (pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia))
+                id_inserted = cursor.fetchone()[0]
                 affected_rows = cursor.rowcount
+                
                 conection.commit()
 
 
             conection.close()
-            return affected_rows
+            return affected_rows, id_inserted
         except  Exception as ex:
             raise Exception(ex)
     

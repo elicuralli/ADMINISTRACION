@@ -12,10 +12,10 @@ class Pago():
     def to_JSON(self):
         return {
             "id": self.id,
-            "estudiante": self.estudiante.to_JSON(),  
-            "metodo_pago_id": self.metodo_pago_id.to_JSON(),
-            "monto_id": self.monto_id.to_JSON(),
+            "estudiante": self.cedula_estudiante,  
+            "metodo_pago": self.metodo_pago_id.to_JSON(),
+            "monto": self.monto_id.to_JSON(),
             "fecha_pago": self.fecha_pago,
-            "referencia_transferencia": self.referencia_transferencia.to_JSON() if self.referencia_transferencia else None,
+            "referencia_transferencia": self.referencia_transferencia,
             
         }

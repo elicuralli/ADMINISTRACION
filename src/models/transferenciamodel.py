@@ -15,7 +15,7 @@ class TransferenciaModel():
                     result = cursor.fetchall()
 
                     for row in result: 
-                        transferencia = Transferencia(row[0],row[1], row[2])
+                        transferencia = Transferencia(row[0],row[1])
                         transferencias.append(transferencia.to_JSON())
                         
                 
@@ -38,7 +38,7 @@ class TransferenciaModel():
 
                 if result is not None:
                      
-                       transferencia = Transferencia(id=result[0],codigo_referencia=result[1], metodo_pago=result[2])
+                       transferencia = Transferencia(id=result[0],codigo_referencia=result[1])
                        transferencias = transferencia.to_JSON()
                     
                         
@@ -61,12 +61,12 @@ class TransferenciaModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO transferencias (id,codigo_referencia,metodo_pago)VALUES(%s,%s,%s)",(transferencia.id,transferencia.codigo_referencia,transferencia.metodo_pago))
-                affected_rows = cursor.rowcount
+                cursor.execute("INSERT INTO transferencias (codigo_referencia) VALUES (%s) RETURNING id",(transferencia.codigo_referencia,))
+                insserted_id = cursor.fetchone()[0]
                 conection.commit()
 
             conection.close()
-            return affected_rows
+            return insserted_id
 
         except Exception as ex:
             raise Exception(ex)
@@ -78,7 +78,7 @@ class TransferenciaModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE transferencias SET codigo_referencia = %s,metodo_pago = %s WHERE id = %s ",(transferencia.codigo_referencia,transferencia.metodo_pago,transferencia.id))
+                cursor.execute("UPDATE transferencias SET codigo_referencia = %s WHERE id = %s ",(transferencia.codigo_referencia,transferencia.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 

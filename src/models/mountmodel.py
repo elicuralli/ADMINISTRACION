@@ -51,12 +51,15 @@ class MountModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO monto (id,concepto,monto) VALUES (%s,%s,%s)""",(monto,id,monto.concepto,monto.monto))
-                affected_rows = cursor.rowcount
+                cursor.execute("""INSERT INTO montos (concepto,monto) VALUES (%s,%s) RETURNING id""",(monto.concepto,monto.monto))
+                inserted_id = cursor.fetchone()[0]
+            
                 conection.commit()
 
             conection.close()
-            return affected_rows
+            
+            # Devolver el ID recién insertado
+            return inserted_id
 
         except  Exception as ex:
             print(ex)

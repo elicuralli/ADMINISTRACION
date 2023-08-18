@@ -47,12 +47,15 @@ class MetodoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("""INSERT INTO metodo_pago (id,nombre,descripcion)VALUES(%s,%s,%s)""" ,(metodo.id,metodo.nombre,metodo.descripcion))
-                affected_rows = cursor.rowcount
+                cursor.execute("""INSERT INTO metodo_pago (nombre,descripcion)VALUES(%s,%s) RETURNING id""" ,(metodo.nombre,metodo.descripcion))
+                inserted_id = cursor.fetchone()[0]
+            
                 conection.commit()
 
             conection.close()
-            return affected_rows
+            
+            # Devolver el ID recién insertado
+            return inserted_id
 
         except  Exception as ex:
             print(ex)

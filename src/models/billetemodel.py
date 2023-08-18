@@ -12,11 +12,11 @@ class BilleteModel():
                 billetes = []
 
                 with conection.cursor() as cursor: 
-                    cursor.execute("SELECT * from billete")
+                    cursor.execute("SELECT * from billetes")
                     result = cursor.fetchall()
 
                     for row in result: 
-                        billete = Billete(row[0],row[1], row[2])
+                        billete = Billete(row[3],row[0], row[1], row[2])
                         billetes.append(billete.to_JSON())
                         
                 
@@ -34,12 +34,12 @@ class BilleteModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("SELECT *FROM billete WHERE id =%s",(id,))
+                cursor.execute("SELECT *FROM billetes WHERE id =%s",(id,))
                 result = cursor.fetchone()
 
                 if result is not None:
                      
-                        billete = Billete(id=result[0], serial=result[1], monto=result[2])
+                        billete = Billete(id=result[3], serial=result[0], monto=result[1], pago_id=result[2])
                         billetes = billete.to_JSON()
                     
                         
@@ -62,7 +62,7 @@ class BilleteModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO billete (id,serial,monto)VALUES(%s,%s,%s)",(billete.id,billete.serial,billete.monto))
+                cursor.execute("INSERT INTO billetes (serial,monto,pago_id)VALUES(%s,%s,%s)",(billete.serial,billete.monto,billete.pago))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -79,7 +79,7 @@ class BilleteModel():
             conection = get_connection()
 
             with conection.cursor() as cursor:
-                cursor.execute("UPDATE billete SET monto = %s WHERE id = %s ",(billete.monto,billete.id))
+                cursor.execute("UPDATE billetes SET monto = %s WHERE id = %s ",(billete.monto,billete.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 

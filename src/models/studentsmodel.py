@@ -30,15 +30,9 @@ class StudentModel():
     def get_student(self, cedula: str):
         try:
             connection = get_connection()
-            join = {}
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT e.cedula, e.fullname, e.correo, e.telefono, e.semestre, e.estado, e.carrera, e.edad, e.sexo, e.promedio, e.direccion, e.fecha_nac,
-                           p.id, p.metodo_pago_id, m.monto, mt.id AS metodo_id, mt.nombre AS metodo_nombre
-                    FROM estudiantes e
-                    LEFT JOIN pagos p ON p.cedula_estudiante = e.cedula
-                    LEFT JOIN monto m ON p.monto_id = m.id
-                    LEFT JOIN metodo_pago mt ON p.metodo_pago_id = mt.id
+                    SELECT e.cedula, e.fullname, e.correo, e.telefono, e.semestre, e.estado, e.carrera, e.edad, e.sexo, e.promedio, e.direccion, e.fecha_nac FROM estudiantes e
                     WHERE e.cedula = %s
                 """, (cedula,))
                 row = cursor.fetchone()
@@ -48,20 +42,10 @@ class StudentModel():
                         cedula=row[0], fullname=row[1], correo=row[2], telefono=row[3], semestre=row[4],
                         estado=row[5], carrera=row[6], edad=row[7], sexo=row[8], promedio=row[9],
                         direccion=row[10], fecha_nac=row[11]
-                    )
-                    pago = Pago(
-                        id=row[12], cedula_estudiante=row[0], metodo_pago_id=row[13], monto_id=row[12],
-                        referencia_transferencia=None, referencia_billete=None
-                    )
-                    metodo = Metodo(id=row[15], nombre=row[16])
-
-                    join["estudiante"] = student.to_JSON()
-                    join["pago"] = pago.to_JSON()
-                    join["monto"] = {"monto": row[14]}
-                    join["metodo"] = metodo.to_JSON()
+                    ).to_JSON()
 
             connection.close()
-            return join
+            return student
 
         except Exception as ex:
             raise Exception(ex)

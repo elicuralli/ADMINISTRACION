@@ -5,6 +5,8 @@ from models.entities.monto import Monto
 from models.mountmodel import MountModel
 from models.metodomodel import MetodoModel
 from models.entities.metodo import Metodo
+from models.transferenciamodel import TransferenciaModel
+from models.entities.transferencias import Transferencia
 pago = Blueprint("pagos_blueprint", __name__)
 
 
@@ -58,21 +60,30 @@ def get_pago(id):
 def add_pago():
 
     try:
-        id = request.json['id']
         cedula_estudiante = request.json['cedula_estudiante']
-        metodo_pago_id = request.json['metodo_pago_id']
-        monto_id = request.json['monto_id']
+        descripcion = request.json["descripcion"]
+        metodo_pago = request.json['metodo']
+        monto = request.json['monto']
         fecha_pago = request.json['fecha_pago']
-        referencia_transferencia = request.json[' referencia_transferencia']
+        referencia_transferencia = request.json.get('referencia_transferencia', None)
         
+        metodo = Metodo(None, metodo_pago, descripcion)
+        metodo_id = MetodoModel.add_metodo(metodo)
 
-        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)
-        pagos = PagoModel.add_pago(pago)
+        monto = Monto(None, descripcion, monto)
+        monto_id = MountModel.add_monto(monto)
+        id_trans = None
+        if referencia_transferencia is not None:
+            transf = Transferencia(None, str(referencia_transferencia))
+            id_trans = TransferenciaModel.add_transferencia(transf)
+
+        pago = Pago(None, cedula_estudiante, metodo_id,monto_id, fecha_pago, id_trans)
+        pagos, id_pago = PagoModel.add_pago(pago)
 
         if pagos == 1:
-             return jsonify({"ok": True, "status":200,"data":None})
+             return jsonify({"ok": True, "status":200,"data":{"pagoId": id_pago}})
         else:
-            return jsonify({"ok": False, "status":500,"data":{"message": pagos}}), 500
+            return jsonify({"ok": False, "status":500,"data":None}), 500
     
     except Exception as ex:
         return (
