@@ -2,6 +2,7 @@ from models.entities.metodo import Metodo
 from models.entities.monto import Monto
 from models.entities.pagos import Pago
 from database.db import get_connection 
+from models.configmodel import ConfigModel
 
 
 class PagoModel():
@@ -14,7 +15,8 @@ class PagoModel():
             with connection.cursor() as cursor:
                 cursor.execute("""
                     SELECT p.id, p.cedula_estudiante, p.fecha_pago, m.descripcion,
-                           m.id, m.nombre, mo.id, mo.concepto, mo.monto, t.codigo_referencia
+                           m.id, m.nombre, mo.id, mo.concepto, mo.monto,
+                           t.codigo_referencia, p.ciclo
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
                     LEFT JOIN transferencias t ON p.referencia_transferencias = t.id
@@ -34,7 +36,8 @@ class PagoModel():
                         metodo_pago_id=metodo,
                         monto_id=monto,
                         fecha_pago=row[2],
-                        referencia_transferencia=row[9]
+                        referencia_transferencia=row[9],
+                        ciclo=row[10]
                     )
                     pagos.append(pago.to_JSON())
             
@@ -53,7 +56,7 @@ class PagoModel():
                 cursor.execute("""
                     SELECT p.id, p.cedula_estudiante, p.fecha_pago, m.descripcion,
                            m.id, m.nombre, mo.id, mo.concepto, mo.monto,
-                           t.codigo_referencia
+                           t.codigo_referencia, p.ciclo
                     FROM pagos p
                     INNER JOIN metodo_pago m ON p.metodo_pago_id = m.id
                     LEFT JOIN transferencias t ON p.referencia_transferencias = t.id
@@ -72,7 +75,8 @@ class PagoModel():
                         metodo_pago_id=metodo,
                         monto_id=monto,
                         fecha_pago=row[2],
-                        referencia_transferencia=row[9]
+                        referencia_transferencia=row[9],
+                        ciclo=row[10]
                     ).to_JSON()
                 else:
                     pago = None
@@ -90,7 +94,8 @@ class PagoModel():
             conection = get_connection()
             
             with conection.cursor() as cursor:
-                cursor.execute("INSERT INTO pagos(cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencias)VALUES(%s,%s,%s,%s,%s) RETURNING id", (pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia))
+                ciclo = ConfigModel.get_configuracion("1").ciclo
+                cursor.execute("INSERT INTO pagos(cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencias,ciclo)VALUES(%s,%s,%s,%s,%s,%s) RETURNING id", (pago.cedula_estudiante,pago.metodo_pago_id,pago.monto_id,pago.fecha_pago,pago.referencia_transferencia,ciclo))
                 id_inserted = cursor.fetchone()[0]
                 affected_rows = cursor.rowcount
                 

@@ -9,7 +9,7 @@ class FacturaModel:
         connection = get_connection()
 
         with connection.cursor() as cursor: 
-            cursor.execute("SELECT id FROM factura ORDER BY id DESC LIMIT 1;")
+            cursor.execute("SELECT id FROM factura;")
             current_number = cursor.fetchone()[0]
         connection.close()
         return current_number
@@ -20,7 +20,7 @@ class FacturaModel:
         connection = get_connection()
         
         with connection.cursor() as cursor: 
-            cursor.execute("UPDATE factura SET id = id + 1 ORDER BY id DESC LIMIT 1;")
+            cursor.execute("UPDATE factura SET id = id + 1;")
             connection.commit()
         connection.close()
 
