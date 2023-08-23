@@ -16,9 +16,9 @@ class PeticionesModel():
             with conection.cursor() as cursor:
                 cursor.execute("""
                     SELECT p.id, p.descripcion, p.estado,
-                           e.cedula, e.fullname as estudiante_fullname,
-                           d.cedula as docente_cedula, d.fullname as docente_fullname,
-                           m.id as id_materia, m.nombre as nombre_materia
+                           e.cedula, e.fullname,
+                           d.cedula, d.fullname,
+                           m.id, m.nombre, p.campo
                     FROM peticiones p
                     LEFT JOIN estudiantes e ON p.id_estudiante = e.cedula
                     LEFT JOIN docentes d ON p.id_docente = d.cedula
@@ -31,7 +31,7 @@ class PeticionesModel():
                     id_peticion = row[0]
                     descripcion = row[1]
                     estado = row[2]
-                    print(row)
+                    campo = row[9]
 
                     estudiante = Student(cedula=row[3], fullname=row[4])
 
@@ -40,7 +40,7 @@ class PeticionesModel():
                     materia = Materias(id=row[7], nombre=row[8])
 
                     peticion = Peticiones(id=id_peticion, descripcion=descripcion, estado=estado,
-                                          id_estudiante=estudiante.cedula, id_docente=docente.cedula, id_materia=materia.id).to_JSON()
+                                          id_estudiante=estudiante.cedula, id_docente=docente.cedula, id_materia=materia.id, campo=campo).to_JSON()
                     join.append({"estudiante": {"cedula": estudiante.cedula, "nombre": estudiante.fullname}, "docente": {"cedula": docente.cedula, "nombre": docente.fullname}, "materia": {"id": materia.id, "nombre": materia.nombre}, "peticion": peticion})
 
 
