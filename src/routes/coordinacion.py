@@ -118,9 +118,9 @@ def login():
                 return jsonify({"ok":True, "status": 200, "data": {"coordinador": coordinador.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:
-                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosa"}}), 401
+                return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
         else:
-            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectosb"}}), 401
+            return jsonify({"ok":False, "status": 401, "data": {"message": "Correo y/o clave incorrectos"}}), 401
 
 
     except Exception as ex:
