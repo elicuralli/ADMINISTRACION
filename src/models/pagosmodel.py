@@ -27,7 +27,6 @@ class PagoModel():
                 resultset = cursor.fetchall()
 
                 for row in resultset:
-                    print(row)
                     metodo = Metodo(row[4], row[5], row[3])
                     monto = Monto(row[6], row[7], row[8])
                     pago = Pago(

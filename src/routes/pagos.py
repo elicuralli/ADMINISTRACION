@@ -86,6 +86,7 @@ def add_pago():
             return jsonify({"ok": False, "status":500,"data":None}), 500
     
     except Exception as ex:
+        print(ex)
         return (
             jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}),
             500,

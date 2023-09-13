@@ -1,0 +1,3205 @@
+[
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "DatabaseError",
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "isExtraImport": true,
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "decouple",
+        "description": "decouple",
+        "isExtraImport": true,
+        "detail": "decouple",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "decouple",
+        "description": "decouple",
+        "isExtraImport": true,
+        "detail": "decouple",
+        "documentation": {}
+    },
+    {
+        "label": "SuperUsuario",
+        "importPath": "models.entities.SuperUsuario",
+        "description": "models.entities.SuperUsuario",
+        "isExtraImport": true,
+        "detail": "models.entities.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "SuperUsuario",
+        "importPath": "models.entities.SuperUsuario",
+        "description": "models.entities.SuperUsuario",
+        "isExtraImport": true,
+        "detail": "models.entities.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "Administracion",
+        "importPath": "models.entities.administracion",
+        "description": "models.entities.administracion",
+        "isExtraImport": true,
+        "detail": "models.entities.administracion",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.entities.students",
+        "description": "models.entities.students",
+        "isExtraImport": true,
+        "detail": "models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.entities.students",
+        "description": "models.entities.students",
+        "isExtraImport": true,
+        "detail": "models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.entities.students",
+        "description": "models.entities.students",
+        "isExtraImport": true,
+        "detail": "models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.entities.students",
+        "description": "models.entities.students",
+        "isExtraImport": true,
+        "detail": "models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.entities.students",
+        "description": "models.entities.students",
+        "isExtraImport": true,
+        "detail": "models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "importPath": "models.entities.monto",
+        "description": "models.entities.monto",
+        "isExtraImport": true,
+        "detail": "models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "importPath": "models.entities.monto",
+        "description": "models.entities.monto",
+        "isExtraImport": true,
+        "detail": "models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "importPath": "models.entities.monto",
+        "description": "models.entities.monto",
+        "isExtraImport": true,
+        "detail": "models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "importPath": "models.entities.monto",
+        "description": "models.entities.monto",
+        "isExtraImport": true,
+        "detail": "models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "importPath": "models.entities.monto",
+        "description": "models.entities.monto",
+        "isExtraImport": true,
+        "detail": "models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "importPath": "models.entities.metodo",
+        "description": "models.entities.metodo",
+        "isExtraImport": true,
+        "detail": "models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "importPath": "models.entities.metodo",
+        "description": "models.entities.metodo",
+        "isExtraImport": true,
+        "detail": "models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "importPath": "models.entities.metodo",
+        "description": "models.entities.metodo",
+        "isExtraImport": true,
+        "detail": "models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "importPath": "models.entities.metodo",
+        "description": "models.entities.metodo",
+        "isExtraImport": true,
+        "detail": "models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "importPath": "models.entities.metodo",
+        "description": "models.entities.metodo",
+        "isExtraImport": true,
+        "detail": "models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Billete",
+        "importPath": "models.entities.billete",
+        "description": "models.entities.billete",
+        "isExtraImport": true,
+        "detail": "models.entities.billete",
+        "documentation": {}
+    },
+    {
+        "label": "Billete",
+        "importPath": "models.entities.billete",
+        "description": "models.entities.billete",
+        "isExtraImport": true,
+        "detail": "models.entities.billete",
+        "documentation": {}
+    },
+    {
+        "label": "Carrera",
+        "importPath": "models.entities.carreras",
+        "description": "models.entities.carreras",
+        "isExtraImport": true,
+        "detail": "models.entities.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "Carrera",
+        "importPath": "models.entities.carreras",
+        "description": "models.entities.carreras",
+        "isExtraImport": true,
+        "detail": "models.entities.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "Carrera",
+        "importPath": "models.entities.carreras",
+        "description": "models.entities.carreras",
+        "isExtraImport": true,
+        "detail": "models.entities.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "importPath": "models.entities.materias",
+        "description": "models.entities.materias",
+        "isExtraImport": true,
+        "detail": "models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Configuracion",
+        "importPath": "models.entities.config",
+        "description": "models.entities.config",
+        "isExtraImport": true,
+        "detail": "models.entities.config",
+        "documentation": {}
+    },
+    {
+        "label": "Configuracion",
+        "importPath": "models.entities.config",
+        "description": "models.entities.config",
+        "isExtraImport": true,
+        "detail": "models.entities.config",
+        "documentation": {}
+    },
+    {
+        "label": "Control",
+        "importPath": "models.entities.control",
+        "description": "models.entities.control",
+        "isExtraImport": true,
+        "detail": "models.entities.control",
+        "documentation": {}
+    },
+    {
+        "label": "Control",
+        "importPath": "models.entities.control",
+        "description": "models.entities.control",
+        "isExtraImport": true,
+        "detail": "models.entities.control",
+        "documentation": {}
+    },
+    {
+        "label": "Coordinacion",
+        "importPath": "models.entities.coordinacion",
+        "description": "models.entities.coordinacion",
+        "isExtraImport": true,
+        "detail": "models.entities.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "Coordinacion",
+        "importPath": "models.entities.coordinacion",
+        "description": "models.entities.coordinacion",
+        "isExtraImport": true,
+        "detail": "models.entities.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "Docente",
+        "importPath": "models.entities.docente",
+        "description": "models.entities.docente",
+        "isExtraImport": true,
+        "detail": "models.entities.docente",
+        "documentation": {}
+    },
+    {
+        "label": "Docente",
+        "importPath": "models.entities.docente",
+        "description": "models.entities.docente",
+        "isExtraImport": true,
+        "detail": "models.entities.docente",
+        "documentation": {}
+    },
+    {
+        "label": "Docente",
+        "importPath": "models.entities.docente",
+        "description": "models.entities.docente",
+        "isExtraImport": true,
+        "detail": "models.entities.docente",
+        "documentation": {}
+    },
+    {
+        "label": "Peticiones",
+        "importPath": "models.entities.peticiones",
+        "description": "models.entities.peticiones",
+        "isExtraImport": true,
+        "detail": "models.entities.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "Peticiones",
+        "importPath": "models.entities.peticiones",
+        "description": "models.entities.peticiones",
+        "isExtraImport": true,
+        "detail": "models.entities.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "Peticiones",
+        "importPath": "models.entities.peticiones",
+        "description": "models.entities.peticiones",
+        "isExtraImport": true,
+        "detail": "models.entities.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "Peticiones",
+        "importPath": "models.entities.peticiones",
+        "description": "models.entities.peticiones",
+        "isExtraImport": true,
+        "detail": "models.entities.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "importPath": "models.configmodel",
+        "description": "models.configmodel",
+        "isExtraImport": true,
+        "detail": "models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "Pago",
+        "importPath": "models.entities.pagos",
+        "description": "models.entities.pagos",
+        "isExtraImport": true,
+        "detail": "models.entities.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "Pago",
+        "importPath": "models.entities.pagos",
+        "description": "models.entities.pagos",
+        "isExtraImport": true,
+        "detail": "models.entities.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "Pago",
+        "importPath": "models.entities.pagos",
+        "description": "models.entities.pagos",
+        "isExtraImport": true,
+        "detail": "models.entities.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "Pago",
+        "importPath": "models.entities.pagos",
+        "description": "models.entities.pagos",
+        "isExtraImport": true,
+        "detail": "models.entities.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "Transferencia",
+        "importPath": "models.entities.transferencias",
+        "description": "models.entities.transferencias",
+        "isExtraImport": true,
+        "detail": "models.entities.transferencias",
+        "documentation": {}
+    },
+    {
+        "label": "Transferencia",
+        "importPath": "models.entities.transferencias",
+        "description": "models.entities.transferencias",
+        "isExtraImport": true,
+        "detail": "models.entities.transferencias",
+        "documentation": {}
+    },
+    {
+        "label": "Transferencia",
+        "importPath": "models.entities.transferencias",
+        "description": "models.entities.transferencias",
+        "isExtraImport": true,
+        "detail": "models.entities.transferencias",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.entities.user",
+        "description": "models.entities.user",
+        "isExtraImport": true,
+        "detail": "models.entities.user",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "models.entities.user",
+        "description": "models.entities.user",
+        "isExtraImport": true,
+        "detail": "models.entities.user",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_required",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt_identity",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "JWTManager",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "SuperUsuarioModel",
+        "importPath": "models.SuperUsuarioModel",
+        "description": "models.SuperUsuarioModel",
+        "isExtraImport": true,
+        "detail": "models.SuperUsuarioModel",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_file",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "importPath": "models.studentsmodel",
+        "description": "models.studentsmodel",
+        "isExtraImport": true,
+        "detail": "models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "importPath": "models.studentsmodel",
+        "description": "models.studentsmodel",
+        "isExtraImport": true,
+        "detail": "models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "models.studentsmodel",
+        "description": "models.studentsmodel",
+        "isExtraImport": true,
+        "detail": "models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "importPath": "models.studentsmodel",
+        "description": "models.studentsmodel",
+        "isExtraImport": true,
+        "detail": "models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "importPath": "models.studentsmodel",
+        "description": "models.studentsmodel",
+        "isExtraImport": true,
+        "detail": "models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "BilleteModel",
+        "importPath": "models.billetemodel",
+        "description": "models.billetemodel",
+        "isExtraImport": true,
+        "detail": "models.billetemodel",
+        "documentation": {}
+    },
+    {
+        "label": "CarreraModel",
+        "importPath": "models.carreramodel",
+        "description": "models.carreramodel",
+        "isExtraImport": true,
+        "detail": "models.carreramodel",
+        "documentation": {}
+    },
+    {
+        "label": "CarreraModel",
+        "importPath": "models.carreramodel",
+        "description": "models.carreramodel",
+        "isExtraImport": true,
+        "detail": "models.carreramodel",
+        "documentation": {}
+    },
+    {
+        "label": "ControlModel",
+        "importPath": "models.controlmodel",
+        "description": "models.controlmodel",
+        "isExtraImport": true,
+        "detail": "models.controlmodel",
+        "documentation": {}
+    },
+    {
+        "label": "CoordinacionModel",
+        "importPath": "models.coordinacionmodel",
+        "description": "models.coordinacionmodel",
+        "isExtraImport": true,
+        "detail": "models.coordinacionmodel",
+        "documentation": {}
+    },
+    {
+        "label": "DocenteModel",
+        "importPath": "models.docentemodel",
+        "description": "models.docentemodel",
+        "isExtraImport": true,
+        "detail": "models.docentemodel",
+        "documentation": {}
+    },
+    {
+        "label": "MateriaModel",
+        "importPath": "models.materiamodel",
+        "description": "models.materiamodel",
+        "isExtraImport": true,
+        "detail": "models.materiamodel",
+        "documentation": {}
+    },
+    {
+        "label": "MateriaModel",
+        "importPath": "models.materiamodel",
+        "description": "models.materiamodel",
+        "isExtraImport": true,
+        "detail": "models.materiamodel",
+        "documentation": {}
+    },
+    {
+        "label": "FacturaModel",
+        "importPath": "models.facturamodel",
+        "description": "models.facturamodel",
+        "isExtraImport": true,
+        "detail": "models.facturamodel",
+        "documentation": {}
+    },
+    {
+        "label": "getcwd",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "remove",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "makedirs",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pdfkit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfkit",
+        "description": "pdfkit",
+        "detail": "pdfkit",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "PagoModel",
+        "importPath": "models.pagosmodel",
+        "description": "models.pagosmodel",
+        "isExtraImport": true,
+        "detail": "models.pagosmodel",
+        "documentation": {}
+    },
+    {
+        "label": "MountModel",
+        "importPath": "models.mountmodel",
+        "description": "models.mountmodel",
+        "isExtraImport": true,
+        "detail": "models.mountmodel",
+        "documentation": {}
+    },
+    {
+        "label": "MetodoModel",
+        "importPath": "models.metodomodel",
+        "description": "models.metodomodel",
+        "isExtraImport": true,
+        "detail": "models.metodomodel",
+        "documentation": {}
+    },
+    {
+        "label": "TransferenciaModel",
+        "importPath": "models.transferenciamodel",
+        "description": "models.transferenciamodel",
+        "isExtraImport": true,
+        "detail": "models.transferenciamodel",
+        "documentation": {}
+    },
+    {
+        "label": "TransferenciaModel",
+        "importPath": "models.transferenciamodel",
+        "description": "models.transferenciamodel",
+        "isExtraImport": true,
+        "detail": "models.transferenciamodel",
+        "documentation": {}
+    },
+    {
+        "label": "PeticionesModel",
+        "importPath": "models.peticionesmodel",
+        "description": "models.peticionesmodel",
+        "isExtraImport": true,
+        "detail": "models.peticionesmodel",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "UserModel",
+        "importPath": "models.usermodel",
+        "description": "models.usermodel",
+        "isExtraImport": true,
+        "detail": "models.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "pagos",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "students",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "usuario",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "docente",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "carreras",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "materias",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "billete",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "coordinacion",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "control",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "peticiones",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "\\",
+        "importPath": "routes",
+        "description": "routes",
+        "isExtraImport": true,
+        "detail": "routes",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "kind": 2,
+        "importPath": "src.database.db",
+        "description": "src.database.db",
+        "peekOfCode": "def get_connection():\n    try:\n        return psycopg2.connect(\n            host = config('PGSQL_HOST'),\n            user = config('PGSQL_USER'),\n            password = config('PGSQL_PASSWORD'),\n            database = config('PGSQL_DATABASE')\n        )\n    except DatabaseError as ex:\n        raise ex",
+        "detail": "src.database.db",
+        "documentation": {}
+    },
+    {
+        "label": "SuperUsuario",
+        "kind": 6,
+        "importPath": "src.models.entities.SuperUsuario",
+        "description": "src.models.entities.SuperUsuario",
+        "peekOfCode": "class SuperUsuario:\n    def __init__(self,cedula = None,nombre = None,correo = None,password = None) -> None:\n        self.cedula = cedula\n        self.nombre = nombre\n        self.correo = correo\n        self.password = password\n    def to_JSON(self):\n        return {\n            \"cedula\": self.cedula,\n            \"nombre\": self.nombre,",
+        "detail": "src.models.entities.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "Billete",
+        "kind": 6,
+        "importPath": "src.models.entities.billete",
+        "description": "src.models.entities.billete",
+        "peekOfCode": "class Billete():\n    def __init__(self, id = None, serial= None, monto = None, pago_id = None) -> None:\n        self.id = id\n        self.serial = serial\n        self.monto = monto\n        self.pago = pago_id\n    def to_JSON(self) -> dict:\n       return {\n            \"id\": self.id,\n            \"serial\": self.serial,",
+        "detail": "src.models.entities.billete",
+        "documentation": {}
+    },
+    {
+        "label": "Carrera",
+        "kind": 6,
+        "importPath": "src.models.entities.carreras",
+        "description": "src.models.entities.carreras",
+        "peekOfCode": "class Carrera():\n    def __init__(self, id= None,nombre = None) -> None:\n        self.id = id\n        self.nombre = nombre \n    def to_JSON(self):\n        return {\n            \"id\": self.id,\n            \"nombre\": self.nombre\n        }",
+        "detail": "src.models.entities.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "Configuracion",
+        "kind": 6,
+        "importPath": "src.models.entities.config",
+        "description": "src.models.entities.config",
+        "peekOfCode": "class Configuracion():\n    def __init__(self,id = None,ciclo = None,porc1 = None,porc2 = None,porc3= None,horario_inicio = None,horario_fin = None,cuota1 = None,cuota2 = None,cuota3 = None,cuota4 = None,cuota5 = None) -> None:\n        self.id = id\n        self.ciclo = ciclo \n        self.porc1 = porc1\n        self.porc2 = porc2\n        self.porc3 = porc3\n        self.horario_inicio = horario_inicio\n        self.horario_fin = horario_fin\n        self.cuota1 = cuota1",
+        "detail": "src.models.entities.config",
+        "documentation": {}
+    },
+    {
+        "label": "Control",
+        "kind": 6,
+        "importPath": "src.models.entities.control",
+        "description": "src.models.entities.control",
+        "peekOfCode": "class Control():\n    def __init__(self,cedula = None, fullname = None,correo= None,telefono= None,password= None) -> None:\n        self.cedula = cedula \n        self.fullname = fullname\n        self.correo = correo\n        self.telefono = telefono\n        self.password = password\n    def to_JSON(self):\n        return{\n            \"cedula\": self.cedula,",
+        "detail": "src.models.entities.control",
+        "documentation": {}
+    },
+    {
+        "label": "Coordinacion",
+        "kind": 6,
+        "importPath": "src.models.entities.coordinacion",
+        "description": "src.models.entities.coordinacion",
+        "peekOfCode": "class Coordinacion():\n    def __init__(self,cedula = None, fullname = None,correo= None,telefono= None,password= None) -> None:\n        self.cedula = cedula \n        self.fullname = fullname\n        self.correo = correo\n        self.telefono = telefono\n        self.password = password\n    def to_JSON(self):\n        return{\n            \"cedula\": self.cedula,",
+        "detail": "src.models.entities.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "Docente",
+        "kind": 6,
+        "importPath": "src.models.entities.docente",
+        "description": "src.models.entities.docente",
+        "peekOfCode": "class Docente():\n    def __init__(self,cedula = None,fullname= None,correo= None,telefono= None, password = None) -> None:\n        self.cedula =cedula\n        self.fullname = fullname\n        self.correo = correo \n        self.telefono = telefono\n        self.password = password\n    def to_JSON(self): #permite retornar los datos en json y asi no aparece error \"json no serializable\"\n        return {\n            \"cedula\": self.cedula,",
+        "detail": "src.models.entities.docente",
+        "documentation": {}
+    },
+    {
+        "label": "Factura",
+        "kind": 6,
+        "importPath": "src.models.entities.factura",
+        "description": "src.models.entities.factura",
+        "peekOfCode": "class Factura:\n    def __init__(self, id):\n        self.id = id\n    def to_JSON(self):\n        return{\n            \"id\": self.id\n        }",
+        "detail": "src.models.entities.factura",
+        "documentation": {}
+    },
+    {
+        "label": "MateriaEstudiante",
+        "kind": 6,
+        "importPath": "src.models.entities.materia_estudiante",
+        "description": "src.models.entities.materia_estudiante",
+        "peekOfCode": "class MateriaEstudiante():\n    def __init__(self,cod_materia = None, cedula_estudiante= None,nota1= None,porc1= None,nota2= None,porc2= None,nota3= None,porc3= None) -> None:\n        self.cod_materia = cod_materia\n        self.cedula_estudiante = cedula_estudiante\n        self.nota1 = nota1\n        self.porc1 = porc1\n        self.nota2 = nota2\n        self.porc2 = porc2\n        self.nota3 = nota3\n        self.porc3 = porc3",
+        "detail": "src.models.entities.materia_estudiante",
+        "documentation": {}
+    },
+    {
+        "label": "Materias",
+        "kind": 6,
+        "importPath": "src.models.entities.materias",
+        "description": "src.models.entities.materias",
+        "peekOfCode": "class Materias():\n    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None,dia = None, hora_inicio = None, hora_fin = None, cantidad_estudiantes = None,ciclo = None,modalidad = None) -> None:\n        self.id = id\n        self.nombre = nombre \n        self.prelacion = prelacion \n        self.unidad_credito = unidad_credito\n        self.hp = hp\n        self.ht = ht\n        self.semestre = semestre\n        self.id_carrera = id_carrera",
+        "detail": "src.models.entities.materias",
+        "documentation": {}
+    },
+    {
+        "label": "Metodo",
+        "kind": 6,
+        "importPath": "src.models.entities.metodo",
+        "description": "src.models.entities.metodo",
+        "peekOfCode": "class Metodo():\n    def __init__(self, id= None, nombre = None,descripcion = None ):\n        self.id = id\n        self.nombre = nombre\n        self.descripcion = descripcion\n    def to_JSON(self):\n        return {\n            \"id\": self.id,\n           \"nombre\": self.nombre,\n           \"descripcion\": self.descripcion",
+        "detail": "src.models.entities.metodo",
+        "documentation": {}
+    },
+    {
+        "label": "Monto",
+        "kind": 6,
+        "importPath": "src.models.entities.monto",
+        "description": "src.models.entities.monto",
+        "peekOfCode": "class Monto():\n    def __init__(self, id = None, concepto = None, monto= None) -> None:\n        self.id = id\n        self.concepto = concepto\n        self.monto = monto\n    def to_JSON(self):\n        return {\n            \"id\": self.id,\n            \"concepto\": self.concepto,\n            \"monto\": self.monto",
+        "detail": "src.models.entities.monto",
+        "documentation": {}
+    },
+    {
+        "label": "Pago",
+        "kind": 6,
+        "importPath": "src.models.entities.pagos",
+        "description": "src.models.entities.pagos",
+        "peekOfCode": "class Pago():\n    def __init__(self, id=None, cedula_estudiante=None, metodo_pago_id=None, monto_id=None,\n                 fecha_pago=None, referencia_transferencia=None, ciclo=None):\n        self.id = id\n        self.cedula_estudiante = cedula_estudiante\n        self.metodo_pago_id = metodo_pago_id\n        self.monto_id = monto_id\n        self.fecha_pago = fecha_pago\n        self.referencia_transferencia = referencia_transferencia\n        self.ciclo = ciclo",
+        "detail": "src.models.entities.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "Peticiones",
+        "kind": 6,
+        "importPath": "src.models.entities.peticiones",
+        "description": "src.models.entities.peticiones",
+        "peekOfCode": "class Peticiones():\n    def __init__(self,id,id_docente = None,descripcion = None,estado = None,id_estudiante = None,id_materia = None,campo =None) -> None:\n        self.id = id\n        self.id_docente = id_docente\n        self.descripcion = descripcion\n        self.estado = estado \n        self.id_estudiante = id_estudiante\n        self.id_materia = id_materia\n        self.campo = campo\n    def to_JSON(self):",
+        "detail": "src.models.entities.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "kind": 6,
+        "importPath": "src.models.entities.students",
+        "description": "src.models.entities.students",
+        "peekOfCode": "class Student():\n    def __init__(self,cedula = None,fullname= None,correo= None,telefono= None,semestre= None,password= None, estado = None,carrera = None,edad = None,sexo = None, promedio = None,direccion = None,fecha_nac = None) -> None:\n        self.cedula =cedula\n        self.fullname = fullname\n        self.correo = correo \n        self.telefono = telefono\n        self.semestre = semestre\n        self.password = password\n        self.estado = estado\n        self.carrera = carrera",
+        "detail": "src.models.entities.students",
+        "documentation": {}
+    },
+    {
+        "label": "Transferencia",
+        "kind": 6,
+        "importPath": "src.models.entities.transferencias",
+        "description": "src.models.entities.transferencias",
+        "peekOfCode": "class Transferencia():\n    def __init__(self, id = None, codigo_referencia= None) -> None:\n        self.id = id\n        self.codigo_referencia = codigo_referencia\n    def to_JSON(self) -> dict:\n       return {\n            \"id\": self.id,\n            \"codigo_referencia\": self.codigo_referencia,\n        }",
+        "detail": "src.models.entities.transferencias",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "src.models.entities.user",
+        "description": "src.models.entities.user",
+        "peekOfCode": "class User:\n    def __init__(self,usuario,clave=None,id = None,nombre=None) -> None:\n        self.id = id\n        self.usuario = usuario\n        self.clave = clave\n        self.nombre = nombre\n    def to_JSON(self):\n        return{\n            \"id\":self.id,\n            \"usuario\": self.usuario,",
+        "detail": "src.models.entities.user",
+        "documentation": {}
+    },
+    {
+        "label": "SuperUsuarioModel",
+        "kind": 6,
+        "importPath": "src.models.SuperUsuarioModel",
+        "description": "src.models.SuperUsuarioModel",
+        "peekOfCode": "class SuperUsuarioModel():\n    @classmethod\n    def get_super_user(self,cedula: str):\n        try:\n            conection = get_connection()\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT *FROM superusuario WHERE cedula =%s\",(cedula,))\n                result = cursor.fetchone()\n                if result is not None:\n                        super_user = SuperUsuario(cedula=result[0],nombre=result[1],correo=result[2],password=result[3])",
+        "detail": "src.models.SuperUsuarioModel",
+        "documentation": {}
+    },
+    {
+        "label": "AdminModel",
+        "kind": 6,
+        "importPath": "src.models.adminmodel",
+        "description": "src.models.adminmodel",
+        "peekOfCode": "class AdminModel():\n    @classmethod\n    def get_administracion(self):\n        try:\n            conection = get_connection()\n            join = {\"pagos\": [], \"montos\": [], \"metodos\":[]}\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT * from pagos INNER JOIN monto ON monto.id_pago = pagos.id INNER JOIN metodo_pago ON metodo_pago.id = pagos.id  ORDER BY pagos.id ASC\")\n                resultset = cursor.fetchall()\n                for row in resultset:",
+        "detail": "src.models.adminmodel",
+        "documentation": {}
+    },
+    {
+        "label": "BilleteModel",
+        "kind": 6,
+        "importPath": "src.models.billetemodel",
+        "description": "src.models.billetemodel",
+        "peekOfCode": "class BilleteModel():\n    @classmethod\n    def get_billetes(cls):\n        try: \n                conection = get_connection()\n                billetes = []\n                with conection.cursor() as cursor: \n                    cursor.execute(\"SELECT * from billetes\")\n                    result = cursor.fetchall()\n                    for row in result: ",
+        "detail": "src.models.billetemodel",
+        "documentation": {}
+    },
+    {
+        "label": "CarreraModel",
+        "kind": 6,
+        "importPath": "src.models.carreramodel",
+        "description": "src.models.carreramodel",
+        "peekOfCode": "class CarreraModel():\n    @classmethod\n    def get_carreras(self):\n        try:\n            conection = get_connection()\n            join = {\"carreras\":[],\"materias\": []}\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT *from carreras LEFT JOIN materias ON carreras.id = materias.id_carrera\")\n                result = cursor.fetchall()\n                for row in result:",
+        "detail": "src.models.carreramodel",
+        "documentation": {}
+    },
+    {
+        "label": "ConfigModel",
+        "kind": 6,
+        "importPath": "src.models.configmodel",
+        "description": "src.models.configmodel",
+        "peekOfCode": "class ConfigModel():\n    @classmethod\n    def get_configuraciones(self):\n        try:\n            conection = get_connection()\n            configuraciones = {}\n            with conection.cursor() as cursor:\n                    cursor.execute(\"SELECT * from configuracion LIMIT 1\")\n                    resultset = cursor.fetchall()\n                    for row in resultset:",
+        "detail": "src.models.configmodel",
+        "documentation": {}
+    },
+    {
+        "label": "ControlModel",
+        "kind": 6,
+        "importPath": "src.models.controlmodel",
+        "description": "src.models.controlmodel",
+        "peekOfCode": "class ControlModel(): \n    @classmethod\n    def get_todo_control(self):\n        try:\n            conection = get_connection()\n            control_es = []\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT *FROM control\")\n                result = cursor.fetchall()\n                if result is not None:",
+        "detail": "src.models.controlmodel",
+        "documentation": {}
+    },
+    {
+        "label": "CoordinacionModel",
+        "kind": 6,
+        "importPath": "src.models.coordinacionmodel",
+        "description": "src.models.coordinacionmodel",
+        "peekOfCode": "class CoordinacionModel():\n    @classmethod\n    def get_coordinadores(self):\n        try:\n            conection = get_connection()\n            coordinadores = []\n            with conection.cursor()  as cursor:\n                cursor.execute(\"SELECT *FROM coordinacion\")\n                result = cursor.fetchall()\n                if result is not None:",
+        "detail": "src.models.coordinacionmodel",
+        "documentation": {}
+    },
+    {
+        "label": "DocenteModel",
+        "kind": 6,
+        "importPath": "src.models.docentemodel",
+        "description": "src.models.docentemodel",
+        "peekOfCode": "class DocenteModel():\n    @classmethod\n    def get_docentes(self):\n        try:\n            conection = get_connection()\n            join = {\"docente\": [], \"materias\": []}\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT * from docentes LEFT JOIN materias ON docentes.cedula = materias.id_docente\")\n                result = cursor.fetchall()\n                if result is not None:",
+        "detail": "src.models.docentemodel",
+        "documentation": {}
+    },
+    {
+        "label": "FacturaModel",
+        "kind": 6,
+        "importPath": "src.models.facturamodel",
+        "description": "src.models.facturamodel",
+        "peekOfCode": "class FacturaModel:\n    @classmethod\n    def get_current_number(cls):\n        connection = get_connection()\n        with connection.cursor() as cursor: \n            cursor.execute(\"SELECT id FROM factura;\")\n            current_number = cursor.fetchone()[0]\n        connection.close()\n        return current_number\n    @classmethod",
+        "detail": "src.models.facturamodel",
+        "documentation": {}
+    },
+    {
+        "label": "MateriaModel",
+        "kind": 6,
+        "importPath": "src.models.materiamodel",
+        "description": "src.models.materiamodel",
+        "peekOfCode": "class MateriaModel():\n    @classmethod\n    def get_materias(self):\n        try:\n            conection = get_connection()\n            join = {\"materias\": [], \"carreras\": []}\n            with conection.cursor() as cursor:\n                cursor.execute(\n                    \"SELECT * from materias RIGHT JOIN carreras ON materias.id_carrera = carreras.id\")\n                result = cursor.fetchall()",
+        "detail": "src.models.materiamodel",
+        "documentation": {}
+    },
+    {
+        "label": "MetodoModel",
+        "kind": 6,
+        "importPath": "src.models.metodomodel",
+        "description": "src.models.metodomodel",
+        "peekOfCode": "class MetodoModel():\n    @classmethod\n    def get_metodos(cls):\n        try:\n            conection = get_connection()\n            metodos = []\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT * from metodo_pago ORDER BY id ASC\")\n                resultset = cursor.fetchall()\n                for row in resultset:",
+        "detail": "src.models.metodomodel",
+        "documentation": {}
+    },
+    {
+        "label": "MountModel",
+        "kind": 6,
+        "importPath": "src.models.mountmodel",
+        "description": "src.models.mountmodel",
+        "peekOfCode": "class MountModel():\n    @classmethod\n    def get_montos(cls):\n        try:\n            conection = get_connection()\n            montos = []\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT * from monto ORDER BY id ASC\")\n                resultset = cursor.fetchall()\n                for row in resultset:",
+        "detail": "src.models.mountmodel",
+        "documentation": {}
+    },
+    {
+        "label": "PagoModel",
+        "kind": 6,
+        "importPath": "src.models.pagosmodel",
+        "description": "src.models.pagosmodel",
+        "peekOfCode": "class PagoModel():\n    @classmethod\n    def get_pagos(cls):\n        try:\n            connection = get_connection()\n            pagos = []\n            with connection.cursor() as cursor:\n                cursor.execute(\"\"\"\n                    SELECT p.id, p.cedula_estudiante, p.fecha_pago, m.descripcion,\n                           m.id, m.nombre, mo.id, mo.concepto, mo.monto,",
+        "detail": "src.models.pagosmodel",
+        "documentation": {}
+    },
+    {
+        "label": "PeticionesModel",
+        "kind": 6,
+        "importPath": "src.models.peticionesmodel",
+        "description": "src.models.peticionesmodel",
+        "peekOfCode": "class PeticionesModel():\n    @classmethod\n    def get_peticiones(cls):\n        try:\n            conection = get_connection()\n            join = []\n            with conection.cursor() as cursor:\n                cursor.execute(\"\"\"\n                    SELECT p.id, p.descripcion, p.estado,\n                           e.cedula, e.fullname,",
+        "detail": "src.models.peticionesmodel",
+        "documentation": {}
+    },
+    {
+        "label": "StudentModel",
+        "kind": 6,
+        "importPath": "src.models.studentsmodel",
+        "description": "src.models.studentsmodel",
+        "peekOfCode": "class StudentModel():\n    @classmethod\n    def get_students(self):\n        try:\n            conection = get_connection()\n            students = []\n            with conection.cursor() as cursor:\n                cursor.execute(\"SELECT * from estudiantes ORDER BY cedula\")\n                resultset = cursor.fetchall()\n                for row in resultset:",
+        "detail": "src.models.studentsmodel",
+        "documentation": {}
+    },
+    {
+        "label": "TransferenciaModel",
+        "kind": 6,
+        "importPath": "src.models.transferenciamodel",
+        "description": "src.models.transferenciamodel",
+        "peekOfCode": "class TransferenciaModel():\n    @classmethod\n    def get_transferencias(self):\n        try: \n                conection = get_connection()\n                transferencias = []\n                with conection.cursor() as cursor: \n                    cursor.execute(\"SELECT * from transferencias\")\n                    result = cursor.fetchall()\n                    for row in result: ",
+        "detail": "src.models.transferenciamodel",
+        "documentation": {}
+    },
+    {
+        "label": "UserModel",
+        "kind": 6,
+        "importPath": "src.models.usermodel",
+        "description": "src.models.usermodel",
+        "peekOfCode": "class UserModel():\n    @classmethod\n    def register(self,user):\n        try: \n            conection = get_connection()\n            with conection.cursor() as cursor:\n                cursor.execute(\"\"\"INSERT into usuarios (usuario, nombre, clave) VALUES (%s,%s,%s)\"\"\",(user.usuario,user.nombre,user.clave,))\n                affected_rows = cursor.rowcount\n                conection.commit()\n            conection.close()",
+        "detail": "src.models.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@superUs.route('/<cedula>')\ndef get_Super(cedula):\n    try:\n        superUs = SuperUsuarioModel.get_super_user(cedula)\n        if super != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":superUs})",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "get_Super",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def get_Super(cedula):\n    try:\n        superUs = SuperUsuarioModel.get_super_user(cedula)\n        if super != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":superUs})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"super usuario no encontrado\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "add_Super",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def add_Super():\n    try:\n        cedula = request.json['cedula']\n        nombre = request.json['nombre']\n        correo = request.json['correo']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        superUs  = SuperUsuario(str(cedula),nombre,correo,password)\n        affected_rows = SuperUsuarioModel.add_super_user(superUs)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":None})",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "update_Super",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def update_Super(cedula):\n    try:\n        cedula = request.json['cedula']\n        nombre = request.json['nombre']\n        correo = request.json['correo']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        superUs = SuperUsuario(str(cedula),nombre,correo,password)\n        affected_rows = SuperUsuarioModel.update_super_user(superUs)\n        print(affected_rows)\n        if affected_rows == 1:",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "delete_Super",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def delete_Super(cedula):\n    try:\n        superUs = SuperUsuario(str(cedula))\n        affected_rows = SuperUsuarioModel.delete_super_user(superUs)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"super usuario no encontrado\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def login():\n    try:\n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        super_usuario = SuperUsuario(correo=usuario)\n        super_usuario = SuperUsuarioModel.login(super_usuario)\n        if super_usuario is not None:\n            print(super_usuario.to_JSON())\n            if check_password_hash(super_usuario.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=super_usuario.correo, expires_delta=timedelta(hours=2), additional_claims={'rol': 'S'}) # creamos el token que vive una hora",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_super",
+        "kind": 2,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "def jwt_super():\n    try:\n        correo_super = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo\n        super_entity: SuperUsuario | None # declaramos sin iniciar la variable del estudiante\n        if correo_super is not None:\n            super_entity = SuperUsuario(correo=correo_super) # creamos la entidad del estudiante\n            super_entity = SuperUsuarioModel.login(super_entity) #revisamos la bd\n            if super_entity != None:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":super_entity.to_JSON()}) # retornamos si es correcto\n        else:",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "superUs",
+        "kind": 5,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "superUs = Blueprint('superUsuario_Blueprint',__name__)\n@superUs.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@superUs.route('/<cedula>')\ndef get_Super(cedula):\n    try:\n        superUs = SuperUsuarioModel.get_super_user(cedula)",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "@superUs.route('/login',methods",
+        "kind": 5,
+        "importPath": "src.routes.SuperUsuario",
+        "description": "src.routes.SuperUsuario",
+        "peekOfCode": "@superUs.route('/login',methods = [\"POST\"])\ndef login():\n    try:\n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        super_usuario = SuperUsuario(correo=usuario)\n        super_usuario = SuperUsuarioModel.login(super_usuario)\n        if super_usuario is not None:\n            print(super_usuario.to_JSON())\n            if check_password_hash(super_usuario.password, clave): # comprobamos que el hash sea igual a la clave ingrasada",
+        "detail": "src.routes.SuperUsuario",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@billete.route('/')\ndef get_billetes():\n    try:\n            billete = BilleteModel.get_billetes()\n            return jsonify({\"ok\": True, \"status\":200,\"data\": billete})\n    except Exception as ex:",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "get_billetes",
+        "kind": 2,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "def get_billetes():\n    try:\n            billete = BilleteModel.get_billetes()\n            return jsonify({\"ok\": True, \"status\":200,\"data\": billete})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@billete.route('/<id>')\ndef get_billete(id):\n    try:\n        billete = BilleteModel.get_billete(id)",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "get_billete",
+        "kind": 2,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "def get_billete(id):\n    try:\n        billete = BilleteModel.get_billete(id)\n        if billete != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": billete})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"billete no encontrado\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "add_billete",
+        "kind": 2,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "def add_billete():\n    try:\n        serial = request.json['serial']\n        monto = request.json['monto']\n        pago_id = request.json[\"pago_id\"]\n        billete = Billete(None,serial,monto,pago_id)\n        affected_rows = BilleteModel.add_billete(billete)\n        if affected_rows == 1:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "update_billete",
+        "kind": 2,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "def update_billete(id):\n    try:\n        serial = request.json['serial']\n        monto = request.json['monto']\n        billete = Billete(serial,monto)\n        affected_rows = BilleteModel.update_billete(billete)\n        if affected_rows == 1:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:\n            return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": \"Error al actualizar, compruebe los datos e intente nuevamente\"}}), 500",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "billete",
+        "kind": 5,
+        "importPath": "src.routes.billete",
+        "description": "src.routes.billete",
+        "peekOfCode": "billete = Blueprint(\"billete_blueprint\",__name__)\n@billete.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@billete.route('/')\ndef get_billetes():\n    try:\n            billete = BilleteModel.get_billetes()",
+        "detail": "src.routes.billete",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@carrera.route('/')\ndef get_carreras():\n    try:\n            carreras = CarreraModel.get_carreras()\n            return jsonify({\"ok\": True, \"status\":200,\"data\": carreras})\n    except Exception as ex:",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "get_carreras",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def get_carreras():\n    try:\n            carreras = CarreraModel.get_carreras()\n            return jsonify({\"ok\": True, \"status\":200,\"data\": carreras})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@carrera.route('/<id>')\ndef get_carrera(id):\n    try:\n        carreras = CarreraModel.get_carrera(id)",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "get_carrera",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def get_carrera(id):\n    try:\n        carreras = CarreraModel.get_carrera(id)\n        if carreras != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":carreras})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"carrera no encontrada\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "add_carrera",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def add_carrera():\n    try:\n        id = request.json['id']\n        nombre = request.json['nombre']\n        carrera = Carrera(str(id),nombre)\n        affected_rows = CarreraModel.add_carrera(carrera)\n        if affected_rows == 1:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:\n            return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": affected_rows}}), 500",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "update_carrera",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def update_carrera(id):\n    try:\n        id = request.json['id']\n        nombre = request.json['nombre']\n        carrera = Carrera(str(id),nombre)\n        affected_rows = CarreraModel.update_carrera(carrera)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:\n            return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": \"Error al actualizar, compruebe los datos e intente nuevamente\"}}), 500",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "delete_carrera",
+        "kind": 2,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "def delete_carrera(id):\n    try:\n        carrera  = Carrera(str(id))\n        affected_rows = CarreraModel.delete_carrera(carrera)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"carrera no encontrada\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "carrera",
+        "kind": 5,
+        "importPath": "src.routes.carreras",
+        "description": "src.routes.carreras",
+        "peekOfCode": "carrera = Blueprint('carrera_blueprint', __name__)\n@carrera.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@carrera.route('/')\ndef get_carreras():\n    try:\n            carreras = CarreraModel.get_carreras()",
+        "detail": "src.routes.carreras",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@config.route('/')\ndef get_configuraciones():\n    try:\n        configuraciones = ConfigModel.get_configuraciones()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": configuraciones})\n    except Exception as ex:",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_configuraciones",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def get_configuraciones():\n    try:\n        configuraciones = ConfigModel.get_configuraciones()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": configuraciones})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@config.route('/<id>')\ndef get_configuracion(id):\n    try:\n        configuracion = ConfigModel.get_configuracion(id)",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "get_configuracion",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def get_configuracion(id):\n    try:\n        configuracion = ConfigModel.get_configuracion(id)\n        if configuracion != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":configuracion.to_JSON()})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"config no disponible\"}}),404\n    except Exception as ex:\n        print(str(ex))\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "add_configuracion",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def add_configuracion():\n    try:\n        ciclo = request.json['ciclo']\n        porc1 = request.json['porc1']\n        porc2 = request.json['porc2']\n        porc3 = request.json['porc3']\n        horario_inicio = request.json['horario_inicio']\n        horario_fin = request.json['horario_fin']\n        cuota1 = request.json['cuota1']\n        cuota2 = request.json['cuota2']",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "update_configuracion",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def update_configuracion(id):\n    try:\n        ciclo = request.json['ciclo']\n        porc1 = request.json['porc1']\n        porc2 = request.json['porc2']\n        porc3 = request.json['porc3']\n        horario_inicio = request.json['horario_inicio']\n        horario_fin = request.json['horario_fin']\n        cuota1 = request.json['cuota1']\n        cuota2 = request.json['cuota2']",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "delete_peticion",
+        "kind": 2,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "def delete_peticion(id):\n    try:\n        config = Configuracion(str(id))\n        affected_rows = ConfigModel.delete_configuracion(config)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"confi no encontrada\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 5,
+        "importPath": "src.routes.config",
+        "description": "src.routes.config",
+        "peekOfCode": "config = Blueprint('config_blueprint', __name__)\n@config.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@config.route('/')\ndef get_configuraciones():\n    try:\n        configuraciones = ConfigModel.get_configuraciones()",
+        "detail": "src.routes.config",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@control.route('/')\ndef get_todo_control():\n    try:\n        control_es = ControlModel.get_todo_control()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": control_es})\n    except Exception as ex:",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "get_todo_control",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def get_todo_control():\n    try:\n        control_es = ControlModel.get_todo_control()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": control_es})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@control.route('/<cedula>')\ndef get_control(cedula):\n    try:\n        control_es = ControlModel.get_control(cedula)",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "get_control",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def get_control(cedula):\n    try:\n        control_es = ControlModel.get_control(cedula)\n        if control_es != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":control_es})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"usuario no encontrado\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "add_control",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def add_control():\n    try:\n        cedula = request.json['cedula']\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        control_es = Control(str(cedula),fullname,correo,telefono,password)\n        affected_rows = ControlModel.add_control(control_es)\n        if affected_rows == 1:",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "update_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def update_coordinador(cedula):\n    try:\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        control_es = Control(str(cedula),fullname,correo,telefono,password)\n        affected_rows = ControlModel.update_control(control_es)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":None})",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "delete_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def delete_coordinador(cedula):\n    try:\n        control_es  =  Control(str(cedula))\n        affected_rows = ControlModel.delete_control(control_es)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"usuario no encontrado\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        control_estudio = Control(correo=usuario)\n        control_estudio = ControlModel.login(control_estudio)\n        if control_estudio is not None:\n            if check_password_hash(control_estudio.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=control_estudio.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'CE'}) # creamos el token que vive una hora\n                return jsonify({\"ok\":True, \"status\": 200, \"data\": {\"control_estudio\": control_estudio.to_JSON(), \"access_token\": f\"Bearer {access_token}\"}})",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "def jwt_coordinador():\n    try:\n        correo_coordinador = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo\n        control_estudio: Control | None # declaramos sin iniciar la variable del control_estudio\n        if correo_coordinador is not None:\n            coordinador_entity = Control(correo=correo_coordinador) # creamos la entidad del control_estudio\n            control_estudio = ControlModel.login(coordinador_entity) #revisamos la bd\n            if control_estudio != None:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":control_estudio.to_JSON()}) # retornamos si es correcto\n        else:",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "control",
+        "kind": 5,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "control = Blueprint('control_es_blueprint',__name__)\n@control.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@control.route('/')\ndef get_todo_control():\n    try:\n        control_es = ControlModel.get_todo_control()",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "@control.route('/login',methods",
+        "kind": 5,
+        "importPath": "src.routes.control",
+        "description": "src.routes.control",
+        "peekOfCode": "@control.route('/login',methods = [\"POST\"])\ndef login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        control_estudio = Control(correo=usuario)\n        control_estudio = ControlModel.login(control_estudio)\n        if control_estudio is not None:\n            if check_password_hash(control_estudio.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=control_estudio.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'CE'}) # creamos el token que vive una hora",
+        "detail": "src.routes.control",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@coordinacion.route('/')\ndef get_coordinadores():\n    try:\n        coordinadores = CoordinacionModel.get_coordinadores()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": coordinadores})\n    except Exception as ex:",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "get_coordinadores",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def get_coordinadores():\n    try:\n        coordinadores = CoordinacionModel.get_coordinadores()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": coordinadores})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@coordinacion.route('/<cedula>')\ndef get_coordinador(cedula):\n    try:\n        coordinador = CoordinacionModel.get_coordinador(cedula)",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "get_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def get_coordinador(cedula):\n    try:\n        coordinador = CoordinacionModel.get_coordinador(cedula)\n        if coordinador != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":coordinador})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"coordinador no encontrado\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "add_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def add_coordinador():\n    try:\n        cedula = request.json['cedula']\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        coordinador  = Coordinacion(str(cedula),fullname,correo,telefono,password)\n        affected_rows = CoordinacionModel.add_coordinador(coordinador)\n        if affected_rows == 1:",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "update_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def update_coordinador(cedula):\n    try:\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        coordinador = Coordinacion(str(cedula),fullname,correo,telefono,password)\n        affected_rows = CoordinacionModel.update_coordinador(coordinador)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":None})",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "delete_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def delete_coordinador(cedula):\n    try:\n        coordinador  =  Coordinacion(str(cedula))\n        affected_rows = CoordinacionModel.delete_coordinador(coordinador)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"coordinador no encontrado\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "get_nota",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def get_nota(cedula: str):\n    try:\n        notas_obj = StudentModel.get_notas_estudiante(cedula)\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": notas_obj}), 200\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\": 500, \"data\": {\"mess age\": str(ex)}}), 500\n@coordinacion.route('/login',methods = [\"POST\"])\ndef login():\n    try: \n        usuario = request.json.get('usuario', None)",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        coordinador = Coordinacion(correo=usuario)\n        coordinador = CoordinacionModel.login(coordinador)\n        if coordinador is not None:\n            if check_password_hash(coordinador.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=coordinador.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'CO'}) # creamos el token que vive una hora\n                return jsonify({\"ok\":True, \"status\": 200, \"data\": {\"coordinador\": coordinador.to_JSON(), \"access_token\": f\"Bearer {access_token}\"}})",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_coordinador",
+        "kind": 2,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "def jwt_coordinador():\n    try:\n        correo_coordinador = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo\n        coordinador: Coordinacion | None # declaramos sin iniciar la variable del coordinador\n        if correo_coordinador is not None:\n            coordinador_entity = Coordinacion(correo=correo_coordinador) # creamos la entidad del coordinador\n            coordinador = CoordinacionModel.login(coordinador_entity) #revisamos la bd\n            if coordinador != None:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":coordinador.to_JSON()}) # retornamos si es correcto\n        else:",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "coordinacion",
+        "kind": 5,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "coordinacion = Blueprint('coordinacion_blueprint',__name__)\n@coordinacion.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@coordinacion.route('/')\ndef get_coordinadores():\n    try:\n        coordinadores = CoordinacionModel.get_coordinadores()",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "@coordinacion.route('/login',methods",
+        "kind": 5,
+        "importPath": "src.routes.coordinacion",
+        "description": "src.routes.coordinacion",
+        "peekOfCode": "@coordinacion.route('/login',methods = [\"POST\"])\ndef login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        coordinador = Coordinacion(correo=usuario)\n        coordinador = CoordinacionModel.login(coordinador)\n        if coordinador is not None:\n            if check_password_hash(coordinador.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=coordinador.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'CO'}) # creamos el token que vive una hora",
+        "detail": "src.routes.coordinacion",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@doc.route('/')\ndef get_docentes():\n    try:\n        docentes = DocenteModel.get_docentes()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": docentes})\n    except Exception as ex:",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "get_docentes",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def get_docentes():\n    try:\n        docentes = DocenteModel.get_docentes()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": docentes})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@doc.route('/<cedula>')\ndef get_docente(cedula):\n    try:\n        docentes = DocenteModel.get_docente(cedula)",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "get_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def get_docente(cedula):\n    try:\n        docentes = DocenteModel.get_docente(cedula)\n        if docentes != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":docentes})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"docente no encontrado\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "get_peticiones_por_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def get_peticiones_por_docente(cedula):\n    try:\n        peticiones = DocenteModel.get_peticiones_por_docente(cedula)\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": peticiones})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}), 500\n@doc.route('/add', methods = [\"POST\"])\ndef add_docente():\n    try:\n        cedula = request.json['cedula']",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "add_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def add_docente():\n    try:\n        cedula = request.json['cedula']\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        docente  = Docente(str(cedula),fullname,correo,telefono,password)\n        affected_rows = DocenteModel.add_docente(docente)\n        if affected_rows == 1:",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "update_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def update_docente(cedula):\n    try:\n        cedula = request.json['cedula']\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")\n        docente = Docente(str(cedula),fullname,correo,telefono,password)\n        affected_rows = DocenteModel.update_docente(docente)\n        if affected_rows == 1:",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "delete_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def delete_docente(cedula):\n    try:\n        docente  = Docente(str(cedula))\n        affected_rows = DocenteModel.delete_docente(docente)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"docente no encontrado\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "modificar_materia_estudiante",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def modificar_materia_estudiante():\n    try:\n        cedula_estudiante = request.json.get('cedula_estudiante')\n        nombre_campo = request.json.get('nombre_campo')\n        valor = request.json.get('valor')\n        materia = request.json.get('materia')\n        message = MateriaModel.modificar_materia_estudiante(materia, cedula_estudiante, nombre_campo, valor)\n        # Aquí llamarías a la función modificar_materia_estudiante con los valores recibidos\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": None}), 200\n    except Exception as ex:",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        docente = Docente(correo=usuario)\n        docente = DocenteModel.login(docente)\n        if docente is not None:\n            if check_password_hash(docente.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=docente.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'D'}) # creamos el token que vive una hora\n                return jsonify({\"ok\":True, \"status\": 200, \"data\": {\"docente\": docente.to_JSON(), \"access_token\": f\"Bearer {access_token}\"}})",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_docente",
+        "kind": 2,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "def jwt_docente():\n    try:\n        correo_docente = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo\n        student: Docente | None # declaramos sin iniciar la variable del docente\n        if correo_docente is not None:\n            student_entity = Docente(correo=correo_docente) # creamos la entidad del docente\n            student = DocenteModel.login(student_entity) #revisamos la bd\n            if student != None:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":student.to_JSON()}) # retornamos si es correcto\n        else:",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "doc",
+        "kind": 5,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "doc = Blueprint('docentes_blueprint',__name__)\n@doc.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@doc.route('/')\ndef get_docentes():\n    try:\n        docentes = DocenteModel.get_docentes()",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "@doc.route('/login',methods",
+        "kind": 5,
+        "importPath": "src.routes.docente",
+        "description": "src.routes.docente",
+        "peekOfCode": "@doc.route('/login',methods = [\"POST\"])\ndef login():\n    try: \n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        docente = Docente(correo=usuario)\n        docente = DocenteModel.login(docente)\n        if docente is not None:\n            if check_password_hash(docente.password, clave): # comprobamos que el hash sea igual a la clave ingrasada\n                access_token = create_access_token(identity=docente.correo, expires_delta=timedelta(hours=1), additional_claims={'rol': 'D'}) # creamos el token que vive una hora",
+        "detail": "src.routes.docente",
+        "documentation": {}
+    },
+    {
+        "label": "get_invoice_number",
+        "kind": 2,
+        "importPath": "src.routes.factura",
+        "description": "src.routes.factura",
+        "peekOfCode": "def get_invoice_number():\n    try:\n        incremented_number = FacturaModel.get_incremented_number()\n        return jsonify({\n            'ok': True,\n            'status': 200,\n            'data': {'nroFactura': incremented_number}\n        }), 200\n    except Exception as e:\n        print(e)",
+        "detail": "src.routes.factura",
+        "documentation": {}
+    },
+    {
+        "label": "factura_bp",
+        "kind": 5,
+        "importPath": "src.routes.factura",
+        "description": "src.routes.factura",
+        "peekOfCode": "factura_bp = Blueprint('factura_bp', __name__)\n@factura_bp.route('/', methods=['GET'])\ndef get_invoice_number():\n    try:\n        incremented_number = FacturaModel.get_incremented_number()\n        return jsonify({\n            'ok': True,\n            'status': 200,\n            'data': {'nroFactura': incremented_number}\n        }), 200",
+        "detail": "src.routes.factura",
+        "documentation": {}
+    },
+    {
+        "label": "create_folder_if_not_exists",
+        "kind": 2,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "def create_folder_if_not_exists(folder_path):\n    if not path.exists(folder_path):\n        makedirs(folder_path)\n@files.post(\"/upload\")\ndef upload_file():\n    try:\n        file = request.files['file']\n        ciclo = request.form.get('ciclo', '')\n        folder = request.form.get('folder', '')\n        ciclo_path = path.join(PATH_FILES, ciclo)",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "upload_file",
+        "kind": 2,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "def upload_file():\n    try:\n        file = request.files['file']\n        ciclo = request.form.get('ciclo', '')\n        folder = request.form.get('folder', '')\n        ciclo_path = path.join(PATH_FILES, ciclo)\n        create_folder_if_not_exists(ciclo_path)\n        folder_path = path.join(ciclo_path, folder)\n        create_folder_if_not_exists(folder_path)\n        file.save(path.join(folder_path, file.filename))",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "get_file",
+        "kind": 2,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "def get_file(name_file):\n    folder = request.args.get(\"folder\", \"\")\n    ciclo = request.args.get(\"ciclo\", \"\")\n    file_path = path.join(PATH_FILES + ciclo, folder, name_file)\n    if not path.isfile(file_path):\n        return jsonify({\"ok\": False, \"status\": 500, \"data\": {\"message\": \"Archivo no encontrado\"}}), 404\n    try:\n        return send_from_directory(path.join(PATH_FILES, ciclo, folder), path=name_file, as_attachment=False)\n    except FileNotFoundError:\n        raise FileNotFoundError",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "download_file",
+        "kind": 2,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "def download_file(name_file):\n    folder = request.args.get(\"folder\", \"\")\n    ciclo = request.args.get(\"ciclo\", \"\")\n    file_path = path.join(PATH_FILES + ciclo, folder, name_file)\n    print(file_path)\n    if not path.isfile(file_path):\n        return jsonify({\"ok\": False, \"status\": 500, \"data\": {\"message\": \"Archivo no encontrado\"}}), 404\n    return send_from_directory(path.join(PATH_FILES, ciclo, folder), path=name_file, as_attachment=True)\n@files.delete('/delete')\ndef delete_file():",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "delete_file",
+        "kind": 2,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "def delete_file():\n    filename = request.json.get('filename', '')\n    folder = request.json.get('folder', '')\n    ciclo = request.json.get('ciclo', '')\n    file_path = path.join(PATH_FILES + ciclo, folder, filename)\n    if not path.isfile(file_path):\n        print(file_path)\n        return jsonify({\"ok\": False, \"status\": 500, \"data\": {\"message\": \"Archivo no encontrado\"}}), 500\n    else:\n        try:",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "files",
+        "kind": 5,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "files = Blueprint(\"files\", __name__)\nPATH_FILES = getcwd() + \"/planificacion/\"\ndef create_folder_if_not_exists(folder_path):\n    if not path.exists(folder_path):\n        makedirs(folder_path)\n@files.post(\"/upload\")\ndef upload_file():\n    try:\n        file = request.files['file']\n        ciclo = request.form.get('ciclo', '')",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "PATH_FILES",
+        "kind": 5,
+        "importPath": "src.routes.files",
+        "description": "src.routes.files",
+        "peekOfCode": "PATH_FILES = getcwd() + \"/planificacion/\"\ndef create_folder_if_not_exists(folder_path):\n    if not path.exists(folder_path):\n        makedirs(folder_path)\n@files.post(\"/upload\")\ndef upload_file():\n    try:\n        file = request.files['file']\n        ciclo = request.form.get('ciclo', '')\n        folder = request.form.get('folder', '')",
+        "detail": "src.routes.files",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.generar",
+        "description": "src.routes.generar",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@generar_pdf.route('/<cedula>')\ndef generar(cedula):\n    BINPATH = \"C:\\\\Program Files\\\\wkhtmltopdf\\\\bin\\\\wkhtmltopdf.exe\"\n    try:\n        student = StudentModel.get_student(cedula)\n        if student != None:",
+        "detail": "src.routes.generar",
+        "documentation": {}
+    },
+    {
+        "label": "generar",
+        "kind": 2,
+        "importPath": "src.routes.generar",
+        "description": "src.routes.generar",
+        "peekOfCode": "def generar(cedula):\n    BINPATH = \"C:\\\\Program Files\\\\wkhtmltopdf\\\\bin\\\\wkhtmltopdf.exe\"\n    try:\n        student = StudentModel.get_student(cedula)\n        if student != None:\n            notas = StudentModel.get_materias_inscritas(student[\"estudiante\"][\"cedula\"])\n            print(student[\"estudiante\"])\n            carrera = CarreraModel.get_carrera(student[\"estudiante\"][\"carrera\"])\n            config = pdfkit.configuration(wkhtmltopdf=BINPATH)\n            student[\"estudiante\"][\"carrera\"] = carrera[\"carrera\"][\"nombre\"]",
+        "detail": "src.routes.generar",
+        "documentation": {}
+    },
+    {
+        "label": "generar_pdf",
+        "kind": 5,
+        "importPath": "src.routes.generar",
+        "description": "src.routes.generar",
+        "peekOfCode": "generar_pdf = Blueprint('generar_blueprint',__name__)\n@generar_pdf.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@generar_pdf.route('/<cedula>')\ndef generar(cedula):\n    BINPATH = \"C:\\\\Program Files\\\\wkhtmltopdf\\\\bin\\\\wkhtmltopdf.exe\"\n    try:",
+        "detail": "src.routes.generar",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@materia.route('/')\ndef get_materias():\n    try:\n        materias = MateriaModel.get_materias()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": materias})\n    except Exception as ex:",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "get_materias",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def get_materias():\n    try:\n        materias = MateriaModel.get_materias()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": materias})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@materia.route('/<id>')\ndef get_materia(id):\n    try:\n        materias = MateriaModel.get_materia(id)",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "get_materia",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def get_materia(id):\n    try:\n        materias = MateriaModel.get_materia(id)\n        if materias != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":materias})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"materia no encontrada\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "get_materias_validas",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def get_materias_validas(cedula_estudiante: str):\n    try:\n        materias = MateriaModel.get_materias_validas(cedula_estudiante)\n        if materias:\n        # Convertimos cada objeto de la clase Materias en JSON\n            materias_json = [materia.to_JSON() for materia in materias]\n            return jsonify({\"ok\": True, \"status\":200,\"data\": {\"materias\":materias_json}}), 200\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"No se pueden inscribir materias\"}}),404\n    except Exception as ex:",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "add_materia",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def add_materia():\n    try: \n        id = request.json['id']\n        nombre = request.json['nombre']\n        prelacion = request.json.get('prelacion', None)\n        unidad_credito = request.json['unidad_credito']\n        hp =  request.json['hp']\n        ht = request.json['ht']\n        semestre = request.json['semestre']\n        id_carrera = request.json['id_carrera']",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "update_materia",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def update_materia(id):\n    try:\n            nombre = request.json['nombre']\n            prelacion = request.json['prelacion']\n            unidad_credito = request.json['unidad_credito']\n            hp =  request.json['hp']\n            ht = request.json['ht']\n            semestre = request.json['semestre']\n            id_carrera = request.json['id_carrera']\n            id_docente = request.json['id_docente']",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "delete_materia",
+        "kind": 2,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "def delete_materia(id):\n    try:\n        materia  = Materias(str(id))\n        affected_rows = MateriaModel.delete_materia(materia)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"materia no encontrada\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "materia",
+        "kind": 5,
+        "importPath": "src.routes.materias",
+        "description": "src.routes.materias",
+        "peekOfCode": "materia = Blueprint('materia_blueprint', __name__)\n@materia.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@materia.route('/')\ndef get_materias():\n    try:\n        materias = MateriaModel.get_materias()",
+        "detail": "src.routes.materias",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header[\"Access-Control-Allow-Origin\"] = \"*\"\n    return response\n@pago.route(\"/\")\ndef get_pagos():\n    try:\n        pago = PagoModel.get_pagos()\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": pago})\n    except Exception as ex:",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "get_pagos",
+        "kind": 2,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "def get_pagos():\n    try:\n        pago = PagoModel.get_pagos()\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": pago})\n    except Exception as ex:\n        print(ex)\n        return (\n            jsonify({\"ok\": False, \"status\": 500, \"data\": {\"message\": str(ex)}}),\n            500,\n        )",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "get_pago",
+        "kind": 2,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "def get_pago(id):\n    try:\n        pago = PagoModel.get_pago(id)\n        if pago != None:\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": pago})\n        else:\n            return (\n                jsonify(\n                    {\n                        \"ok\": False,",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "add_pago",
+        "kind": 2,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "def add_pago():\n    try:\n        cedula_estudiante = request.json['cedula_estudiante']\n        descripcion = request.json[\"descripcion\"]\n        metodo_pago = request.json['metodo']\n        monto = request.json['monto']\n        fecha_pago = request.json['fecha_pago']\n        referencia_transferencia = request.json.get('referencia_transferencia', None)\n        metodo = Metodo(None, metodo_pago, descripcion)\n        metodo_id = MetodoModel.add_metodo(metodo)",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "update_pago",
+        "kind": 2,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "def update_pago(id):\n    try:\n        cedula_estudiante = request.json['cedula_estudiante']\n        metodo_pago_id = request.json['metodo_pago_id']\n        monto_id = request.json['monto_id']\n        fecha_pago = request.json['fecha_pago']\n        referencia_transferencia = request.json[' referencia_transferencia']\n        pago = (str(id),cedula_estudiante,metodo_pago_id,monto_id,fecha_pago,referencia_transferencia)\n        pagos = PagoModel.update_pago(pago)\n        if pagos == 1:",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "pago",
+        "kind": 5,
+        "importPath": "src.routes.pagos",
+        "description": "src.routes.pagos",
+        "peekOfCode": "pago = Blueprint(\"pagos_blueprint\", __name__)\n@pago.after_request\ndef after_request(response):\n    header = response.headers\n    header[\"Access-Control-Allow-Origin\"] = \"*\"\n    return response\n@pago.route(\"/\")\ndef get_pagos():\n    try:\n        pago = PagoModel.get_pagos()",
+        "detail": "src.routes.pagos",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@peticion.route('/')\ndef get_peticiones():\n    try:\n        peticiones = PeticionesModel.get_peticiones()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": peticiones})\n    except Exception as ex:",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "get_peticiones",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def get_peticiones():\n    try:\n        peticiones = PeticionesModel.get_peticiones()\n        return jsonify({\"ok\": True, \"status\":200,\"data\": peticiones})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@peticion.route('/<id>')\ndef get_peticion(id):\n    try:\n        peticiones = PeticionesModel.get_peticion(id)",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "get_peticion",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def get_peticion(id):\n    try:\n        peticiones = PeticionesModel.get_peticion(id)\n        if peticiones != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\":peticiones})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"peticion no disponible\"}}),404\n    except Exception as ex:\n            return jsonify({\"message\": str(ex)}),500\n@peticion.route('/pendientes')",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "get_peticiones_pendientes",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def get_peticiones_pendientes():\n    try:\n        peticiones_pendientes = PeticionesModel.get_peticiones_pendientes()\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": peticiones_pendientes})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}), 500\n@peticion.route('/add' ,methods = [\"POST\"])\ndef add_peticion():\n    try:\n        id_docente = request.json['id_docente']",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "add_peticion",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def add_peticion():\n    try:\n        id_docente = request.json['id_docente']\n        descripcion = request.json['descripcion']\n        estado = request.json['estado']\n        if estado not in [\"Aprobado\", \"Denegado\", \"Pendiente\"]:\n            return jsonify({'error': 'Valor inválido para el campo estado'}), 400\n        id_estudiante = request.json['id_estudiante']\n        id_materia = request.json['id_materia']\n        campo = request.json['campo']",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "update_peticion",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def update_peticion(id):\n    try:\n        data = request.json\n        # Definimos una lista de campos permitidos para actualizar.\n        allowed_fields = [\"id_docente\", \"descripcion\", \"estado\", \"id_estudiante\", \"id_materia\", \"campo\"]\n        # Filtramos los campos proporcionados en la solicitud para asegurarnos de que solo se actualicen los campos permitidos.\n        fields_to_update = {field: data[field] for field in allowed_fields if field in data}\n        # Si no se proporcionan campos permitidos para actualizar, devolvemos un error con código 400.\n        if not fields_to_update:\n            return jsonify({\"error\": \"No se proporcionaron campos válidos para actualizar\"}), 400",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "delete_peticion",
+        "kind": 2,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "def delete_peticion(id):\n    try:\n        peticion  = Peticiones(str(id))\n        affected_rows = PeticionesModel.delete_peticion(peticion)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"peticion no encontrada\"}}) ,404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": str(ex)}}), 500",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "peticion",
+        "kind": 5,
+        "importPath": "src.routes.peticiones",
+        "description": "src.routes.peticiones",
+        "peekOfCode": "peticion = Blueprint('peticion_blueprint', __name__)\n@peticion.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@peticion.route('/')\ndef get_peticiones():\n    try:\n        peticiones = PeticionesModel.get_peticiones()",
+        "detail": "src.routes.peticiones",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@main.route('/')\ndef get_students():\n    try:\n        students = StudentModel.get_students()\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": students})\n    except Exception as ex:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "get_students",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def get_students():\n    try:\n        students = StudentModel.get_students()\n        return jsonify({\"ok\": True, \"status\": 200, \"data\": students})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}), 500\n@main.route('/<cedula>')\ndef get_student(cedula):\n    try:\n        student = StudentModel.get_student(cedula)",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "get_student",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def get_student(cedula):\n    try:\n        student = StudentModel.get_student(cedula)\n        if student != None:\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": student})\n        else:\n            return jsonify({\"ok\": False, \"status\": 404, \"data\": {\"message\": \"Estudiante no encontrado\"}}), 404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}), 500",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "add_student",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def add_student():\n    try:\n        cedula = request.json['cedula']\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        semestre = request.json['semestre']\n        estado = request.json['estado']\n        carrera = request.json['carrera']\n        password = generate_password_hash(request.json[\"password\"], method=\"sha256\")",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "update_student",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def update_student(cedula):\n    try:\n        fullname = request.json['fullname']\n        correo = request.json['correo']\n        telefono = request.json['telefono']\n        semestre = request.json['semestre']\n        estado = request.json['estado']\n        carrera = request.json[\"carrera\"]\n        edad = request.json['edad']\n        sexo = request.json['sexo']",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "delete_student",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def delete_student(cedula):\n    try:\n        student = Student(str(cedula))\n        affected_rows = StudentModel.delete_student(student)\n        if affected_rows == 1:\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": None})\n        else:\n            return jsonify({\"ok\": False, \"status\": 404, \"data\": {\"message\": \"Estudiante no encontrado\"}}), 404\n    except Exception as ex:\n        return jsonify({\"ok\": False, \"status\": 500, \"data\": {\"message\": str(ex)}}), 500",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "add_student_to_materia",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def add_student_to_materia(materia: str):\n    try:\n        correo_estudiante = get_jwt_identity()  # esto obtiene la identidad del token, en este caso, un correo\n        student: Student | None  # declaramos sin iniciar la variable del estudiante\n        if correo_estudiante is not None:\n            student_entity = Student(correo=correo_estudiante)  # creamos la entidad del estudiante\n            student = StudentModel.login(student_entity)  # revisamos la bd\n            if student is not None:\n                affected_rows = StudentModel.add_materia(student, materia)\n                if affected_rows == 1:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "get_notas",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def get_notas():\n    try:\n        correo_estudiante = get_jwt_identity()\n        student: Student | None\n        if correo_estudiante is not None:\n            student_entity = Student(correo=correo_estudiante)\n            student_entity = StudentModel.login(student_entity)\n            notas_obj = StudentModel.get_notas_estudiante(student_entity.cedula)\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": notas_obj}), 200\n    except Exception as ex:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "get_historico",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def get_historico():\n    try:\n        correo_estudiante = get_jwt_identity()\n        student: Student | None\n        if correo_estudiante is not None:\n            student_entity = Student(correo=correo_estudiante)\n            student_entity = StudentModel.login(student_entity)\n            notas_obj = StudentModel.get_historico(student_entity.cedula)\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": notas_obj}), 200\n    except Exception as ex:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "get_horario",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def get_horario():\n    try:\n        correo_estudiante = get_jwt_identity()\n        student: Student | None\n        if correo_estudiante is not None:\n            student_entity = Student(correo=correo_estudiante)\n            student_entity = StudentModel.login(student_entity)\n            materias = StudentModel.get_inscritas(student_entity.cedula)\n            return jsonify({\"ok\": True, \"status\": 200, \"data\": {\"materias\": materias}}), 200\n    except Exception as ex:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def login():\n    try:\n        fecha_actual = datetime.now()\n        usuario = request.json.get('usuario', None)\n        clave = request.json.get('clave', None)\n        estudiante = Student(correo=usuario)\n        estudiante = StudentModel.login(estudiante)\n        if estudiante is not None:\n            if check_password_hash(estudiante.password,\n                                   clave):  # comprobamos que el hash sea igual a la clave ingrasada",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_student",
+        "kind": 2,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "def jwt_student():\n    try:\n        correo_estudiante = get_jwt_identity()  # esto obtiene la identidad del token, en este caso, un correo\n        student: Student | None  # declaramos sin iniciar la variable del estudiante\n        if correo_estudiante is not None:\n            student_entity = Student(correo=correo_estudiante)  # creamos la entidad del estudiante\n            student = StudentModel.login(student_entity)  # revisamos la bd\n            if student != None:\n                return jsonify({\"ok\": True, \"status\": 200, \"data\": student.to_JSON()})  # retornamos si es correcto\n        else:",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 5,
+        "importPath": "src.routes.students",
+        "description": "src.routes.students",
+        "peekOfCode": "main = Blueprint('students_blueprint', __name__)\n@main.after_request\ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@main.route('/')\ndef get_students():\n    try:\n        students = StudentModel.get_students()",
+        "detail": "src.routes.students",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@transf.route('/')\ndef get_transferencias():\n    try:\n            transferencia = TransferenciaModel.get_transferencias()\n            return jsonify({\"ok\": True, \"status\":200,\"data\":transferencia})\n    except Exception as ex:",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "get_transferencias",
+        "kind": 2,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "def get_transferencias():\n    try:\n            transferencia = TransferenciaModel.get_transferencias()\n            return jsonify({\"ok\": True, \"status\":200,\"data\":transferencia})\n    except Exception as ex:\n        return jsonify({\"message\": str(ex)}),500\n@transf.route('/<id>')\ndef get_transferencia(id):\n    try:\n        transferencia = TransferenciaModel.get_transferencia(id)",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "get_transferencia",
+        "kind": 2,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "def get_transferencia(id):\n    try:\n        transferencia = TransferenciaModel.get_transferencia(id)\n        if transferencia != None:\n            return jsonify({\"ok\": True, \"status\":200,\"data\": transferencia})\n        else:\n            return jsonify({\"ok\": False, \"status\":404,\"data\":{\"message\": \"transferencia no encontrada\"}}),404\n    except Exception as ex:\n        print(ex)\n        return jsonify({\"message\": str(ex)}),500",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "add_transferencia",
+        "kind": 2,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "def add_transferencia():\n    try:\n        id = request.json['id']\n        codigo_referencia = request.json['codigo_referencia']\n        metodo_pago = request.json[' metodo_pago']\n        transferencia = (str(id),codigo_referencia,metodo_pago)\n        affected_rows = TransferenciaModel.add_transferencia(transferencia)\n        if affected_rows == 1:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "update_transferencia",
+        "kind": 2,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "def update_transferencia(id):\n    try:\n        codigo_referencia = request.json['codigo_referencia']\n        metodo_pago = request.json[' metodo_pago']\n        transferencia = (codigo_referencia,metodo_pago)\n        affected_rows = TransferenciaModel.update_transferencia(transferencia)\n        if affected_rows == 1:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":None})\n        else:\n            return jsonify({\"ok\": False, \"status\":500,\"data\":{\"message\": \"Error al actualizar, compruebe los datos e intente nuevamente\"}}), 500",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "transf",
+        "kind": 5,
+        "importPath": "src.routes.transferencia",
+        "description": "src.routes.transferencia",
+        "peekOfCode": "transf = Blueprint(\"transf_blueprint\",__name__)\n@transf.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@transf.route('/')\ndef get_transferencias():\n    try:\n            transferencia = TransferenciaModel.get_transferencias()",
+        "detail": "src.routes.transferencia",
+        "documentation": {}
+    },
+    {
+        "label": "after_request",
+        "kind": 2,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "def after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@user.route('/register', methods = [\"POST\"])\ndef register():\n    try:\n        usuario = request.json['usuario']\n        nombre = request.json['nombre']\n        clave = generate_password_hash(request.json[\"clave\"], method=\"sha256\")",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 2,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "def register():\n    try:\n        usuario = request.json['usuario']\n        nombre = request.json['nombre']\n        clave = generate_password_hash(request.json[\"clave\"], method=\"sha256\")\n        user = User(id=None,usuario=usuario,clave=clave, nombre=nombre)\n        affected_rows = UserModel.register(user)\n        if affected_rows == 1:\n            return jsonify({\"register\": True})\n        else:",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "def login():\n    try: \n        usuario = request.json['usuario']\n        clave = request.json['clave']\n        user = User(usuario,clave)\n        user = UserModel.get_user(user)\n        if user:\n            if check_password_hash(user.clave, clave):\n                access_token = create_access_token(identity=user.usuario, expires_delta=timedelta(hours=2))\n                return jsonify({\"ok\":True, \"status\": 200, \"data\": {\"usuario\": user.to_JSON(), \"access_token\": f\"Bearer {access_token}\"}})",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_student",
+        "kind": 2,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "def jwt_student():\n    try:\n        usuario = get_jwt_identity() # esto obtiene la identidad del token, en este caso, un correo\n        user: User | None # declaramos sin iniciar la variable del estudiante\n        if usuario is not None:\n            usuario_entity = User(usuario=usuario) # creamos la entidad del estudiante\n            user = UserModel.login(usuario_entity) #revisamos la bd\n            if user != None:\n                return jsonify({\"ok\": True, \"status\":200,\"data\":user.to_JSON()}) # retornamos si es correcto\n        else:",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "user",
+        "kind": 5,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "user = Blueprint('user_blueprint',__name__)\n@user.after_request \ndef after_request(response):\n    header = response.headers\n    header['Access-Control-Allow-Origin'] = '*'\n    return response\n@user.route('/register', methods = [\"POST\"])\ndef register():\n    try:\n        usuario = request.json['usuario']",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "@user.route('/login',methods",
+        "kind": 5,
+        "importPath": "src.routes.usuario",
+        "description": "src.routes.usuario",
+        "peekOfCode": "@user.route('/login',methods = [\"POST\"])\ndef login():\n    try: \n        usuario = request.json['usuario']\n        clave = request.json['clave']\n        user = User(usuario,clave)\n        user = UserModel.get_user(user)\n        if user:\n            if check_password_hash(user.clave, clave):\n                access_token = create_access_token(identity=user.usuario, expires_delta=timedelta(hours=2))",
+        "detail": "src.routes.usuario",
+        "documentation": {}
+    },
+    {
+        "label": "DateFormat",
+        "kind": 6,
+        "importPath": "src.utils.dateformat",
+        "description": "src.utils.dateformat",
+        "peekOfCode": "class DateFormat():\n    @classmethod\n    def convert_date(self,date):\n        return datetime.datetime.strftime(date,'%d/%m/%Y')\n#formato para devolver la fecha correctamente",
+        "detail": "src.utils.dateformat",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def create_app(config_filename):\n    app.config.from_object(config_filename)\n    global t\n    if t == 0:\n        # blueprints\n        jwt = JWTManager(app)\n        app.register_blueprint(students.main, url_prefix='/api/students')\n        app.register_blueprint(pagos.pago, url_prefix='/api/pagos')\n        app.register_blueprint(usuario.user, url_prefix='/api/usuario')\n        app.register_blueprint(docente.doc, url_prefix='/api/docente')",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "page_not_found",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def page_not_found(error):\n    return jsonify({\"ok\": False, \"status\": 404, \"data\": {\"message\": \"Page not found\"}}), 404\nPresentConfig = settings['development']\napp = create_app(PresentConfig)\nif __name__ == '__main__':\n    app.run(host=\"0.0.0.0\", debug=True)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "app = Flask(__name__)\nt = 0\ndef create_app(config_filename):\n    app.config.from_object(config_filename)\n    global t\n    if t == 0:\n        # blueprints\n        jwt = JWTManager(app)\n        app.register_blueprint(students.main, url_prefix='/api/students')\n        app.register_blueprint(pagos.pago, url_prefix='/api/pagos')",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "t",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "t = 0\ndef create_app(config_filename):\n    app.config.from_object(config_filename)\n    global t\n    if t == 0:\n        # blueprints\n        jwt = JWTManager(app)\n        app.register_blueprint(students.main, url_prefix='/api/students')\n        app.register_blueprint(pagos.pago, url_prefix='/api/pagos')\n        app.register_blueprint(usuario.user, url_prefix='/api/usuario')",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "PresentConfig",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "PresentConfig = settings['development']\napp = create_app(PresentConfig)\nif __name__ == '__main__':\n    app.run(host=\"0.0.0.0\", debug=True)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "app = create_app(PresentConfig)\nif __name__ == '__main__':\n    app.run(host=\"0.0.0.0\", debug=True)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "src.settings",
+        "description": "src.settings",
+        "peekOfCode": "class Settings:\n    SECRET_KEY = config('SECRET_KEY')\n    JWT_SECRET_KEY = config('JWT_SECRET_KEY')\nclass DevelopmentConfig(Settings):\n    DEBUG = True\nsettings = {\n    'development': DevelopmentConfig\n}",
+        "detail": "src.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DevelopmentConfig",
+        "kind": 6,
+        "importPath": "src.settings",
+        "description": "src.settings",
+        "peekOfCode": "class DevelopmentConfig(Settings):\n    DEBUG = True\nsettings = {\n    'development': DevelopmentConfig\n}",
+        "detail": "src.settings",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "src.settings",
+        "description": "src.settings",
+        "peekOfCode": "settings = {\n    'development': DevelopmentConfig\n}",
+        "detail": "src.settings",
+        "documentation": {}
+    }
+]
