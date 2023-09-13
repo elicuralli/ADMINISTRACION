@@ -1,9 +1,11 @@
 from flask import Blueprint, jsonify, request
+from models.configmodel import ConfigModel
 from models.entities.students import Student
 from models.studentsmodel import StudentModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta, datetime
+import traceback
 
 main = Blueprint('students_blueprint', __name__)
 
@@ -192,31 +194,23 @@ def login():
         if estudiante is not None:
             if check_password_hash(estudiante.password,
                                    clave):  # comprobamos que el hash sea igual a la clave ingrasada
-                # pagos = StudentModel.get_pago_by_student(estudiante.cedula)
-                # config = ConfigModel.get_configuracion("1")
+                # antes de crear el access token debe realizar la comprobación nombrada, guiate del codigo comentado 
+                pagos = StudentModel.get_pago_by_student(estudiante.cedula)
+                config = ConfigModel.get_configuracion("1")
 
-                # if pagos.pre_inscripcion is None:
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la preinscripcion"}}), 401
-
-                # if pagos.inscripcion is None:
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha formalizado la inscripcion"}}), 401
-
-                # print(pagos.to_JSON())
-                # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota1 is "":
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 1ra cuota"}}), 401
-
-                # print(config.cuota2, pagos.cuota2)
-                # if fecha_actual >= datetime.strptime(config.cuota2, "%Y-%m-%d") and pagos.cuota2 is "":
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 2da cuota"}}), 401
-
-                # if fecha_actual >= datetime.strptime(config.cuota3, "%Y-%m-%d") and pagos.cuota3 is "":
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 3ra cuota"}}), 401
-
-                # if fecha_actual >= datetime.strptime(config.cuota4, "%Y-%m-%d") and pagos.cuota4 is "":
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 4ta cuota"}}), 401
-
-                # if fecha_actual >= datetime.strptime(config.cuota1, "%Y-%m-%d") and pagos.cuota5 is "":
-                #     return jsonify({"ok":False, "status": 401, "data": {"message": "Usted no ha pagado la 5ta cuota"}}), 401
+                # Validar pagos de pre-inscripción e inscripción
+                for concepto in ["pre_inscripcion", "inscripcion"]:
+                    pago_realizado = any(pago.monto_id.concepto == concepto and pago.ciclo == config.ciclo for pago in pagos)
+                    if not pago_realizado:
+                        return jsonify({"ok": False, "status": 401, "data": {"message": f"No has realizado el pago de la {concepto.replace('_', ' ').capitalize()}"}}), 401
+                
+                # Validar pagos de cuotas por fechas
+                for i in range(1, 6):
+                    fecha_cuota = getattr(config, f'cuota{i}')
+                    if fecha_actual >= datetime.strptime(fecha_cuota, "%Y-%m-%d"):
+                        pago_realizado = any(pago.monto_id.concepto == f'cuota{i}' and pago.ciclo == config.ciclo for pago in pagos)
+                        if not pago_realizado:
+                            return jsonify({"ok": False, "status": 401, "data": {"message": f"No has realizado el pago de la cuota {i}"}}), 401
 
                 access_token = create_access_token(identity=estudiante.correo, expires_delta=timedelta(hours=2),
                                                    additional_claims={'rol': 'E'})  # creamos el token que vive una hora
@@ -230,6 +224,7 @@ def login():
 
 
     except Exception as ex:
+        traceback.print_exc()
         return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
 
 
