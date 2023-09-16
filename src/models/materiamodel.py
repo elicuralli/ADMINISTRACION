@@ -23,7 +23,7 @@ class MateriaModel():
                     materias = Materias(id=row[0], nombre=row[1], prelacion=row[2], unidad_credito=row[3], hp=row[4],
                                         ht=row[5],
                                         semestre=row[6], id_carrera=row[7], id_docente=row[8], dia=row[9],
-                                        hora_inicio=row[10], hora_fin=row[11], ciclo=row[12], modalidad=row[13])
+                                        hora_inicio=row[10], hora_fin=row[11], dia2=row[14], hora_inicio2=row[15], hora_fin2=row[16], ciclo=row[12], modalidad=row[13], maximo=row[17])
                     join["materias"].append(materias.to_JSON())
                     carrera = Carrera(id=row[14], nombre=row[15])
                     join["carreras"].append(carrera.to_JSON())
@@ -78,7 +78,6 @@ class MateriaModel():
         except Exception as ex:
             raise Exception(ex)
 
-
     @classmethod
     def add_materia(self, materia):
         try:
@@ -92,11 +91,11 @@ class MateriaModel():
                 if result is not None:
                     return 'materia ya existe'
                 cursor.execute(
-                    "INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,ciclo,modalidad)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                    "INSERT INTO materias(id,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia,hora_inicio,hora_fin,dia2,hora_inicio2,hora_fin2,ciclo,modalidad)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     (materia.id,
                      materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
                      materia.semestre, materia.id_carrera, materia.id_docente, materia.dia, materia.hora_inicio,
-                     materia.hora_fin, materia.ciclo, materia.modalidad))
+                     materia.hora_fin, materia.dia2, materia.hora_inicio2, materia.hora_fin2, materia.ciclo, materia.modalidad))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -105,7 +104,6 @@ class MateriaModel():
 
         except Exception as ex:
             raise Exception(ex)
-
 
     @classmethod
     def update_materia(self, materia):
@@ -115,11 +113,11 @@ class MateriaModel():
 
             with conection.cursor() as cursor:
                 cursor.execute(
-                    "UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,ciclo = %s,modalidad =%s WHERE id=%s ",
+                    "UPDATE materias SET nombre= %s,prelacion= %s,unidad_credito= %s,hp= %s,ht= %s,semestre= %s,id_carrera=%s, id_docente=%s, dia = %s,hora_inicio=%s, hora_fin= %s,dia2 = %s,hora_inicio2=%s, hora_fin2= %s,ciclo = %s,modalidad =%s WHERE id=%s ",
                     (
                         materia.nombre, materia.prelacion, materia.unidad_credito, materia.hp, materia.ht,
                         materia.semestre, materia.id_carrera, materia.id_docente, materia.dia,
-                        materia.hora_inicio, materia.hora_fin, materia.ciclo, materia.modalidad, materia.id))
+                        materia.hora_inicio, materia.hora_fin, materia.dia2, materia.hora_inicio2, materia.hora_fin2, materia.ciclo, materia.modalidad, materia.id))
                 affected_rows = cursor.rowcount
                 conection.commit()
 
@@ -128,7 +126,6 @@ class MateriaModel():
 
         except Exception as ex:
             raise Exception(ex)
-
 
     @classmethod
     def delete_materia(self, materia):
@@ -148,21 +145,22 @@ class MateriaModel():
         except Exception as ex:
             raise Exception(ex)
 
-
     @classmethod
     def get_materias_validas(self, cedula_estudiante: str):
         try:
             conection = get_connection()
             materias_validas = []
+            ciclo = ConfigModel.get_configuracion("1").ciclo
 
             with conection.cursor() as cursor:
                 # Obtenemos el estado y el semestre del estudiante
 
-                cursor.execute("SELECT COUNT(*) FROM materias_estudiantes WHERE cedula_estudiante = %s",
-                               (cedula_estudiante,))
+                cursor.execute("SELECT COUNT(*) FROM materias_estudiantes WHERE cedula_estudiante = %s AND ciclo = %s",
+                               (cedula_estudiante, ciclo))
                 row = cursor.fetchone()
                 if (row[0] > 0):
-                    raise Exception("Usted ya tiene inscrito su horario, no puede inscribir más materias o modificarlo")
+                    raise Exception(
+                        "Usted ya tiene inscrito su horario, no puede inscribir más materias o modificarlo")
 
                 cursor.execute(
                     "SELECT estado, semestre, carrera FROM estudiantes WHERE cedula = %s", (cedula_estudiante,))
@@ -181,9 +179,8 @@ class MateriaModel():
 
                 else:
                     # Obtenemos todas las materias
-                    ciclo = ConfigModel.get_configuracion("1").ciclo
                     cursor.execute(
-                        "SELECT * FROM materias WHERE id_carrera = %s AND ciclo = %s", (carrera,ciclo))
+                        "SELECT * FROM materias WHERE id_carrera = %s AND ciclo = %s", (carrera, ciclo))
                     materias = cursor.fetchall()
 
                     # Para cada materia, verificamos si el estudiante ha aprobado las materias pre-requisito
@@ -205,8 +202,13 @@ class MateriaModel():
 
                         # Si la consulta devuelve un resultado, significa que el estudiante ha aprobado todas las materias pre-requisito
                         if result is not None:
-                            # Creamos un nuevo objeto de la clase Materias y lo agregamos a la lista
                             materia_obj = Materias(*materia)
+                            cursor.execute("SELECT COUNT(*) FROM materias_estudiantes WHERE cod_materia = %s AND ciclo = %s",
+                                        (materia_obj.id, ciclo))
+                            row = cursor.fetchone()
+                            # Creamos un nuevo objeto de la clase Materias y lo agregamos a la lista
+                            if row:
+                                materia_obj.cantidad_estudiantes = row[0]
                             materias_validas.append(materia_obj)
 
             conection.close()
@@ -214,7 +216,6 @@ class MateriaModel():
             return materias_validas
         except Exception as ex:
             raise Exception(ex)
-
 
     @classmethod
     def modificar_materia_estudiante(self, cod_materia, cedula_estudiante, nombre_campo, valor):
@@ -249,7 +250,7 @@ class MateriaModel():
                     config = ConfigModel.get_configuracion("1")
 
                     promedio = res[0] * (config.porc1 / 100) + res[1] * (config.porc2 / 100) + res[2] * (
-                            config.porc3 / 100)
+                        config.porc3 / 100)
 
                     cursor.execute(
                         """

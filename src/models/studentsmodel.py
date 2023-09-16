@@ -138,9 +138,10 @@ class StudentModel():
         try:
             connection = get_connection()
             affected_rows: int = 0
+            ciclo = ConfigModel.get_configuracion("1").ciclo
             with connection.cursor() as cursor:
                 cursor.execute(
-                    "INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,nota2,nota3, promedio, uc) VALUES (%s, %s,0,0,0,0,0)", (materia, estudiante.cedula))
+                    "INSERT INTO materias_estudiantes (cod_materia, cedula_estudiante,nota1,nota2,nota3, promedio, uc, ciclo) VALUES (%s, %s,0,0,0,0,0, %s)", (materia, estudiante.cedula, ciclo))
                 connection.commit()
                 affected_rows = cursor.rowcount
 

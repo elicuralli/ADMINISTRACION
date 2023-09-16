@@ -45,7 +45,7 @@ def get_materias_validas(cedula_estudiante: str):
         materias = MateriaModel.get_materias_validas(cedula_estudiante)
         if materias:
         # Convertimos cada objeto de la clase Materias en JSON
-            materias_json = [materia.to_JSON() for materia in materias]
+            materias_json = [materia.to_JSON_with_quantity() for materia in materias]
             return jsonify({"ok": True, "status":200,"data": {"materias":materias_json}}), 200
         else:
             return jsonify({"ok": False, "status":404,"data":{"message": "No se pueden inscribir materias"}}),404
@@ -57,23 +57,30 @@ def add_materia():
 
     try: 
         
-        id = request.json['id']
         nombre = request.json['nombre']
         prelacion = request.json.get('prelacion', None)
         unidad_credito = request.json['unidad_credito']
+        
         hp =  request.json['hp']
         ht = request.json['ht']
+        
         semestre = request.json['semestre']
         id_carrera = request.json['id_carrera']
         id_docente = request.json['id_docente']
+        
         dia = request.json['dia']
         hora_inicio = request.json['hora_inicio']
         hora_fin = request.json['hora_fin']
+        
+        dia2 = request.json['dia2']
+        hora_inicio2 = request.json['hora_inicio2']
+        hora_fin2 = request.json['hora_fin2']
+        
+        maximo = request.json['maximo']
         ciclo = ConfigModel.get_configuracion("1").ciclo
         modalidad = request.json['modalidad']
 
-        materia = Materias(str(id),nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin,None,ciclo,modalidad)
-        print(materia.to_JSON())
+        materia = Materias(None,nombre,prelacion,unidad_credito,hp,ht,semestre,id_carrera,id_docente,dia, hora_inicio, hora_fin, dia2, hora_inicio2, hora_fin2, None,ciclo,modalidad)
         affected_rows = MateriaModel.add_materia(materia)
 
         if affected_rows == 1:

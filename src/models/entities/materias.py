@@ -1,5 +1,5 @@
 class Materias():
-    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None,dia = None, hora_inicio = None, hora_fin = None, cantidad_estudiantes = None,ciclo = None,modalidad = None) -> None:
+    def __init__(self,id,nombre = None,prelacion= None,unidad_credito= None,hp= None,ht= None,semestre= None,id_carrera= None, id_docente = None,dia = None, hora_inicio = None, hora_fin = None, dia2 = None, hora_inicio2 = None, hora_fin2 = None, cantidad_estudiantes = None,ciclo = None,modalidad = None, maximo = None) -> None:
         self.id = id
         self.nombre = nombre 
         self.prelacion = prelacion 
@@ -12,7 +12,11 @@ class Materias():
         self.dia = dia
         self.hora_inicio = hora_inicio
         self.hora_fin = hora_fin
+        self.dia2 = dia2
+        self.hora_inicio2 = hora_inicio2
+        self.hora_fin2 = hora_fin2
         self.cantidad_estudiantes = cantidad_estudiantes
+        self.maximo = maximo
         self.ciclo = ciclo
         self.modalidad = modalidad
     
@@ -31,6 +35,10 @@ class Materias():
             "dia": self.dia,
             "hora_inicio": self.hora_inicio,
             "hora_fin": self.hora_fin,
+            "dia2": self.dia2,
+            "hora_inicio2": self.hora_inicio2,
+            "hora_fin2": self.hora_fin2,
+            "maximo": self.maximo,
             "ciclo": self.ciclo,
             "modalidad": self.modalidad
         }
@@ -50,7 +58,11 @@ class Materias():
             "dia": self.dia,
             "hora_inicio": self.hora_inicio,
             "hora_fin": self.hora_fin,
+            "dia2": self.dia2,
+            "hora_inicio2": self.hora_inicio2,
+            "hora_fin2": self.hora_fin2,
             "cantidad_estudiantes": self.cantidad_estudiantes,
+            "maximo": self.maximo,
             "ciclo": self.ciclo,
             "modalidad": self.modalidad
         }
