@@ -122,3 +122,36 @@ class CoordinacionModel():
         
         except Exception as ex:
             raise Exception(ex)
+    
+    @classmethod
+    def calcular_promedio_ponderado_estudiante(cls, cedula_estudiante):
+        try:
+            conection = get_connection()
+            
+            with conection.cursor() as cursor:
+                # Obtener todas las materias cursadas por el estudiante
+                cursor.execute("SELECT nota, unidad_credito FROM notas WHERE cedula_estudiante = %s", (cedula_estudiante,))
+                registros = cursor.fetchall()
+
+                if registros:
+                    total_puntos = 0.0
+                    total_unidades_credito = 0.0
+
+                    for nota, unidad_credito in registros:
+                        total_puntos += nota * unidad_credito
+                        total_unidades_credito += unidad_credito
+
+                    if total_unidades_credito > 0:
+                        promedio_ponderado = total_puntos / total_unidades_credito
+                    else:
+                        promedio_ponderado = 0  # Evitar división por cero si el estudiante no tiene notas
+
+                    conection.close()
+                    return promedio_ponderado
+
+                else:
+                    conection.close()
+                    return None  # El estudiante no tiene notas registradas
+
+        except Exception as ex:
+            raise Exception(ex)

@@ -143,3 +143,23 @@ def jwt_coordinador():
     
     except Exception as ex:
         return jsonify({"message": str(ex)}),500
+
+@coordinacion.route('/promedio-ponderado/<cedula_estudiante>', methods=['GET'])
+@jwt_required()
+def obtener_promedio_ponderado(cedula_estudiante):
+    try:
+        # Verificar si el usuario autenticado es un coordinador o el propio estudiante
+        correo_autenticado = get_jwt_identity()
+        if correo_autenticado != cedula_estudiante:
+            return jsonify({"ok": False, "status": 401, "data": {"message": "No autorizado"}}), 401
+
+        # Calcular el promedio ponderado del estudiante
+        promedio_ponderado = CoordinacionModel.calcular_promedio_ponderado_estudiante(cedula_estudiante)
+
+        if promedio_ponderado is not None:
+            return jsonify({"ok": True, "status": 200, "data": {"promedio_ponderado": promedio_ponderado}}), 200
+        else:
+            return jsonify({"ok": False, "status": 404, "data": {"message": "No se encontraron notas para este estudiante"}}), 404
+
+    except Exception as ex:
+        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
