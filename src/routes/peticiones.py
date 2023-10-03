@@ -1,3 +1,4 @@
+import traceback
 from models.entities.peticiones import Peticiones
 from models.peticionesmodel import PeticionesModel
 from flask import Blueprint,jsonify,request
@@ -69,6 +70,7 @@ def add_peticion():
             return jsonify({"ok": False, "status":500,"data":{"message": affected_rows}}), 500
 
     except Exception as ex:
+        traceback.print_exc()
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
 
 @peticion.route('/update/<id>', methods = ["PATCH"])

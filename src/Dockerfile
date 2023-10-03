@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install system dependencies
 RUN apt-get update && \
-    apt-get install -y gcc libpq-dev build-essential
+    apt-get install -y gcc libpq-dev build-essential wkhtmltopdf
 
 # lint
 RUN pip install --upgrade pip
@@ -45,7 +45,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # install dependencies
-RUN apt-get update && apt-get install -y netcat libpq5
+RUN apt-get update && apt-get install -y netcat libpq5 wkhtmltopdf
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip
