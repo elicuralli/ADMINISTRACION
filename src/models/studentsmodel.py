@@ -237,7 +237,7 @@ class StudentModel():
             join = []
             with connection.cursor() as cursor:
                 ciclo = ConfigModel.get_configuracion("1").ciclo
-                cursor.execute("""SELECT m.id, m.nombre, m.hp, m.ht, m.dia, m.hora_inicio, m.hora_fin, m.unidad_credito, d.fullname FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia INNER JOIN docentes d on d.cedula = m.id_docente WHERE m.ciclo = %s""", (ciclo,))
+                cursor.execute("""SELECT m.id, m.nombre, m.hp, m.ht, CONCAT(m.dia, ', ', m.dia2), CONCAT(m.hora_inicio, ', ', m.hora_inicio2), CONCAT(m.hora_fin, ', ', m.hora_fin2), m.unidad_credito, d.fullname FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia INNER JOIN docentes d on d.cedula = m.id_docente WHERE m.ciclo = %s AND me.cedula_estudiante = %s""", (ciclo,cedula))
 
                 consulta = cursor.fetchall()
 
