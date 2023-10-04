@@ -173,7 +173,7 @@ class MateriaModel():
 
                 if estado == "nuevo ingreso" or semestre == 1:
                     cursor.execute(
-                        "SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s", (carrera,))
+                        "SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s AND ciclo = %s", (carrera,ciclo))
                     materias = cursor.fetchall()
                     materias_obj = []
                     for materia in materias:
