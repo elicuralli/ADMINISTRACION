@@ -9,17 +9,15 @@ class CarreraModel():
 
         try:
             conection = get_connection()
-            join = {"carreras":[],"materias": []}
+            join = {"carreras":[]}
 
             with conection.cursor() as cursor:
-                cursor.execute("SELECT *from carreras LEFT JOIN materias ON carreras.id = materias.id_carrera")
+                cursor.execute("SELECT * from carreras")
                 result = cursor.fetchall()
 
                 for row in result:
                     carreras = Carrera(id = row[0], nombre = row[1])
                     join["carreras"].append(carreras.to_JSON())
-                    materias = Materias(id = row[2], nombre = row[3],prelacion= row[4], unidad_credito=row[5],hp=row[6],ht=row[7],semestre=row[8],id_carrera=row[9],id_docente=row[10], dia = row[11],hora_inicio = row[12],hora_fin = row[13], ciclo=row[14])
-                    join["materias"].append( materias.to_JSON())
 
             conection.close()
             return join
