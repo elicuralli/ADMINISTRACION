@@ -24,11 +24,12 @@ def generar(cedula):
     try:
         student = StudentModel.get_student(cedula)
         if student != None:
-            notas = StudentModel.get_materias_inscritas(student["cedula"])
+            notas = StudentModel.get_materias_inscritas(cedula)
             carrera = CarreraModel.get_carrera(student["carrera"])
+            print(carrera)
             config = pdfkit.configuration(wkhtmltopdf=BINPATH)
 
-            student["carrera"] = carrera["carrera"]["nombre"]
+            student["carrera"] = carrera["nombre"]
             fecha_actual = date.today().strftime("%d/%m/%Y")
             res = render_template('fichaEstudiantes.html',student=student,materias=notas["contenido"], fecha_actual = fecha_actual)
             pdf = pdfkit.from_string(res, configuration=config, options={"enable-local-file-access": True})

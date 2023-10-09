@@ -173,7 +173,7 @@ class MateriaModel():
 
                 if estado == "nuevo ingreso" or semestre == 1:
                     cursor.execute(
-                        "SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s AND ciclo = %s", (carrera,ciclo))
+                        "SELECT * FROM materias WHERE semestre = '1' AND id_carrera = %s AND ciclo = %s", (carrera, ciclo))
                     materias = cursor.fetchall()
                     materias_obj = []
                     for materia in materias:
@@ -207,7 +207,7 @@ class MateriaModel():
                         # Si la consulta devuelve un resultado, significa que el estudiante ha aprobado todas las materias pre-requisito
                         if result is not None:
                             materia_obj = Materias(
-                                id=materia[0], nombre=materia[1], prelacion=materia[2], unidad_credito=materia[3], hp=materia[4], ht=materia[5], semestre=materia[6], id_carrera=materia[7], id_docente=materia[8], dia=materia[9], hora_inicio=materia[10], hora_fin=materia[11], ciclo=materia[12], modalidad=materia[13], dia2=materia[14], hora_inicio2=materia[15], hora_fin2=materia[16], maximo=materia[17])
+                                id=materia[0], nombre=materia[1], prelacion=materia[2], unidad_credito=materia[3], hp=materia[4], ht=materia[5], semestre=materia[6], id_carrera=materia[7], id_docente=materia[8], dia=f"{materia[9]}{', '+materia[14] if materia[14] is not None else ''}", hora_inicio=f"{materia[10]}{', '+materia[15] if materia[15] is not None else ''}", hora_fin=f"{materia[11]}{', '+materia[16] if materia[16] is not None else ''}", ciclo=materia[12], modalidad=materia[13], dia2=materia[14], hora_inicio2=materia[15], hora_fin2=materia[16], maximo=materia[17])
                             cursor.execute("SELECT COUNT(*) FROM materias_estudiantes WHERE cod_materia = %s AND ciclo = %s",
                                            (materia_obj.id, ciclo))
                             row = cursor.fetchone()
@@ -285,7 +285,7 @@ class MateriaModel():
                 FROM materias m
                 LEFT JOIN carreras c ON m.id_carrera = c.id
                 LEFT JOIN docentes d ON m.id_docente = d.cedula WHERE ciclo = %s
-                """,(ciclo,))
+                """, (ciclo,))
                 result = cursor.fetchall()
 
                 for row in result:
