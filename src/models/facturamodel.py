@@ -10,7 +10,8 @@ class FacturaModel:
 
         with connection.cursor() as cursor: 
             cursor.execute("SELECT id FROM factura;")
-            current_number = cursor.fetchone()[0]
+            current_number = cursor.fetchone()
+            current_number = current_number[0]
         connection.close()
         return current_number
 

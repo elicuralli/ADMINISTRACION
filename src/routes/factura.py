@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from models.facturamodel import FacturaModel
-
+import traceback
 factura_bp = Blueprint('factura_bp', __name__)
 
 @factura_bp.route('/', methods=['GET'])
@@ -14,6 +14,7 @@ def get_invoice_number():
         }), 200
     except Exception as e:
         print(e)
+        traceback.print_exc()
         return jsonify({
             'ok': False,
             'status': 500,
