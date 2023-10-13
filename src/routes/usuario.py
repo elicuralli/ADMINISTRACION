@@ -1,5 +1,5 @@
 from datetime import timedelta
-
+import traceback
 from flask import Blueprint,jsonify,request
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
@@ -48,13 +48,14 @@ def login():
                 return jsonify({"ok":True, "status": 200, "data": {"usuario": user.to_JSON(), "access_token": f"Bearer {access_token}"}})
         
             else:
-                return jsonify({"ok": False, "status": 401, "data": {"login": False}}), 401
+                return jsonify({"ok": False, "status": 401, "data": {"message": 'Correo y/o contraseña inválidos'}}), 401
         else:
-            return jsonify({"ok": False, "status": 401, "data": {"login": False}}), 401
+            return jsonify({"ok": False, "status": 401, "data": {"message": 'Correo y/o contraseña inválidos'}}), 401
 
 
     except Exception as ex:
-        return jsonify({"ok": False, "status": 500, "data": {"message": str(ex)}}), 500
+        traceback.print_exc()
+        return jsonify({"ok": False, "status": 500, "data": {"message": 'Correo y/o contraseña inválidos'}}), 401
 
 
 @user.route('/refresh')
