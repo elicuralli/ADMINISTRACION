@@ -217,7 +217,7 @@ class StudentModel():
             connection = get_connection()
             join = {"ciclo": "", "contenido": []}
             with connection.cursor() as cursor:
-                cursor.execute("""SELECT m.modalidad, CONCAT(m.id, ' ', m.nombre), m.ciclo FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia""")
+                cursor.execute("""SELECT m.modalidad, CONCAT(m.id, ' ', m.nombre), m.ciclo FROM materias_estudiantes me INNER JOIN estudiantes e ON e.cedula = me.cedula_estudiante INNER JOIN materias m ON m.id = me.cod_materia WHERE me.cedula_estudiante = %s""", (cedula,))
 
                 consulta = cursor.fetchall()
 
