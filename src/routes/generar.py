@@ -19,12 +19,13 @@ def after_request(response):
 @generar_pdf.route('/<cedula>')
 def generar(cedula):
 
-    BINPATH = "/usr/bin/wkhtmltopdf"
+    BINPATH = "C:\\Program Files\\wkhtmltopdf\\bin\wkhtmltopdf.exe"
 
     try:
         student = StudentModel.get_student(cedula)
         if student != None:
             notas = StudentModel.get_materias_inscritas(cedula)
+            print(student)
             carrera = CarreraModel.get_carrera(student["carrera"])
             print(carrera)
             config = pdfkit.configuration(wkhtmltopdf=BINPATH)

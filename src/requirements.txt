@@ -31,7 +31,6 @@ python-decouple==3.8
 python-dotenv==1.0.0
 python3-xlib==0.15
 pytweening==1.0.7
-pyuwsgi==2.0.21
 six==1.16.0
 SQLAlchemy==2.0.9
 typing_extensions==4.5.0

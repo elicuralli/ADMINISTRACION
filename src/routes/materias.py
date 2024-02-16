@@ -22,6 +22,7 @@ def get_materias():
         return jsonify({"ok": True, "status":200,"data": materias})
             
     except Exception as ex:
+        traceback.print_exc()
         return jsonify({"message": str(ex)}),500
 
 @materia.route('/<id>')
@@ -52,6 +53,7 @@ def get_materias_validas(cedula_estudiante: str):
         else:
             return jsonify({"ok": False, "status":404,"data":{"message": "No se pueden inscribir materias"}}),404
     except Exception as ex:
+        traceback.print_exc()
         return jsonify({"ok": False, "status":500,"data":{"message":str(ex)}}), 500
 
 @materia.route('/add', methods = ['POST'])

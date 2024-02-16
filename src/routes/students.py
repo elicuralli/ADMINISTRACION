@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from models.configmodel import ConfigModel
 from models.entities.students import Student
+from models.entities.pagos import Pago
 from models.studentsmodel import StudentModel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -195,12 +196,19 @@ def login():
             if check_password_hash(estudiante.password,
                                    clave):  # comprobamos que el hash sea igual a la clave ingrasada
                 # antes de crear el access token debe realizar la comprobación nombrada, guiate del codigo comentado 
-                pagos = StudentModel.get_pago_by_student(estudiante.cedula)
+                pagos: list[Pago] = StudentModel.get_pago_by_student(estudiante.cedula)
                 config = ConfigModel.get_configuracion("1")
 
                 # Validar pagos de pre-inscripción e inscripción
                 for concepto in ["pre_inscripcion", "inscripcion"]:
+                    
+                    for pago in pagos:
+                        print(pago.monto_id.concepto ==
+                              concepto and pago.ciclo == config.ciclo, pago.monto_id.concepto, concepto, pago.ciclo, config.ciclo)
+                    
                     pago_realizado = any(pago.monto_id.concepto == concepto and pago.ciclo == config.ciclo for pago in pagos)
+                    print(pago_realizado)
+                    
                     if not pago_realizado:
                         return jsonify({"ok": False, "status": 401, "data": {"message": f"No has realizado el pago de la {concepto.replace('_', ' ').capitalize()}"}}), 401
                 

@@ -1,6 +1,6 @@
 from models.entities.SuperUsuario import SuperUsuario
 from database.db import get_connection
-
+import traceback
 
 class SuperUsuarioModel():
     
@@ -48,6 +48,8 @@ class SuperUsuarioModel():
             return affected_rows
         
         except  Exception as ex:
+            print("Error al agregar superusuario:", ex)
+            traceback.print_exc()
             raise Exception(ex)
     
     @classmethod
